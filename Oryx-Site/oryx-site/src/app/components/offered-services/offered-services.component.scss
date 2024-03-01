@@ -1,0 +1,10 @@
+$oryx-neutral-20: #F5F5F5;
+
+.column-grid { row-gap: 2rem; }
+
+.column-text {
+    text-align: left;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: $oryx-neutral-20;
+}

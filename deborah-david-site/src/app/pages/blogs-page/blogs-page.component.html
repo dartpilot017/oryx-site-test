@@ -1,0 +1,55 @@
+<div class="page-col page-padding-top">
+    <!-- search bar -->
+    <form (ngSubmit)="search()" class="search-bar">
+        <button class="search-btn" type="submit" title="search">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="vuesax/linear/search-normal">
+                <g id="vuesax/linear/search-normal_2">
+                <g id="search-normal">
+                <path id="Vector" d="M9.58464 17.4998C13.9569 17.4998 17.5013 13.9554 17.5013 9.58317C17.5013 5.21092 13.9569 1.6665 9.58464 1.6665C5.21238 1.6665 1.66797 5.21092 1.66797 9.58317C1.66797 13.9554 5.21238 17.4998 9.58464 17.4998Z" stroke="#1D1D1D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path id="Vector_2" d="M18.3346 18.3332L16.668 16.6665" stroke="#1D1D1D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+                </g>
+                </g>
+            </svg>
+        </button>
+
+        <input [(ngModel)]="searchQuery" name="searchQuery" class="search-input" type="text" placeholder="Search">
+    </form>
+
+    <!-- navigation -->
+    <div class="dd-btn-nav">
+        <ng-container *ngFor="let btn of buttons">
+            <button [ngClass]="{ 'selected': btn.selected }" (click)="onButtonClick(btn)">{{btn.text}}</button>
+        </ng-container>
+    </div>
+
+    <app-loading-spinner *ngIf="!(blogList$ | async)"></app-loading-spinner>
+
+    <div class="page-section blog-list" *ngIf="(blogList$ | async)">
+        <article class="blog-post" *ngFor="let blogPost of displayedBlogPosts">
+            <!-- blog image -->
+            <img class="blog-image" [src]="'https:' + blogPost['imgUrl']" alt="blog image">
+
+            <!-- tags -->
+            <div class="tag-list">
+                <p class="tag-item" *ngFor="let tag of blogPost['tags']" [ngClass]="getTagStyles(tag)">{{ tag }}</p>
+            </div>
+
+            <!-- author & date -->
+            <div class="blog-info">
+                <p>{{ blogPost['author'] }}</p>
+                <div class="red-circle"></div>
+                <time [attr.datetime]="blogPost['date']">{{ blogPost['date'] | date:'dd MMM yyyy' }}</time>
+            </div>
+
+            <!-- blog-title -->
+            <a class="blog-title" [routerLink]="[ blogPost['id'] ]">{{ blogPost['title'] }}</a>
+
+            <!-- blog preview -->
+            <p class="blog-preview">{{ blogPost['preview'] }}</p>
+        </article>
+    </div>
+
+    <button class="dd-btn-fill" type="button" (click)="loadMoreBlogPosts()" [disabled]="noMoreBlogPosts">Load more</button>
+</div>

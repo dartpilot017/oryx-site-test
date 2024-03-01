@@ -1,0 +1,43 @@
+$oryx-font: 'Work Sans', sans-serif;
+$oryx-neutral-60: #9E9E9E;
+$max-tablet-width: 1024px;
+$min-tablet-width: 768px;
+
+.oryx-partners {
+    font-family: $oryx-font;
+
+    h1 {
+        color: $oryx-neutral-60;
+        font-size: 1.25rem;
+        font-weight: 500;
+        text-align: center;
+        margin: 0;
+    }
+}
+
+.oryx-partner-list {
+    display: grid;
+    column-gap: 32px;
+    grid-auto-flow: column;
+    align-items: center;
+    justify-items: center;
+    margin-top: 1.5rem;
+}
+
+.partner-logo {
+    max-height: 70px;
+    max-width: 200px;
+}
+
+/*************** TABLET VIEW ***************/
+@media (min-width: $min-tablet-width) and (max-width: $max-tablet-width) {
+    .oryx-partner-list { column-gap: 8px; }
+}
+
+/************** MOBILE VIEW ***************/
+@media (max-width: calc($min-tablet-width - 1px)) {
+    .oryx-partner-list {
+        overflow-x: scroll;
+        &::-webkit-scrollbar { display: none; }
+    }
+}

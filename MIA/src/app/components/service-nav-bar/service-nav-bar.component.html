@@ -1,0 +1,72 @@
+<app-loader *ngIf="!(dropdownContent$ | async)"></app-loader>
+<div class="nav-container" *ngIf="dropdownContent$ | async as dropdownContent">
+  <div class="service-container">
+    <div class="service-grid">
+      <div
+        class="name-description"
+        *ngFor="
+          let item of dropdownContent['items'][0]['fields']['serviceNavBar']
+        "
+      >
+        <a
+          class="router-link"
+          *ngIf="item.fields.hasRoute"
+          [routerLink]="item.fields.route"
+        >
+          <h4 class="mia-h4">
+            {{ item["fields"]["title"] }}
+          </h4>
+          <p class="mia-p">
+            {{ item["fields"]["description"] }}
+          </p>
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="product-container">
+    <div class="product-title">
+      <p class="mia-p">Products</p>
+    </div>
+
+    <div class="solution-list">
+      <div
+        class="product-content"
+        *ngFor="
+          let item of dropdownContent['items'][0]['fields'][
+            'serviceNavBarProducts'
+          ];
+          let i = index
+        "
+      >
+        <img
+          [src]="'https:' + item['fields']['media']['fields']['file']['url']"
+          alt=""
+          class="rectangle"
+        />
+        <div class="name-description">
+          <a
+            class="router-link"
+            *ngIf="item.fields.hasRoute"
+            [routerLink]="item.fields.route"
+          >
+            <h4 class="mia-h4">
+              {{ item["fields"]["title"] }}
+            </h4>
+            <p class="mia-p">
+              {{ item["fields"]["description"] }}
+            </p>
+          </a>
+        </div>
+      </div>
+      <div class="next-solution">
+        <p class="mia-p">
+          Product
+          {{
+            dropdownContent["items"][0]["fields"]["serviceNavBarProducts"]
+              .length + 1
+          }}
+        </p>
+      </div>
+    </div>
+  </div> -->
+</div>

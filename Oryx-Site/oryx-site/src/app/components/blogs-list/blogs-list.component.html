@@ -1,0 +1,29 @@
+<app-loading-spinner *ngIf="!(blogList$ | async)"></app-loading-spinner>
+<div class="frame-2" *ngIf="blogList$ | async as blogList">
+  <div class="container">
+    <div class="frame-2-grid">
+      <div class="blog-post-card" *ngFor="let blogPost of blogPosts">
+        <img [src]="'https:' + blogPost['imgUrl']" alt="" />
+        <div class="blog-content-text">
+          <div class="heading-and-text">
+            <h1 class="author">
+              {{ blogPost.author }} •
+              {{ blogPost.date | date : "dd MMM yyyy" }}
+            </h1>
+            <a class="heading" [routerLink]="['/oryx-blog', blogPost['id']]" (click)="reloadPage(blogPost)">{{
+              blogPost["title"]
+              }}</a>
+
+            <p class="article">{{ blogPost.preview }}</p>
+          </div>
+          <div class="tag-list">
+            <div class="tag-list">
+              <p class="tag-item" *ngFor="let tag of blogPost.tags" [ngClass]="getTagStyles(tag)">{{ tag }}
+            </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

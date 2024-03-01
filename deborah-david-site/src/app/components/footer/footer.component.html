@@ -1,0 +1,33 @@
+<footer *ngIf="(contactInfo$ | async) as contactInfo">
+    <ng-container *ngIf="contactInfo['items'][0]['fields'] as fields">
+        <div class="page-section footer-content">
+            <!-- CONTACT -->
+            <div class="flex-col">
+                <img class="dd-logo" src="../../../assets/icons/dd-logo.png" alt="deborah david logo">
+                <p class="dd-p">Deborah David Consulting LLC</p>
+                <p class="dd-p">{{ fields['address'] }}</p>
+                <p class="dd-p">{{ fields['phone'] }}</p>
+                <div class="icon-row">
+                    <ng-container *ngFor="let icon of icons">
+                        <a [href]="fields[icon.name]" target="_blank">
+                            <img [src]="'../../../assets/icons/' + icon.file" alt="icon" [title]="icon.name">
+                        </a>
+                    </ng-container>
+                </div>
+            </div>
+            <!-- FORM -->
+            <div class="flex-col">
+                <h4 class="dd-h4">GET DEBORAH'S WEEKLY LETTER</h4>
+                <form class="form-box">
+                    <input type="email" placeholder="Email Address" required>
+                    <button class="dd-btn-fill" type="submit" title="submit" alt="submit button">
+                        <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.2248 1.22528C12.833 0.833517 12.1998 0.833517 11.808 1.22528C11.4163 1.61704 11.4163 2.25028 11.808 2.64204L16.1645 6.99854H1.00195C0.448875 6.99854 0 7.44741 0 8.00049C0 8.55357 0.448875 9.00245 1.00195 9.00245H16.1645L11.808 13.3589C11.4163 13.7507 11.4163 14.3839 11.808 14.7757C12.0034 14.9711 12.2599 15.0693 12.5164 15.0693C12.7729 15.0693 13.0294 14.9711 13.2248 14.7757L20 8.00049L13.2248 1.22528Z" fill="white"/>
+                        </svg>
+                    </button>
+                </form>
+                <p class="copyright">{{ fields['copyright'] }}</p>
+            </div>
+        </div>
+    </ng-container>
+</footer>

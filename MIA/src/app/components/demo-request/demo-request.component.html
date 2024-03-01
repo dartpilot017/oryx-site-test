@@ -1,0 +1,19 @@
+<!-- <div class="flex-centralize inner-section" mat-dialog-content> -->
+  <div class="demo-request" *ngIf="isDemoRequestVisible">
+    <div class="home-frame44">
+      <!-- <app-demo></app-demo> -->
+      <h1 class="mia-h1">Experience MIA Solutions Firsthand</h1>
+      <div class="request-frame">
+        <h4 class="mia-h4">Request a demo to understand how to:</h4>
+        <div class="demo-frame">
+          <div class="home-frame45" *ngFor="let demo of demo">
+            <span class="home-text04">✅</span>
+            <h4 class="mia-h4">{{ demo.demos }}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="home-frame40">
+      <app-demo-request-form (formSubmitted)="closeForm()"></app-demo-request-form>
+    </div>
+  </div>

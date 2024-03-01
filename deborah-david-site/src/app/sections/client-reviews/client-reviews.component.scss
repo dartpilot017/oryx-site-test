@@ -1,0 +1,59 @@
+@import '/src/styles.scss';
+
+.dd-h1 { margin-bottom: 0rem; }
+
+.review-list, .review-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.review-list {
+    gap: 2rem;
+    align-items: center;
+}
+
+.review-item {
+    gap: 0.5rem;
+    align-items: flex-start;
+    padding: 0.5rem;
+    border-bottom: 1px solid $dd-gray;
+}
+
+.review, .author {
+    font-family: $dd-font-family;
+    font-weight: 500;
+    color: $dd-black;
+    margin: 0;
+}
+
+.review {
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    span { font-style: italic; }
+}
+
+.author {
+    font-size: 1rem;
+    line-height: 1.3rem;
+}
+
+
+/*-------------------MEDIA QUERIES-------------------*/
+@media screen and (max-width: $mobile-width) {
+    .dd-h1{ margin: 1rem; }
+
+    .review-item {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .review {
+        font-size: 1.25rem;
+        line-height: 2rem;
+    }
+
+    .author {
+        font-size: 0.875rem;
+        line-height: 1.125rem;
+    }
+}

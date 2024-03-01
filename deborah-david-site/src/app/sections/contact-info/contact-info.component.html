@@ -1,0 +1,23 @@
+<div class="inner-section" *ngIf="(contactInfo$ | async) as contactInfo">
+    <div class="section-content" *ngIf="contactInfo['items'][0]['fields'] as fields">
+        <!-- CONTACT -->
+        <div class="contact-col">
+            <h3 class="dd-h3">Contact Information</h3>
+            <h4 class="dd-h4">Deborah David <br>Consulting LLC</h4>
+            <p class="dd-p">{{ fields['address'] }}</p>
+            <a class="dd-p" [href]="'mailto:' + fields['email']">{{ fields['email'] }}</a>
+            <p class="dd-p">{{ fields['phone'] }}</p>
+        </div>
+        <!-- SOCIALS -->
+        <div class="social-col">
+            <h3 class="dd-h3">Follow Us on Socials</h3>
+            <div class="icon-row">
+                <ng-container *ngFor="let icon of icons">
+                    <a [href]="fields[icon.name]" target="_blank">
+                        <img [src]="'../../../assets/icons/' + icon.file" alt="icon" [title]="icon.name">
+                    </a>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>

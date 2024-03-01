@@ -1,0 +1,172 @@
+<main class="flex-centralize">
+  <!-------------BLUE BAR-------------->
+  <!-- the marketing team suggested we remove the blue bar -->
+  <!-- <div class="blue-bar flex-centralize">
+        <div class="blue-grid content-container" *ngIf="oryxContacts$ | async as oryxContacts">
+
+            <div class="contact-grid">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="16" cy="16" r="16" fill="#DA2625"/>
+                    <path d="M20.167 8.91663H11.8337C9.33366 8.91663 7.66699 10.1666 7.66699 13.0833V18.9166C7.66699 21.8333 9.33366 23.0833 11.8337 23.0833H20.167C22.667 23.0833 24.3337 21.8333 24.3337 18.9166V13.0833C24.3337 10.1666 22.667 8.91663 20.167 8.91663ZM20.5587 13.9916L17.9503 16.075C17.4003 16.5166 16.7003 16.7333 16.0003 16.7333C15.3003 16.7333 14.592 16.5166 14.0503 16.075L11.442 13.9916C11.1753 13.775 11.1337 13.375 11.342 13.1083C11.5587 12.8416 11.9503 12.7916 12.217 13.0083L14.8253 15.0916C15.4587 15.6 16.5337 15.6 17.167 15.0916L19.7753 13.0083C20.042 12.7916 20.442 12.8333 20.6503 13.1083C20.867 13.375 20.8253 13.775 20.5587 13.9916Z" fill="white"/>
+                </svg>
+                <p>{{ oryxContacts.items[0].fields.email }}</p>
+            </div>
+
+            <div class="contact-grid">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="16" cy="16" r="16" fill="#DA2625"/>
+                    <path d="M15.2087 18.4584L13.667 20.0001C13.342 20.3251 12.8253 20.3251 12.492 20.0084C12.4003 19.9167 12.3087 19.8334 12.217 19.7417C11.3587 18.8751 10.5837 17.9667 9.89199 17.0167C9.20866 16.0667 8.65866 15.1167 8.25866 14.1751C7.86699 13.2251 7.66699 12.3167 7.66699 11.4501C7.66699 10.8834 7.76699 10.3417 7.96699 9.84175C8.16699 9.33341 8.48366 8.86675 8.92533 8.45008C9.45866 7.92508 10.042 7.66675 10.6587 7.66675C10.892 7.66675 11.1253 7.71675 11.3337 7.81675C11.5503 7.91675 11.742 8.06675 11.892 8.28341L13.8253 11.0084C13.9753 11.2167 14.0837 11.4084 14.1587 11.5917C14.2337 11.7667 14.2753 11.9417 14.2753 12.1001C14.2753 12.3001 14.217 12.5001 14.1003 12.6917C13.992 12.8834 13.8337 13.0834 13.6337 13.2834L13.0003 13.9417C12.9087 14.0334 12.867 14.1417 12.867 14.2751C12.867 14.3417 12.8753 14.4001 12.892 14.4667C12.917 14.5334 12.942 14.5834 12.9587 14.6334C13.1087 14.9084 13.367 15.2667 13.7337 15.7001C14.1087 16.1334 14.5087 16.5751 14.942 17.0167C15.0253 17.1001 15.117 17.1834 15.2003 17.2667C15.5337 17.5917 15.542 18.1251 15.2087 18.4584Z" fill="white"/>
+                    <path d="M24.3083 21.275C24.3083 21.5083 24.2667 21.75 24.1833 21.9833C24.1583 22.05 24.1333 22.1166 24.1 22.1833C23.9583 22.4833 23.775 22.7666 23.5333 23.0333C23.125 23.4833 22.675 23.8083 22.1667 24.0166C22.1583 24.0166 22.15 24.025 22.1417 24.025C21.65 24.225 21.1167 24.3333 20.5417 24.3333C19.6917 24.3333 18.7833 24.1333 17.825 23.725C16.8667 23.3166 15.9083 22.7666 14.9583 22.075C14.6333 21.8333 14.3083 21.5916 14 21.3333L16.725 18.6083C16.9583 18.7833 17.1667 18.9166 17.3417 19.0083C17.3833 19.025 17.4333 19.05 17.4917 19.075C17.5583 19.1 17.625 19.1083 17.7 19.1083C17.8417 19.1083 17.95 19.0583 18.0417 18.9666L18.675 18.3416C18.8833 18.1333 19.0833 17.975 19.275 17.875C19.4667 17.7583 19.6583 17.7 19.8667 17.7C20.025 17.7 20.1917 17.7333 20.375 17.8083C20.5583 17.8833 20.75 17.9916 20.9583 18.1333L23.7167 20.0916C23.9333 20.2416 24.0833 20.4166 24.175 20.625C24.2583 20.8333 24.3083 21.0416 24.3083 21.275Z" fill="white"/>
+                </svg>
+                <p>{{ oryxContacts.items[0].fields.phoneNumbers[0] }}</p>
+            </div>
+
+            <div class="contact-grid">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="16" cy="16" r="16" fill="#DA2625"/>
+                    <path d="M23.1829 13.0416C22.3079 9.19159 18.9496 7.45825 15.9996 7.45825C15.9996 7.45825 15.9996 7.45825 15.9913 7.45825C13.0496 7.45825 9.68292 9.18325 8.80792 13.0333C7.83292 17.3333 10.4663 20.9749 12.8496 23.2666C13.7329 24.1166 14.8663 24.5416 15.9996 24.5416C17.1329 24.5416 18.2663 24.1166 19.1413 23.2666C21.5246 20.9749 24.1579 17.3416 23.1829 13.0416ZM15.9996 17.2166C14.5496 17.2166 13.3746 16.0416 13.3746 14.5916C13.3746 13.1416 14.5496 11.9666 15.9996 11.9666C17.4496 11.9666 18.6246 13.1416 18.6246 14.5916C18.6246 16.0416 17.4496 17.2166 15.9996 17.2166Z" fill="white"/>
+                </svg>
+                <p>{{ oryxContacts.items[0].fields.address }}</p>
+            </div>
+        </div>
+    </div> -->
+
+  <!-------------WHITE BAR-------------->
+  <nav class="white-bar flex-centralize">
+    <div class="white-grid content-container">
+      <!------------LOGO------------>
+      <a class="logo" routerLink="/home">
+        <img src="assets/images/oryx_logo.png" alt="Oryx Logo" />
+      </a>
+
+      <!------------PAGE LINKS------------>
+      <ul class="navbar-nav">
+        <ng-container *ngFor="let item of navItems">
+          <!-- normal links -->
+          <ng-container *ngIf="!item.language; else languageDropdown">
+            <li
+              class="nav-item"
+              *ngIf="
+                item.name !== 'Products' &&
+                  item.french !== 'Des produits' &&
+                  item.name !== 'Language';
+                else dropdown
+              "
+            >
+              <a
+                class="nav-link"
+                [routerLink]="item.route"
+                routerLinkActive="active-link"
+                >{{ isEnglish ? item.name : item.french }}</a
+              >
+            </li>
+          </ng-container>
+
+          <!-- service dropdown -->
+          <ng-template #dropdown>
+            <li
+              class="nav-item"
+              (mouseenter)="toggleDropdown(true)"
+              (mouseleave)="toggleDropdown(false)"
+            >
+              <a
+                class="nav-link service-flex"
+                [routerLink]="item.route"
+                routerLinkActive="active-link"
+              >
+                {{ isEnglish ? item.name : item.french }}
+                <svg
+                  width="7"
+                  height="12"
+                  viewBox="0 0 7 12"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  transform="rotate(90)"
+                >
+                  <path
+                    d="M1.43974 11.78C1.31307 11.78 1.18641 11.7333 1.08641 11.6333C0.893073 11.44 0.893073 11.12 1.08641 10.9267L5.43307 6.58C5.75307 6.26 5.75307 5.74 5.43307 5.42L1.08641 1.07333C0.893073 0.879998 0.893073 0.559998 1.08641 0.366664C1.27974 0.173331 1.59974 0.173331 1.79307 0.366664L6.13974 4.71333C6.47974 5.05333 6.67307 5.51333 6.67307 6C6.67307 6.48666 6.48641 6.94666 6.13974 7.28666L1.79307 11.6333C1.69307 11.7267 1.56641 11.78 1.43974 11.78Z"
+                    fill="#616161"
+                  />
+                </svg>
+              </a>
+
+              <div class="dropdown">
+                <a
+                  class="dropdown-item"
+                  [routerLink]="'.' + item.route"
+                  fragment="oryx"
+                  >Oryx</a
+                >
+                <a
+                  class="dropdown-item"
+                  [routerLink]="'.' + item.route"
+                  fragment="microsoft"
+                  >Microsoft</a
+                >
+                <a
+                  class="dropdown-item"
+                  [routerLink]="'.' + item.route"
+                  fragment="sap"
+                  >SAP</a
+                >
+                <a
+                  class="dropdown-item"
+                  [routerLink]="'.' + item.route"
+                  fragment="others"
+                  >Others</a
+                >
+              </div>
+            </li>
+          </ng-template>
+
+          <!-- language selection -->
+          <ng-template #languageDropdown>
+            <li class="nav-item">
+              <div class="nav-link" (click)="toggleLang()">
+                <ng-container *ngIf="navItems[6].language as lang">
+                  <div class="select-language">
+                    <div class="image-container" *ngIf="isEnglish">
+                      <img [src]="lang[0].imagePATH" alt="{{ lang[0].name }}" />
+                      <span>{{ lang[0].name }}</span>
+                    </div>
+                    <div class="image-container" *ngIf="!isEnglish">
+                      <img [src]="lang[1].imagePATH" alt="{{ lang[1].name }}" />
+                      <span>{{ lang[1].name }}</span>
+                    </div>
+                    <svg
+                      width="7"
+                      height="12"
+                      viewBox="0 0 7 12"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      transform="rotate(90)"
+                    >
+                      <path
+                        d="M1.43974 11.78C1.31307 11.78 1.18641 11.7333 1.08641 11.6333C0.893073 11.44 0.893073 11.12 1.08641 10.9267L5.43307 6.58C5.75307 6.26 5.75307 5.74 5.43307 5.42L1.08641 1.07333C0.893073 0.879998 0.893073 0.559998 1.08641 0.366664C1.27974 0.173331 1.59974 0.173331 1.79307 0.366664L6.13974 4.71333C6.47974 5.05333 6.67307 5.51333 6.67307 6C6.67307 6.48666 6.48641 6.94666 6.13974 7.28666L1.79307 11.6333C1.69307 11.7267 1.56641 11.78 1.43974 11.78Z"
+                        fill="#616161"
+                      />
+                    </svg>
+                  </div>
+                </ng-container>
+                <div class="dropdown">
+                  <div
+                    class="dropdown-item"
+                    *ngFor="let lang of navItems[6].language"
+                    (click)="changeLanguage(lang.locale)"
+                  >
+                    <div class="select-language">
+                      <div class="image-container">
+                        <img [src]="lang.imagePATH" alt="{{ lang.name }}" />
+                        <span>{{ lang.name }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ng-template>
+        </ng-container>
+      </ul>
+    </div>
+  </nav>
+</main>

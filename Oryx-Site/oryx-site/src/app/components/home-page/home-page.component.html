@@ -1,0 +1,78 @@
+<main>
+    <div class="content-container" *ngIf="oryxHomePage$ | async as oryxHomePage">
+
+        <!--TOP SECTION PARAGRAPH-->
+        <div class="section-grid">
+            <div class="section-paragraph">
+                <h1>{{ oryxHomePage.items[0].fields.paragraphList[0].fields.intro }}</h1>
+                <h2>{{ oryxHomePage.items[0].fields.paragraphList[0].fields.title }}</h2>
+                <p>{{ oryxHomePage.items[0].fields.paragraphList[0].fields.paragraph }}</p>
+
+                <div class="button-row">
+                    <button class="red-button button-hover" (click)="redirectToContactUs()">{{ isEnglish ? 'Contact Us' : 'Contactez-nous'}}</button>
+                    <button class="video-button" (click)="openDialog()">
+                        <svg width="49" height="48" viewBox="0 0 49 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="24.5" cy="24" r="24" fill="#47A3F3"/>
+                            <circle cx="24.5" cy="24" r="19.5" fill="#47A3F3" stroke="white"/>
+                            <path d="M29.99 21.6L18.1 28.77C17.4 29.19 16.5 28.69 16.5 27.87V19.87C16.5 16.38 20.27 14.2 23.3 15.94L27.89 18.58L29.98 19.78C30.67 20.19 30.68 21.19 29.99 21.6Z" fill="white"/>
+                            <path d="M30.5898 27.46L26.5398 29.8L22.4998 32.13C21.0498 32.96 19.4098 32.79 18.2198 31.95C17.6398 31.55 17.7098 30.66 18.3198 30.3L31.0298 22.68C31.6298 22.32 32.4198 22.66 32.5298 23.35C32.7798 24.9 32.1398 26.57 30.5898 27.46Z" fill="white"/>
+                        </svg>
+                        <p>{{isEnglish ? 'Watch Video' : 'Regarder la vidéo'}}</p>
+                    </button>
+                </div>
+            </div>
+
+            <div class="section-image">
+                <img
+                    [src]="'https:' + oryxHomePage.items[0].fields.paragraphList[0].fields.image.fields.file.url"
+                    alt ="section image"
+                />
+            </div>
+        </div>
+
+        <!--ORYX PARTNERS-->
+        <div class="oryx-partners">
+            <app-oryx-partners></app-oryx-partners>
+        </div>
+
+        <!--BOTTOM SECTION PARAGRAPH-->
+        <div class="bottom-section">
+
+            <div class="section-image">
+                <img
+                    [src]="'https:' + oryxHomePage.items[0].fields.paragraphList[1].fields.image.fields.file.url"
+                    alt ="section image"
+                />
+            </div>
+
+            <div class="section-paragraph">
+                <h1>{{ oryxHomePage.items[0].fields.paragraphList[1].fields.intro }}</h1>
+                <h2>{{ oryxHomePage.items[0].fields.paragraphList[1].fields.title }}</h2>
+                <p>{{ oryxHomePage.items[0].fields.paragraphList[1].fields.paragraph }}</p>
+                <a routerLink="/services">
+                    <p>View Our Products & Services</p><pre>&emsp;</pre>
+                    <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.43974 11.78C1.31307 11.78 1.18641 11.7333 1.08641 11.6333C0.893073 11.44 0.893073 11.12 1.08641 10.9267L5.43307 6.58C5.75307 6.26 5.75307 5.74 5.43307 5.42L1.08641 1.07333C0.893073 0.879998 0.893073 0.559998 1.08641 0.366664C1.27974 0.173331 1.59974 0.173331 1.79307 0.366664L6.13974 4.71333C6.47974 5.05333 6.67307 5.51333 6.67307 6C6.67307 6.48666 6.48641 6.94666 6.13974 7.28666L1.79307 11.6333C1.69307 11.7267 1.56641 11.78 1.43974 11.78Z" fill="#03449E"/>
+                    </svg>
+                </a>
+            </div>
+
+        </div>
+
+        <!--COLUMNS OF VISION, VALUES, MISSION-->
+        <div id="oryx-values">
+            <app-oryx-values></app-oryx-values>
+        </div>
+
+        <div id="offered-services">
+            <app-offered-services></app-offered-services>
+        </div>
+
+    </div>
+
+    <!---------ORYX CLIENT SLIDER & REQUEST DEMO FOOTER---------->
+    <app-oryx-clients-slider></app-oryx-clients-slider>
+    <app-request-demo-footer></app-request-demo-footer>
+    <app-oryx-footer></app-oryx-footer>
+
+</main>

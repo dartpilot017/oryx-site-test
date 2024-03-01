@@ -1,0 +1,131 @@
+@import '/src/styles.scss';
+
+$top-spacing: 10rem;
+$nav-bar-height: 0rem;
+$banner-height: calc(100svh - 5rem);
+
+.banner {
+    position: relative;
+    height: $banner-height;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0;
+    background-color: $dd-dark-gold;
+    padding: 1rem 0;
+    overflow: hidden;
+    font-family: $dd-font-family;
+    color: $dd-white;
+}
+
+.banner-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding-top: 2rem;
+    padding-left: 5%;
+}
+
+.banner-h1, .banner-p { margin: 0; }
+
+.banner-h1 {
+    font-weight: 700;
+    font-size: 12rem;
+    line-height: 11.25rem;
+    letter-spacing: 0.25ch;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.banner-p {
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+img {
+    position: absolute;
+    right: 0;
+    height: $banner-height;
+    object-fit: contain;
+}
+
+.title-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    width: 50%;
+    padding: 0.25rem 0;
+    border-left: 5px solid $dd-red;
+
+    p {
+        margin: 0.5rem 0;
+        padding: 0 0.5ch;
+        line-height: 1.5rem;
+        border-right: 3px solid $dd-white;
+        &:last-child { border-right: none; }
+    }
+}
+
+
+/*-------------------MEDIA QUERIES-------------------*/
+@media screen and (max-width: 1400px) {
+    .banner-text {padding-left: 2rem; }
+    .banner-h1 { letter-spacing: 0.1ch; }
+}
+
+@media screen and (max-width: 1180px) { .banner-h1 { letter-spacing: -0.05ch; } }
+
+@media screen and (max-width: 1140px) { .role { width: 40%; } }
+
+@media screen and (max-width: $tablet-width) {
+    .banner {
+        flex-direction: column;
+        height: auto;
+        padding: 2rem;
+    }
+
+    .banner-text {
+        padding-top: 0;
+        padding-left: 1.5rem;
+    }
+
+    .banner-h1 {
+        font-size: 8rem;
+        line-height: 8.5rem;
+        letter-spacing: 0;
+    }
+
+    .role { width: auto; }
+
+    img { display: none; }
+
+    .title-row { width: 100%; }
+}
+
+@media screen and (max-width: $mobile-width) {
+    .banner-text { padding: 1rem; }
+
+    .banner-h1, .banner-p {
+        word-wrap:break-word;
+        word-break: break-word; // fallback for older browsers
+    }
+
+    .banner-h1 {
+        font-size: 3.5rem;
+        line-height: 4rem;
+    }
+
+    .banner-p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 362px) {
+    .banner-h1 {
+        font-size: 2.5rem;
+        line-height: 3rem;
+    }
+}

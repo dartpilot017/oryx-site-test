@@ -1,0 +1,12 @@
+<div class="page-section" *ngIf="(recentMediaList$ | async) as recentMediaList">
+    <h1 class="dd-h1">In recent media</h1>
+    <div class="media-grid" *ngIf="recentMediaList['items'][0]['fields']['medias'] as medias">
+        <ng-container *ngFor="let media of medias">
+            <div class="media-item" *ngIf="media['fields'] as mediaItem">
+                <p class="dd-p media-author"><span>By </span>{{ mediaItem['author'] }}</p>
+                <p class="dd-p media-title">{{ mediaItem['title'] }}</p>
+                <p class="dd-p media-date">{{ mediaItem['date'] | date: 'mediumDate' }}</p>
+            </div>
+        </ng-container>
+    </div>
+</div>

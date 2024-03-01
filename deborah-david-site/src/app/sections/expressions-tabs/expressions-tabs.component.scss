@@ -1,0 +1,33 @@
+@import '/src/styles.scss';
+
+.dd-btn-nav {
+    margin: 2rem 0;
+    margin-inline: auto;
+    justify-content: center;
+
+    @media screen and (width <= 640px) {
+        justify-content: start;
+    }
+}
+
+img {
+    width: 100vw;
+    object-fit: contain;
+}
+
+.reasons-section {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    margin-top: 4rem;
+    h1, h3, p { margin: 0; }
+}
+
+.content-top { margin-bottom: 4rem; }
+.wc-bot { margin-top: 4rem; }
+
+#bottom {
+    margin-top: 4rem;
+    margin-bottom: 5rem;
+    text-align: center;
+}

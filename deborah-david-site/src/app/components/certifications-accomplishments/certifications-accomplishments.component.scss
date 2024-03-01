@@ -1,0 +1,57 @@
+@import '/src/styles.scss';
+
+$dd-border: 1px solid rgba($color: $dd-gray, $alpha: 0.3);
+
+.certifications {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.certifications-content {
+  border-top: $dd-border;
+  border-bottom: $dd-border;
+  padding: 10px 0;
+  margin-bottom: 10px;
+  width: 100%;
+  text-align: center;
+
+  h2{
+    line-height: 18px;
+    font-size: 16px;
+    letter-spacing: 1;
+    color: $dd-black;
+    font-family: $dd-font-family;
+    font-weight: 400;
+  }
+}
+
+.certifications-logos {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0.63rem 0;
+  border-bottom: $dd-border;
+  width: 100%;
+}
+
+.certifications-logo-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 7.5rem;
+  width: 100%;
+  padding: 0 1rem;
+
+  // overflow-x: scroll;
+  gap: 3rem;
+}
+
+.certifications-logo {
+  // width: 100px; /* Adjust the width as per your requirement */
+  height: 100%;
+  // max-width: 100%; /* Adjust the height as per your requirement */
+  object-fit: contain;
+}

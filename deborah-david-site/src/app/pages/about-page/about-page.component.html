@@ -1,0 +1,51 @@
+<app-loading-spinner *ngIf="!(about$ | async)"></app-loading-spinner>
+<div class="page-padding-top" *ngIf="(about$ | async) as about">
+    <ng-container *ngIf="about['items'][0]['fields'] as fields">
+
+        <div  class="flex-centralize">
+            <h1 class="about-header">About Deborah.....</h1>
+            <div class="page-section spacing top">
+                <div class="about-item">
+                    <markdown ngPreserveWhitespaces class="about-paragraph">{{ fields['p1'] }}</markdown>
+                    <img class="about-img" [src]="'https:' + fields['img1']['fields']['file']['url']" alt="deborah david photo">
+                </div>
+                <div class="about-item img-left">
+                    <markdown ngPreserveWhitespaces class="about-paragraph">{{ fields['p2'] }}</markdown>
+                    <img class="about-img" [src]="'https:' + fields['img2']['fields']['file']['url']" alt="deborah david photo">
+                </div>
+            </div>
+        </div>
+
+        <app-certifications-accomplishments></app-certifications-accomplishments>
+
+        <div  class="flex-centralize">
+            <div class="page-section spacing">
+                <div class="about-item">
+                    <markdown ngPreserveWhitespaces class="about-paragraph">{{ fields['p3'] }}</markdown>
+                    <img class="about-img" [src]="'https:' + fields['img3']['fields']['file']['url']" alt="deborah david photo">
+                </div>
+                <div class="about-item img-left">
+                    <markdown ngPreserveWhitespaces class="about-paragraph">{{ fields['p4'] }}</markdown>
+                    <img class="about-img" [src]="'https:' + fields['img4']['fields']['file']['url']" alt="deborah david photo">
+                </div>
+            </div>
+        </div>
+
+        <app-ggnetwork></app-ggnetwork>
+
+        <div  class="flex-centralize">
+            <div class="page-section spacing">
+                <div class="about-item">
+                    <markdown ngPreserveWhitespaces class="about-paragraph">{{ fields['p5'] }}</markdown>
+                    <img class="about-img" [src]="'https:' + fields['img5']['fields']['file']['url']" alt="deborah david photo">
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-sections">
+            <app-quote-banner></app-quote-banner>
+            <app-recent-media></app-recent-media>
+            <app-recent-clients></app-recent-clients>
+        </div>
+    </ng-container>
+</div>

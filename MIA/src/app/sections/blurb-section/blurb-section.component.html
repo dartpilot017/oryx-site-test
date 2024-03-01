@@ -1,0 +1,17 @@
+<app-loader *ngIf="!(products$ | async)"></app-loader>
+<div class="page-centralize inner-section" *ngIf="products$ | async as products">
+  <div class="container">
+    <div class="slider">
+      <ng-container *ngIf="products.items[0].fields as fields">
+        <div class="slide-container">
+          <div class="slide">
+            <div class="image-container">
+              <img [src]="'https:' + fields['blurb'].fields.file.url" alt="Blurb media"/>
+            </div>
+          </div>
+          <app-blurb-content></app-blurb-content>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

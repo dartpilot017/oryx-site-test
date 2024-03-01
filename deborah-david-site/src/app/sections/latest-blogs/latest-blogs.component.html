@@ -1,0 +1,32 @@
+<div class="page-col page-section">
+
+    <h1 class="dd-h1">Latest Blog Posts</h1>
+
+    <div class="blog-list" *ngIf="(blogList$ | async)">
+        <article class="blog-post" *ngFor="let blogPost of blogPosts.slice(0, 2)">
+            <!-- blog image -->
+            <img class="blog-image" [src]="'https:' + blogPost['imgUrl']" alt="blog image">
+
+            <!-- tags -->
+            <div class="tag-list">
+                <p class="tag-item" *ngFor="let tag of blogPost['tags']" [ngClass]="getTagStyles(tag)">{{ tag }}</p>
+            </div>
+
+            <!-- author & date -->
+            <div class="blog-info">
+                <p>{{ blogPost['author'] }}</p>
+                <div class="red-circle"></div>
+                <time [attr.datetime]="blogPost['date']">{{ blogPost['date'] | date:'dd MMM yyyy' }}</time>
+            </div>
+
+            <!-- blog-title -->
+            <a class="blog-title" [routerLink]="['/blogs', blogPost['id']]">{{ blogPost['title'] }}</a>
+
+            <!-- blog preview -->
+            <p class="blog-preview">{{ blogPost['preview'] }}</p>
+        </article>
+    </div>
+
+    <button class="dd-btn-fill" type="button" (click)="redirectToBlogs()">View all posts</button>
+
+</div>

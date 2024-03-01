@@ -1,0 +1,147 @@
+@import '/src/styles.scss';
+
+$input-expand-time: 0.3s;
+
+.page-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5rem;
+}
+
+.search-bar {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+
+    margin-top: 2rem;
+    padding: 1rem 1.5rem;
+    border-radius: 100vw;
+    border: 1px solid $dd-black;
+    transition: width $input-expand-time ease-out;
+}
+
+.search-btn {
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.search-input {
+    @extend .dd-h4;
+    font-weight: 500;
+    text-align: left;
+    &::placeholder { color: $dd-black; }
+
+    border: none;
+    outline: none;
+
+    width: 3.3125rem;
+    transition: width $input-expand-time ease-out;
+    &:active, &:focus {
+        width: 15rem;
+        &::placeholder { color: transparent; }
+    }
+}
+
+.dd-btn-nav {
+    @extend .page-section;
+    justify-content: center;
+}
+
+.blog-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.blog-post {
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-image {
+    width: 100%;
+    object-fit: contain;
+    margin-bottom: 1.5rem;
+}
+
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.tag-item {
+    @extend .dd-h4;
+    padding: 0.25rem 0.75rem;
+    border-radius: 100vw;
+
+    color: $dd-white;
+    background-color: $dd-black;
+
+    &.professional-tag {
+        color: $dd-vivid-tangelo;
+        background-color: $dd-pale-orange;
+    }
+
+    &.parenting-tag {
+        color: #027A48;
+        background-color: #ECFDF3;
+    }
+
+    &.spiritual-tag {
+        color: #363F72;
+        background-color: #F8F9FC;
+    }
+
+    &.personal-tag {
+        color: #3C99EE;
+        background-color: #EDF3FF;
+    }
+}
+
+.blog-info {
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+
+    @extend .dd-h4;
+    color: $dd-red;
+    font-weight: 500;
+    height: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.red-circle {
+    width: 0.3rem;
+    height: 0.3rem;
+    border-radius: 100vw;
+    background-color: $dd-red;
+}
+
+.blog-title {
+    @extend .dd-h3;
+    text-align: left;
+    line-height: 2.4rem;
+    margin-bottom: 0.75rem;
+    text-decoration: underline;
+
+    transition: color 0.3s ease-out;
+    &:hover, &:focus { color: $dd-red; }
+}
+
+.blog-preview {
+    @extend .dd-p;
+    color: $dd-gray;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/*-------------------MEDIA QUERIES-------------------*/
+@media screen and (max-width: $mobile-width) {
+    .dd-btn-nav { justify-content: flex-start; }
+    .blog-list { grid-template-columns: 1fr; }
+}

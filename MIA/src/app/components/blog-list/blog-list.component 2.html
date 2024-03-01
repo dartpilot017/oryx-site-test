@@ -1,0 +1,176 @@
+
+  <div class="inner-container" *ngIf="blogList$ | async as blogList">
+    <div class="blog-contents">
+      <h1 class="title">All blog posts</h1>
+      <div class="contents-frame">
+        <div class="frame-1">
+          <div class="search-container">
+            <form (ngSubmit)="search()" class="search-input">
+              <input
+                [(ngModel)]="searchQuery"
+                name="searchQuery"
+                type="text"
+                placeholder="Search"
+              />
+
+              <button class="search-btn" type="submit" title="search">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g id="vuesax/linear/search-normal">
+                    <g id="vuesax/linear/search-normal_2">
+                      <g id="search-normal">
+                        <path
+                          id="Vector"
+                          d="M9.58464 17.4998C13.9569 17.4998 17.5013 13.9554 17.5013 9.58317C17.5013 5.21092 13.9569 1.6665 9.58464 1.6665C5.21238 1.6665 1.66797 5.21092 1.66797 9.58317C1.66797 13.9554 5.21238 17.4998 9.58464 17.4998Z"
+                          stroke="#1D1D1D"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          id="Vector_2"
+                          d="M18.3346 18.3332L16.668 16.6665"
+                          stroke="#1D1D1D"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+              </button>
+            </form>
+            <p class="author">Blog categories</p>
+          </div>
+          <div class="category-list">
+            <ng-container *ngFor="let btn of buttons">
+              <span
+                class="button"
+                [ngClass]="{ selected: btn.selected }"
+                (click)="onButtonClick(btn)"
+              >
+                {{ btn.text }}
+              </span>
+            </ng-container>
+          </div>
+        </div>
+
+        <div class="frame-2">
+          <div class="container">
+            <div class="frame-2-grid">
+              <div
+                class="blog-post-card"
+                *ngFor="let blogPost of displayedBlogPosts; let i = index"
+                [style.zIndex]="i < itemsPerPage ? 1 : 2"
+                [ngClass]="{
+                  'slide-in': blogPost.animationClass === 'slide-in',
+                  'slide-out': blogPost.animationClass === 'slide-out'
+                }"
+              >
+                <img [src]="'https:' + blogPost['imgUrl']" alt="" />
+                <div class="blog-content-text">
+                  <div class="heading-and-text">
+                    <h1 class="author">
+                      {{ blogPost.author }} •
+                      {{ blogPost.date | date : "dd MMM yyyy" }}
+                    </h1>
+                    <a class="heading" [routerLink]="[blogPost['id']]">{{
+                      blogPost["title"]
+                    }}</a>
+                    <p class="article">{{ blogPost.preview }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="error-message" *ngIf="searchResultsEmpty || tagIsEmpty">
+              <p *ngIf="searchResultsEmpty">Search not found.</p>
+              <p *ngIf="tagIsEmpty">Blog post for this tag not found.</p>
+            </div>
+
+    <div class="pagination">
+      <div class="divider"></div>
+      <div class="pagination-container">
+        <div class="pag-button">
+          <button
+            class="button"
+            (click)="loadPreviousPage()"
+            [disabled]="currentPage === 1"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+            >
+              <path
+                d="M15.8346 9.99996H4.16797M4.16797 9.99996L10.0013 15.8333M4.16797 9.99996L10.0013 4.16663"
+                stroke="#667085"
+                stroke-width="1.67"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <p class="pag-text">Previous</p>
+          </button>
+        </div>
+        <div class="pag-number">
+          <div
+            class="number-container"
+            *ngFor="let page of getVisiblePages()"
+            [class.active]="page !== 'dot' && page === currentPage"
+          >
+            <ng-container *ngIf="page === 'dot'">
+              <span class="pagination-dot">...</span>
+            </ng-container>
+            <ng-container *ngIf="page !== 'dot'">
+              <button
+                (click)="goToPage(page)"
+                [class.active]="page === currentPage"
+              >
+                <p>{{ page }}</p>
+              </button>
+            </ng-container>
+          </div>
+        </div>
+        <div class="pagination-info">
+          <p>Page {{ currentPage }} of {{ totalPages }}</p>
+        </div>
+        <div class="pag-button">
+          <button
+            class="button"
+            (click)="loadNextPage()"
+            [disabled]="noMoreBlogPosts || currentPage === totalPages"
+          >
+            <p class="pag-text">Next</p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+            >
+              <path
+                d="M4.16797 9.99996H15.8346M15.8346 9.99996L10.0013 4.16663M15.8346 9.99996L10.0013 15.8333"
+                stroke="#667085"
+                stroke-width="1.67"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

@@ -1,0 +1,20 @@
+@import '/src/styles.scss';
+@import '../../pages/blogs-page/blogs-page.component.scss';
+
+.dd-h1 {
+    font-size: 2.5rem;
+    line-height: 3rem;
+    text-align: left;
+    margin-bottom: 2.5rem;
+}
+
+.page-col {
+    gap: 0;
+    padding: 0;
+    align-items: flex-start;
+}
+
+.dd-btn-fill {
+    margin-top: 5rem;
+    margin-inline: auto;
+}

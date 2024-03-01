@@ -1,0 +1,52 @@
+<footer *ngIf="footer$ | async as footerInfo">
+  <ng-container *ngIf="footerInfo['items'][0]['fields'] as fields">
+    <div class="page-section footer-content">
+      <!-- <div class="flex-row-grid">
+      </div> -->
+      <div class="news-letter-container inner-section">
+        <div class="news-letter">
+          <h4 class="mia-h4">
+            Subscribe to our newsletter
+          </h4>
+          <p class="mia-p">
+            Get expert advice on managing inventory, marketing and finance to grow your business. The more you know, the faster you grow.
+          </p>
+        </div>
+        <div class="news-letter-form">
+          <input class="form-input" type="email" name="news" placeholder="Enter your email address">
+          <button class="mia-btn-fill">
+            Subscribe
+          </button>
+        </div>
+      </div>
+
+
+
+      <div class="flex-row-grid">
+        <div class="flex-row">
+          <p class="mia-footer-p">Follow MIA</p>
+          <div class="icon-row">
+            <ng-container *ngFor="let icon of icons">
+              <a [href]="fields[icon.name]" target="_blank">
+                <img
+                  [src]="'../../../assets/icons/' + icon.file"
+                  alt="icon"
+                  [title]="icon.name"
+                />
+              </a>
+            </ng-container>
+          </div>
+        </div>
+
+        <div class="flex-row">
+          <p class="mia-footer-p">Privacy</p>
+          <p class="mia-footer-p">Terms of Use</p>
+        </div>
+
+        <div class="flex-row">
+          <p class="mia-footer-p">{{ fields["copyright"] }}</p>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</footer>

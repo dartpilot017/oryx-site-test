@@ -1,0 +1,11 @@
+<div class="page-section" *ngIf="(reviewList$ | async) as reviewList">
+    <h1 class="dd-h1">Reviews from our clients</h1>
+    <div class="review-list" *ngIf="reviewList['items'][0]['fields']['reviews'] as reviews">
+        <ng-container *ngFor="let item of reviews">
+            <div class="review-item" *ngIf="item['fields'] as clientReview">
+                <p class="review"><span>" </span>{{ clientReview['review'] }}<span> "</span></p>
+                <p class="author">By {{ clientReview['author'] }}</p>
+            </div>
+        </ng-container>
+    </div>
+</div>

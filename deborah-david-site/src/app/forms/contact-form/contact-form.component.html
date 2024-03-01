@@ -1,0 +1,55 @@
+<div class="inner-section">
+    <p class="dd-p">For consultancy, please do not submit a message through the contact form below. Visit the consulting page to make enquiries about consultancy.</p>
+    <p class="dd-p" id="instruction">Please leave a message in the form provided below, i will get back to you.</p>
+    <form>
+        <!-- FIRST & LAST NAME -->
+        <div class="input-group">
+            <p class="form-label">Name</p>
+            <div class="form-2col-grid">
+                <div>
+                    <input class="form-input" type="text" id="firstName" name="firstName" placeholder="First Name" required [(ngModel)]="firstName" #firstNameInput="ngModel" [ngClass]="{'is-invalid': firstNameInput.invalid && firstNameInput.touched}" />
+                    <div *ngIf="firstNameInput.invalid && firstNameInput.touched" class="error-message">First Name shouldn't be empty</div>
+                </div>
+                <div>
+                    <input class="form-input" type="text" id="lastName" name="lastName" placeholder="Last Name" required [(ngModel)]="lastName" #lastNameInput="ngModel" [ngClass]="{'is-invalid': lastNameInput.invalid && lastNameInput.touched}" />
+                    <div *ngIf="lastNameInput.invalid && lastNameInput.touched" class="error-message">Last Name shouldn't be empty</div>
+                </div>
+            </div>
+        </div>
+        <!-- EMAIL & PHONE NUMBER -->
+        <div class="input-group">
+            <p class="form-label">Contact Details</p>
+            <div class="form-2col-grid">
+                <div>
+                    <input class="form-input" type="email" id="email" name="email" placeholder="Email Address" required [(ngModel)]="email" #emailInput="ngModel" [ngClass]="{'is-invalid': emailInput.invalid && emailInput.touched}" />
+                    <div *ngIf="emailInput.invalid && emailInput.touched" class="error-message">Email Address shouldn't be empty</div>
+                </div>
+                <div>
+                    <input class="form-input" type="tel" id="phone" name="phone" placeholder="Phone Number" required [(ngModel)]="phone" #phoneInput="ngModel" [ngClass]="{'is-invalid': phoneInput.invalid && phoneInput.touched}" />
+                    <div *ngIf="phoneInput.invalid && phoneInput.touched" class="error-message">Phone Number shouldn't be empty</div>
+                </div>
+            </div>
+        </div>
+        <!-- REASON -->
+        <div class="input-group">
+            <p class="form-label">Reason for contact</p>
+            <input class="form-input" type="text" id="reason" name="reason" placeholder="Type in your reason for contacting us here" required [(ngModel)]="reason" #reasonInput="ngModel" [ngClass]="{'is-invalid': reasonInput.invalid && reasonInput.touched}" />
+            <div *ngIf="reasonInput.invalid && reasonInput.touched" class="error-message">Reason of contact shouldn't be empty</div>
+        </div>
+        <!-- ADDITIONAL INFORMATION -->
+        <div class="input-group">
+            <p class="form-label">Additional Information</p>
+            <textarea class="form-input" type="text" id="message" name="message" required [(ngModel)]="additionalInfo" #messageInput="ngModel" [ngClass]="{'is-invalid': messageInput.invalid && messageInput.touched}"></textarea>
+            <div *ngIf="messageInput.invalid && messageInput.touched" class="error-message">Additional Information shouldn't be empty</div>
+        </div>
+        <!-- PRIVACY CHECKBOX -->
+        <div class="privacy-policy" [ngClass]="{'is-invalid': policyInput.invalid && policyInput.touched}">
+            <input class="css-checkbox" type="checkbox" id="privacyPolicy" name="privacyPolicy" required [(ngModel)]="policyCheckbox" #policyInput="ngModel" />
+            <label for="privacyPolicy"><span class="checkbox-text form-label">I have read and agree to the Privacy Policy.</span></label>
+        </div>
+        <!-- SUBMIT BUTTON -->
+        <button class="dd-btn-fill" type="submit">Send</button>
+    </form>
+</div>
+
+

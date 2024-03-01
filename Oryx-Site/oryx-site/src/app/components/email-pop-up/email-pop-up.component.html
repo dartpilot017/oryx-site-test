@@ -1,0 +1,39 @@
+<div class="blurry-background" *ngIf="isPopUpVisible">
+    <div class="card">
+        <div class="card-body">
+            <!--CLOSE BUTTON-->
+            <button type="button" class="close-button" aria-label="close-icon" (click)="closeContainer()">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 25.3335L24.9706 8.36293" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8 8.00049L24.9706 24.9711" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+
+            <!-------GREETING-------->
+            <div class="card-header">
+                <h1 class="greeting">Hey, wait...</h1>
+                <p class="intro">Did you find what you are looking for?</p>
+                <p class="call-to-action">Get weekly access to our best deals and offers on innovative solutions.</p>
+            </div>
+
+            <form class="news-letter-form" #newsLetterForm="ngForm" (ngSubmit)="onnewsLetterDetails(newsLetterForm.value)">
+                <!-------EMAIL-------->
+                <div class="form-input" [ngClass]="{'is-invalid': (emailInput.invalid && emailInput.touched) || (!isEmailValid(email) && email.length !== 0)}">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="your@company.com" required [(ngModel)]="email" #emailInput="ngModel"/>
+                    <div *ngIf="emailInput.invalid && emailInput.touched" class="error-message">This field shouldn't be empty</div>
+                    <div *ngIf="!isEmailValid(email) && email !== ''" class="error-message">Invalid email</div>
+                </div>
+
+                <!-------ADDITIONAL INFORMATION-------->
+                <div class="form-input">
+                    <label for="message">Additional Information</label>
+                    <textarea type="text" id="message" name="message" placeholder="Your information here" class="text-box" [(ngModel)]="message"></textarea>
+                </div>
+
+                <!-------SUBMIT BUTTON-------->
+                <button class="red-button" [ngClass]="{ 'button-disabled': isButtonDisabled(), 'button-hover': !isButtonDisabled() }" [disabled]="isButtonDisabled()" type="submit">Send Request</button>
+            </form>
+        </div>
+    </div>
+</div>

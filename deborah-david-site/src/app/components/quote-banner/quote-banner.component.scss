@@ -1,0 +1,49 @@
+@import '/src/styles.scss';
+
+.banner {
+    background-color: $dd-floral-white;
+    font-family: $dd-font-family;
+    text-align: center;
+    padding: 6.5rem 10rem;
+}
+
+.quote, .details {
+    font-family: $dd-font-family;
+    color: $dd-black;
+    text-align: center;
+    margin: 0;
+}
+
+.quote {
+    font-weight: 700;
+    font-size: 1.75rem;
+    line-height: 2.75rem;
+    margin-bottom: 2rem;
+    span { font-style: italic; }
+}
+
+.details {
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 2rem;
+}
+
+
+/*-------------------MEDIA QUERIES-------------------*/
+@media screen and (max-width: $tablet-width) {
+    .banner { padding: 4rem 6rem; }
+}
+
+@media screen and (max-width: $mobile-width) {
+    .banner { padding: 3rem 3.125%; }
+
+    .quote {
+        font-size: 1.25rem;
+        line-height: 1.5rem;
+    }
+
+    .details {
+        font-size: 1rem;
+        line-height: 1.75rem;
+    }
+}

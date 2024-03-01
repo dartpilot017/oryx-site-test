@@ -1,0 +1,39 @@
+@import '/src/styles.scss';
+@import '/src/app/forms/forms.scss';
+
+.inner-section {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.mia-p {
+    color: #727272;
+    font-weight: 400 !important;
+}
+
+.mia-btn-fill {
+    background-color:$mia-green;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: $mia-black;
+    &:hover, &:focus { background-color: lighten($mia-green, 5%); }
+}
+
+@media screen and (max-width: $tablet-width) {
+
+    .mia-btn-fill {
+        background-color:$mia-green;
+        &:hover, &:focus { background-color: lighten($mia-green, 5%); }
+    }
+}
+
+@media screen and (max-width: $mobile-width) {
+
+    .mia-btn-fill {
+        background-color:$mia-green;
+        &:hover, &:focus { background-color: lighten($mia-green, 5%); }
+    }
+}

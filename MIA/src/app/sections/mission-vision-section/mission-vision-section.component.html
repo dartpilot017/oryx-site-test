@@ -1,0 +1,11 @@
+<div class="page-section flex-centralize" *ngIf="missionStatementSection$ | async as missionStatementSection">
+    <div class="mia-4col-grid">
+        <ng-container *ngFor="let item of missionStatementSection['items'][0]['fields']['missionSection']">
+            <div class="profile-img flex-align">
+                <h2 class="mia-h2">{{ item['fields']['title']}}</h2>
+                <p class="mia-p">{{ item['fields']['description']}}</p>
+            </div>
+        </ng-container>
+    </div>
+
+</div>

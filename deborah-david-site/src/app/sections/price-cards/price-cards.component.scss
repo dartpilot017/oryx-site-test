@@ -1,0 +1,161 @@
+@import '/src/styles.scss';
+
+.price-list {
+    // @extend .inner-section;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.price-card {
+    position: relative;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 1.5rem 1rem;
+    background-color: $dd-floral-white;
+
+    cursor: pointer;
+    max-height: 10rem;
+    transition: max-height 0.5s linear, background-color 0.3s ease-out;
+
+    .plan-details {
+        @extend .dd-p;
+        font-size: 1rem;
+        line-height: 1.5rem;
+
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        margin-top: 1rem;
+        transition: max-height 1s linear, opacity 0.5s ease-out;
+    }
+
+    &:hover {
+        max-height: 100svh;
+        .plan-details {
+            opacity: 1;
+            max-height: 100svh;
+        }
+    }
+
+    &.selected { background-color: $dd-pale-orange; }
+}
+
+.plan-header {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+.plan-name, .plan-cost {
+    margin: 0;
+    text-align: left;
+}
+
+.plan-name {
+    @extend .dd-p;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.plan-cost {
+    @extend .dd-h2;
+}
+
+ul, dd {
+    padding: 0;
+    margin: 0;
+}
+
+.check-mark, .x-mark {
+    list-style-type: none;
+    padding-left: 2rem;
+    text-indent: -2rem;
+    margin-bottom: 1rem;
+}
+
+.check-mark::before { background-image: url('../../../assets/icons/check-mark.svg'); }
+
+.x-mark::before { background-image: url('../../../assets/icons/x-mark.svg'); }
+
+.check-mark::before,
+.x-mark::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin-right: 0.75rem;
+    margin-bottom: -0.313rem;
+}
+
+
+.select-circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid $dd-red;
+    background-color: transparent;
+
+    // centralize content in circle
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    align-items: center;
+    transition: all 0.3s ease-out;
+
+    .dot {
+        flex-shrink: 0;
+        background-color: transparent;
+        transition: all 0.3s ease-out;
+    }
+
+    &.selected {
+        border-color: $dd-vivid-tangelo;
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border: none;
+            border-radius: 50%;
+            background-color: $dd-vivid-tangelo;
+        }
+    }
+}
+
+.plan-button {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    @extend .dd-btn-fill;
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: 0 0 0.5rem 0.5rem;
+
+    &:hover, &:focus {
+        box-shadow: none;
+        transform: none;
+    }
+}
+
+@media screen and (max-width: $mobile-width) {
+    .inner-section { width: 85%; }
+    .price-list { grid-template-columns: 1fr; }
+    .plan-button { display: block; }
+    .plan-details { margin-bottom: 1.5rem; }
+
+    .price-card {
+        max-height: 100svh;
+        &:hover { .plan-details { max-height: 0; } }
+        &.expanded {
+            .plan-details {
+                opacity: 1;
+                max-height: 100svh;
+            }
+        }
+    }
+}

@@ -1,0 +1,10 @@
+<div class="close-Button" *ngIf="isPopUpVisible" (click)="closeContainer()">
+    <div class="card">
+        <ng-container *ngIf="oryxHomePage$ | async as oryxHomePage" class="card-body">
+            <ng-container class="embed-responsive embed-responsive-16by9">
+                <!-- UNCOMMENT THIS LINE TO MAKE THE YOUTUBE LINK CONTENTFUL -->
+                <iframe width="100%" height="100%" [src]="(oryxHomePage.items[0].fields.youtubeLink) | safe:'resourceUrl'" [frameBorder]="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </ng-container>
+        </ng-container>
+    </div>
+</div>

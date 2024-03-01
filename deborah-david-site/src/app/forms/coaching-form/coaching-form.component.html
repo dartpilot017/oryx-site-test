@@ -1,0 +1,115 @@
+<div class="inner-section">
+    <p class="dd-p" id="instruction">Kindly fill out the details below.</p>
+    <form>
+        <!-- FIRST & LAST NAME -->
+        <div class="input-group">
+            <p class="form-label">Name</p>
+            <div class="form-2col-grid">
+                <div>
+                    <input class="form-input" type="text" id="firstName" name="firstName" placeholder="First Name" required [(ngModel)]="firstName" #firstNameInput="ngModel" [ngClass]="{'is-invalid': firstNameInput.invalid && firstNameInput.touched}" />
+                    <div *ngIf="firstNameInput.invalid && firstNameInput.touched" class="error-message">First Name shouldn't be empty</div>
+                </div>
+                <div>
+                    <input class="form-input" type="text" id="lastName" name="lastName" placeholder="Last Name" required [(ngModel)]="lastName" #lastNameInput="ngModel" [ngClass]="{'is-invalid': lastNameInput.invalid && lastNameInput.touched}" />
+                    <div *ngIf="lastNameInput.invalid && lastNameInput.touched" class="error-message">Last Name shouldn't be empty</div>
+                </div>
+            </div>
+        </div>
+        <!-- EMAIL & PHONE NUMBER -->
+        <div class="input-group">
+            <p class="form-label">Contact Details</p>
+            <div class="form-2col-grid">
+                <div>
+                    <input class="form-input" type="email" id="email" name="email" placeholder="Email Address" required [(ngModel)]="email" #emailInput="ngModel" [ngClass]="{'is-invalid': emailInput.invalid && emailInput.touched}" />
+                    <div *ngIf="emailInput.invalid && emailInput.touched" class="error-message">Email Address shouldn't be empty</div>
+                </div>
+                <div>
+                    <input class="form-input" type="tel" id="phone" name="phone" placeholder="Phone Number" required [(ngModel)]="phone" #phoneInput="ngModel" [ngClass]="{'is-invalid': phoneInput.invalid && phoneInput.touched}" />
+                    <div *ngIf="phoneInput.invalid && phoneInput.touched" class="error-message">Phone Number shouldn't be empty</div>
+                </div>
+            </div>
+        </div>
+        <!-- JOB INFORMATION -->
+        <div class="input-group">
+            <p class="form-label">Job Information</p>
+            <div class="form-2col-grid">
+                <div>
+                    <input class="form-input" type="text" id="occupation" name="occupation" placeholder="Occupation/ Profession" required [(ngModel)]="occupation" #occupationInput="ngModel"/>
+                    <div *ngIf="occupationInput.invalid && occupationInput.touched" class="error-message">Occupation input shouldn't be empty</div>
+                </div>
+                <div>
+                    <input class="form-input" type="text" id="experience" name="experience" placeholder="Years of Experience" required [(ngModel)]="experience" #experienceInput="ngModel" />
+                    <div *ngIf="experienceInput.invalid && experienceInput.touched" class="error-message">Experience input shouldn't be empty</div>
+                </div>
+            </div>
+        </div>
+        <!-- BOOKING -->
+        <div class="input-group">
+            <!-- TIME AND DATE PICKER GOES IN HERE -->
+            <p class="form-label">Book a clarity conversation call</p>
+            <app-time-picker></app-time-picker>
+        </div>
+        <!-- AGE RANGE -->
+        <div class="input-group">
+            <div class="form-label">Age range</div>
+            <div class="form-4col-grid">
+                <!-- AGE RANGE 18 - 30 -->
+                <input class="css-radio-checkbox" type="checkbox" id="max30" name="max30" required>
+                <label for="max30"><span class="checkbox-text form-label">18 - 30</span></label>
+
+                <!-- AGE RANGE 31 - 40 -->
+                <input class="css-radio-checkbox" type="checkbox" id="max40" name="max40" required>
+                <label for="max40"><span class="checkbox-text form-label">31 - 40</span></label>
+                
+                <!-- AGE RANGE 41 - 50 -->
+                <input class="css-radio-checkbox" type="checkbox" id="max50" name="max50" required>
+                <label for="max50"><span class="checkbox-text form-label">41 - 50</span></label>
+                
+                <!-- AGE RANGE 51 AND ABOVE -->
+                <input class="css-radio-checkbox" type="checkbox" id="min51" name="min51" required>
+                <label for="min51"><span class="checkbox-text form-label">Adove 50</span></label>
+                
+            </div>
+        </div>
+        <!-- REASON -->
+        <div class="input-group">
+            <p class="form-label">What is your background or industry or profession?<br>
+                (Clergy, Administrative, HR, Finance, Clerical, Technical, Artistic, Athletic, etc.)</p>
+            <input class="form-input" type="text" id="topic" name="topic" placeholder="Topic" required [(ngModel)]="topic" #topicInput="ngModel"/>
+            <div *ngIf="topicInput.invalid && topicInput.touched" class="error-message">Topic input shouldn't be empty</div>
+        </div>
+        <!-- MEANS OF COMMUNICATION -->
+        <div class="input-group">
+            <div class="form-label">Preferable means of communication</div>
+            <div class="form-4col-grid">
+                <!-- ONLINE MEANS -->
+                <input class="css-radio-checkbox" type="checkbox" id="online" name="online" required>
+                <label for="online"><span class="checkbox-text form-label">Online</span></label>
+
+                <!-- PHYSICAL MEANS -->
+                <input class="css-radio-checkbox" type="checkbox" id="physical" name="physical" required>
+                <label for="physical"><span class="checkbox-text form-label">Physical</span></label>
+                
+                <!-- HYBRID MEANS -->
+                <input class="css-radio-checkbox" type="checkbox" id="hybrid" name="hybrid" required>
+                <label for="hybrid"><span class="checkbox-text form-label">Hybrid</span></label>        
+            </div>
+        </div>
+        <!-- ADDITIONAL INFORMATION -->
+        <div class="input-group">
+            <p class="form-label">What is the summary issue to be addressed?</p>
+            <textarea class="form-input" type="text" id="summary" name="summary" placeholder="Type in your summary" required></textarea>
+        </div>
+        <!-- PRICE CARDS -->
+        <app-price-cards></app-price-cards>
+        <!-- PRIVACY CHECKBOX -->
+        <div class="privacy-policy" [ngClass]="{'is-invalid': policyInput.invalid && policyInput.touched}">
+            <input class="css-checkbox" type="checkbox" id="privacyPolicy" name="privacyPolicy" required [(ngModel)]="policyCheckbox" #policyInput="ngModel">
+            <label for="privacyPolicy"><span class="checkbox-text form-label">I have read and agree to the Privacy Policy.</span></label>
+        </div>
+        <!-- SUBMIT BUTTON -->
+        <button class="dd-btn-fill" type="submit">Proceed</button>
+    </form>
+</div>
+
+

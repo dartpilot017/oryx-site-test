@@ -1,0 +1,63 @@
+$oryx-font: 'Work Sans', sans-serif;
+
+$oryx-primary-pressed: #002159;
+$oryx-neutral-80: #616161;
+$oryx-neutral-20: #F5F5F5;
+
+$max-tablet-width: 1024px;
+$min-tablet-width: 768px;
+
+
+.close-Button {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99;
+
+    background-image: linear-gradient(135deg, rgba(34, 32, 32, 0.9) 0%, rgba(96, 76, 76, 0.5) 50%, rgba(249, 231, 231, 0) 100%);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+
+.card {
+    width: 73%;
+    height: 75%;
+    font-family: $oryx-font;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+}
+
+.card-body {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 90%;
+
+    border-radius: 24px;
+    padding: 1rem 1.5rem 2.5rem;
+}
+
+
+
+/*************** TABLET VIEW ***************/
+@media (width <= $max-tablet-width) {
+    .card { width: 65%; }
+    .card-body { gap: 0.75rem; }
+}
+
+/************** MOBILE VIEW ***************/
+@media (width <= $min-tablet-width) {
+    .card {
+        width: 85%;
+        height: 45%;
+        transform: translate(-50%, -43%)
+    }
+    .card-body { gap: 0.5rem; }
+}

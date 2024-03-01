@@ -1,0 +1,52 @@
+$oryx-font: 'Work Sans', sans-serif;
+$oryx-secondary-main: #DA2625;
+$oryx-neutral-80: #616161;
+$input-color: #667085;
+
+$max-tablet-width: 1024px;
+$min-tablet-width: 768px;
+
+
+main {
+    font-family: $oryx-font;
+    margin-top: 8rem;
+
+    .contact-form {
+        .help-info {
+            font-size: 1rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            color: $oryx-neutral-80;
+            span { color: $oryx-secondary-main; }
+        }
+
+        button { margin-top: 2rem; }
+    }
+
+    app-contact-footer { margin-top: 4.375rem;}
+    app-oryx-footer { margin-top: 4.375rem; }
+}
+
+.flex-centralize {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/*************** TABLET VIEW ***************/
+@media (max-width: 1210px) {
+    .form-row-grid {
+        grid-template-columns: 100%;
+        grid-template-rows: auto auto;
+    }
+}
+
+/************** MOBILE VIEW ***************/
+@media (max-width: calc($min-tablet-width - 1px)) {
+    main {
+        margin-top: 6rem;
+
+        .contact-form { margin-top: 2rem; }
+    }
+}

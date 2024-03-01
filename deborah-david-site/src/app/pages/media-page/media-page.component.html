@@ -1,0 +1,10 @@
+<div class="page-col page-padding-top">
+    <app-media-banner></app-media-banner>
+    <div class="dd-btn-group">
+        <ng-container *ngFor="let btn of buttons">
+            <button [ngClass]="{ 'selected': btn.selected }" (click)="onButtonClick(btn)">{{btn.text}}</button>
+        </ng-container>
+    </div>
+    <app-popular-sayings *ngIf="buttons[0]['selected']" ></app-popular-sayings>
+    <app-official-pictures *ngIf="buttons[1]['selected']" ></app-official-pictures>
+</div>

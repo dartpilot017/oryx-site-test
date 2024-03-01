@@ -1,0 +1,41 @@
+<app-loading-spinner *ngIf="!(expressionsTabs$ | async)"></app-loading-spinner>
+<div class="page-padding-top" *ngIf="(expressionsTabs$ | async) as expressionsTabs">
+    <!-- NAVIGATION -->
+    <div class="dd-btn-nav">
+        <ng-container *ngFor="let btn of buttons">
+            <button [ngClass]="{ 'selected': btn.selected }" (click)="onButtonClick(btn)">{{btn.text}}</button>
+        </ng-container>
+    </div>
+
+    <!-- CONTENT -->
+    <ng-container *ngIf="expressionsTabs['items'][0]['fields'] as fields">
+        <div class="page-section content-top">
+            <markdown ngPreserveWhitespaces *ngIf="buttons[0]['selected']">{{ fields['empowermentTop'] }}</markdown>
+            <markdown ngPreserveWhitespaces *ngIf="buttons[1]['selected']">{{ fields['workplaceTop'] }}</markdown>
+        </div>
+
+        <img *ngIf="buttons[0]['selected']" [src]="'https:' + fields['empowermentImg']['fields']['file']['url']" alt="image">
+        <app-quote-banner></app-quote-banner>
+
+        <div class="page-section">
+            <markdown ngPreserveWhitespaces class="reasons-section" *ngIf="buttons[0]['selected']">
+                <h1>WHY WAS THIS FOUNDATION INCORPORATED?</h1>
+                <div *ngFor="let reason of reasons">
+                    <h3>-NUMBER {{ reason.toUpperCase() }}-</h3>
+                    <p>{{ fields['number' + reason] }}</p>
+                </div>
+            </markdown>
+
+            <markdown ngPreserveWhitespaces *ngIf="buttons[0]['selected']">{{ fields['empowermentBot'] }}</markdown>
+            <div class="wc-bot" *ngIf="buttons[1]['selected']">
+                <markdown ngPreserveWhitespaces>{{ fields['workplaceBot'] }}</markdown>
+            </div>
+
+            <div class="flex-centralize" id="bottom">
+                <p class="dd-p" *ngIf="buttons[0]['selected']">For further enquiries and details</p>
+                <p class="dd-p" *ngIf="buttons[1]['selected']">Do you have any headache at your workplace whether as an Owner or Worker?</p>
+                <button type="button" (click)="sendEmail()" [ngClass]="{'dd-btn-outline': buttons[0]['selected'], 'dd-btn-fill': buttons[1]['selected']}">Send a mail</button>
+            </div>
+        </div>
+    </ng-container>
+</div>

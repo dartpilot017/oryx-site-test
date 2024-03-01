@@ -1,0 +1,10 @@
+<div class="column-container" *ngIf="oryxValues$ | async as oryxValues">
+    <h1 class="header">{{ oryxValues.items[0].fields.header }}</h1>
+    <div class="column-grid">
+        <div class="column-text" *ngFor="let column of oryxValues.items[0].fields.list">
+            <img [src]="'https:' + column.fields.image.fields.file.url" alt="image">
+            <h1>{{ column.fields.title }}</h1>
+            <p>{{ column.fields.paragraph }}</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,67 @@
+@import '/src/styles.scss';
+
+.page-section,
+.mia-3col-grid {
+    padding: 0 !important;
+}
+
+.page-section, .mia-3col-grid {
+    padding: 2.5rem 0;
+}
+
+.mia-p {
+    color: $mia-black !important;
+}
+
+.mia-4col-grid {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    align-self: stretch;
+}
+
+.flex-align{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    align-self: stretch;
+}
+
+.profile-img { 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    flex: 1 0 0;
+}
+
+@media screen and (max-width: $tablet-width) {
+    .page-section {
+        width: 100%;
+    }
+
+    .mia-p {
+        color: $mia-black !important;
+    }
+}
+
+@media screen and (max-width: $mobile-width) {
+    .page-section {
+        width: 100%;
+    }
+    .mia-3col-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .flex-align {
+        align-items: center;
+        text-align: center;
+    }
+    .mia-4col-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+

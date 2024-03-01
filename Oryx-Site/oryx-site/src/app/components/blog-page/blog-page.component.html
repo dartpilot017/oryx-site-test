@@ -1,0 +1,37 @@
+<main>
+  <div class="content-container">
+    <div class="section-grid">
+      <div class="section-paragraph">
+        <h1>{{ isEnglish ? 'Our Blog' : 'Notre blog' }}</h1>
+        <h2>{{ isEnglish ? 'Stories and Insights' : 'Histoires et idées' }}</h2>
+        <p>
+          {{ isEnglish ? 'Learn about new product features, the latest in technology, solutions, and updates.' : 'Découvrez les nouvelles fonctionnalités du produit, les dernières technologies, solutions et mises à jour.' }}
+        </p>
+      </div>
+      <form class="email-container" #newsLetterForm="ngForm" (ngSubmit)="onnewsLetterDetails(newsLetterForm)">
+        <div class="input-field">
+          <div class="field">
+            <input type="email" id="email" placeholder="{{ isEnglish ? 'Enter your email' : 'Entrer votre Email' }}" name="email" [(ngModel)]="email"
+              #emailInput="ngModel" [ngClass]="{'is-invalid': emailInput.invalid && emailInput.touched}" required />
+            <div *ngIf="emailInput.invalid && emailInput.touched" class="error-message">{{ isEnglish ? 'Email Address shouldn\'t be empty' : 'L\'adresse e-mail ne doit pas être vide' }}
+            </div>
+            <div *ngIf="newsLetterForm.submitted && !isEmailValid(email)" class="error-message">
+              {{ isEnglish ? 'Please enter a valid email address.' : 'S\'il vous plaît, mettez une adresse email valide.' }}
+            </div>
+          </div>
+        </div>
+        <div class="button">
+          <button type="submit" [disabled]="!newsLetterForm.valid">
+            <p>{{ isEnglish ? 'Subscribe' : 'S\'abonner' }}</p>
+          </button>
+        </div>
+      </form>
+
+    </div>
+
+    <div class="section-grid">
+      <app-blog-list></app-blog-list>
+      <app-oryx-footer></app-oryx-footer>
+    </div>
+  </div>
+</main>

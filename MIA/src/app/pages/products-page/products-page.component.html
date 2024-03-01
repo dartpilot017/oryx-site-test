@@ -1,0 +1,229 @@
+<div class="page-padding-top flex-centralize">
+  <div
+    class="product-page"
+    *ngIf="productsDescription$ | async as productsDescription"
+  >
+    <!-- <pre>{{ productsDescription | json }}</pre> -->
+
+    <div class="c1 inner-section">
+      <div class="content">
+        <h1 class="mia-h1">
+          {{ productsDescription.items[0].fields.headerOne }}
+        </h1>
+        <div class="description">
+          <p class="mia-p">
+            {{ productsDescription.items[0].fields.descriptionOne }}
+          </p>
+        </div>
+      </div>
+      <button class="mia-btn-fill">Request for a Demo</button>
+    </div>
+
+    <div
+      class="image-container"
+      *ngIf="productsDescription.items[0].fields.pageMediaFile as image"
+    >
+      <img [src]="'https:' + image.fields['file'].url" alt="Product media" />
+      <div class="choose" *ngIf="productsDescription.items[0].fields.choose">
+        <div class="choose-section">
+          <h1
+            class="mia-h1"
+            *ngIf="productsDescription.items[0].fields.chooseHeader as header"
+          >
+            {{ header }}
+          </h1>
+          <div class="choose-grid">
+            <li
+              class="choose-content"
+              *ngFor="
+                let chooseList of productsDescription.items[0].fields
+                  .chooseProduct
+              "
+            >
+              <ul class="content">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  viewBox="0 0 40 40"
+                  fill="none"
+                >
+                  <mask id="path-1-inside-1_1642_10523" fill="white">
+                    <path
+                      d="M23.6465 10L29.0538 15.4073L17.4073 27.0538L12 21.6465L23.6465 10Z"
+                    />
+                  </mask>
+                  <path
+                    d="M17.4073 27.0538L16.3466 28.1144L17.4073 29.1751L18.468 28.1144L17.4073 27.0538ZM27.9931 14.3466L16.3466 25.9931L18.468 28.1144L30.1144 16.468L27.9931 14.3466ZM18.468 25.9931L13.0607 20.5858L10.9394 22.7071L16.3466 28.1144L18.468 25.9931Z"
+                    fill="#07181F"
+                    mask="url(#path-1-inside-1_1642_10523)"
+                  />
+                  <circle cx="20" cy="20" r="19.5" stroke="#07181F" />
+                </svg>
+                <h4 class="mia-h4">
+                  {{ chooseList }}
+                </h4>
+              </ul>
+            </li>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="c1 inner-section">
+      <div class="content">
+        <h1 class="mia-h1">
+          {{ productsDescription.items[0].fields.headerTwo }}
+        </h1>
+        <div class="description">
+          <p class="mia-p">
+            {{ productsDescription.items[0].fields.descriptionTwo }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="c2 mia-3col-grid">
+      <button
+        class="mia-btn-fill"
+        *ngFor="let button of productButton; let i = index"
+        (click)="onProductButtonClick(i)"
+        [class.selected]="button === selectedProductButton"
+        [class.unselected]="button !== selectedProductButton"
+      >
+        {{ button.name }}
+      </button>
+    </div>
+    <div class="c3 padding">
+      <div
+        class="side-content"
+        *ngIf="selectedProductButton?.sideButton as buttonItem"
+      >
+        <ng-container *ngFor="let sideButton of buttonItem">
+          <button
+            class="mia-btn-outline"
+            *ngIf="
+              sideButton['sys'].id &&
+              (referencedEntry$[sideButton['sys'].id]
+                | async) as referencedEntry
+            "
+            (click)="updateReferencedEntry(sideButton)"
+            [class.selected]="sideButton.selected"
+            [class.unselected]="!sideButton.selected"
+          >
+            <div class="side-border"></div>
+            <div class="text-content">
+              <h4 class="mia-h4">
+                {{ referencedEntry.fields.buttonName }}
+              </h4>
+            </div>
+          </button>
+        </ng-container>
+      </div>
+      <div class="image-content" *ngIf="selectedSideButton">
+        <div class="button-content">
+          <div class="header-p">
+            <p
+              *ngIf="
+                selectedSideButton['sys'].id &&
+                selectedSideButton.selected &&
+                (referencedEntry$[selectedSideButton['sys'].id]
+                  | async) as referencedEntry
+              "
+              class="mia-p"
+            >
+              {{ referencedEntry?.fields?.buttonName }}
+            </p>
+            <h2
+              class="mia-h2"
+              *ngIf="selectedProductButton && selectedSideButton['sys'].id"
+            >
+              {{ selectedProductButton.header }}
+            </h2>
+          </div>
+          <div
+            class="image"
+            *ngIf="selectedProductButton && selectedSideButton['sys'].id"
+          >
+            <img [src]="'http:' + selectedProductButton.imageUrl" alt="" />
+          </div>
+          <p
+            class="mia-p"
+            *ngIf="
+              selectedSideButton['sys'].id &&
+              selectedSideButton.selected &&
+              (referencedEntry$[selectedSideButton['sys'].id]
+                | async) as referencedEntry
+            "
+          >
+            {{ referencedEntry?.fields?.buttonDescription }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="c3-mobile" (click)="toggleNavbar()">
+      <div
+        class="side-content"
+        *ngIf="selectedProductButton?.sideButton as buttonItem"
+      >
+        <ng-container *ngFor="let sideButton of buttonItem">
+          <button
+            class="mia-btn-outline"
+            *ngIf="
+              sideButton['sys'].id &&
+              (referencedEntry$[sideButton['sys'].id]
+                | async) as referencedEntry
+            "
+            (click)="updateReferencedEntry(sideButton)"
+            [class.selected]="sideButton.selected"
+            [class.unselected]="!sideButton.selected"
+          >
+            <div class="side-border"></div>
+            <div class="text-content">
+              <h4 class="mia-h4" [class.selected]="sideButton.selected"
+              [class.unselected]="!sideButton.selected">
+                {{ referencedEntry.fields.buttonName }}
+              </h4>
+            </div>
+          </button>
+          <div
+            class="image-content"
+            *ngIf="selectedSideButton === sideButton && selectedSideButton"
+            [ngClass]="{ open: isNavbarOpen }"
+          >
+            <div class="button-content">
+              <div class="side-border"></div>
+              <div class="content">
+                <div
+                  class="header-p"
+                  *ngIf="
+                    selectedSideButton['sys'].id &&
+                    selectedSideButton.selected &&
+                    (referencedEntry$[selectedSideButton['sys'].id]
+                      | async) as referencedEntry
+                  "
+                >
+                  <h2 class="mia-h2">
+                    {{ referencedEntry?.fields?.buttonTitle }}
+                  </h2>
+                </div>
+                <p
+                  *ngIf="
+                    selectedSideButton['sys'].id &&
+                    selectedSideButton.selected &&
+                    (referencedEntry$[selectedSideButton['sys'].id]
+                      | async) as referencedEntry
+                  "
+                  class="mia-p"
+                >
+                  {{ referencedEntry?.fields?.buttonDescription }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

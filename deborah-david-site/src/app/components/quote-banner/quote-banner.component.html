@@ -1,0 +1,7 @@
+<div class="flex-centralize banner" *ngIf="(quoteBanner$ | async) as quoteBanner">
+    <ng-container *ngIf="quoteBanner['items'][0]['fields'] as fields">
+        <p class="quote"><span>" </span>{{ fields['quote'] }}<span> "</span></p>
+        <p class="details"><span>-</span>{{ fields['author'] }}<span>-</span></p>
+        <p class="details">{{ fields['title'] }}</p>
+    </ng-container>
+</div>

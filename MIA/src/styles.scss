@@ -1,0 +1,375 @@
+/*
+    You can amia global styles to this file, and also import other style files.
+    Use @import '/src/styles.scss'; to import this file into other scss files.
+*/
+
+// DM Sans font
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+$mia-font-family: 'Helvetica Neue', sans-serif;
+
+// Ephesis font
+@import url('https://fonts.googleapis.com/css2?family=Ephesis&display=swap');
+$mia-curly-font: 'Ephesis', cursive;
+
+// Angular Material
+
+
+
+/*-------------------COLOR PALETTE-------------------*/
+$mia-dark-gold:#a1693b;
+$mia-vivid-tangelo:#e87d23;
+$mia-orange:#F26A21;
+$mia-orange-hover:#FA5A04;
+$mia-mobile-orange: #fa5a049c;
+$mia-floral-white:#fef7f1;
+$mia-white:#ffffff;
+$mia-gray:#b7aeae2b;
+$mia-light-grey: #F2F2F2;
+$mia-dark-gray: #D9D9D9;
+$mia-green: #8CC23F;
+$mia-black:#07181F;
+$mia-red:#92282a;
+$mia-secondary-main: #DA2625;
+$mia-sky-blue: #27AEE5;
+$mia-sky-blue-shade: #27afe562;
+
+
+/*-------------------SCREEN SIZES-------------------*/
+$desktop-width: 1440px;
+$tablet-width: 1024px;
+$mobile-width: 768px;
+
+
+
+/*-------------------FONT STYLES-------------------*/
+.mia-h1, .mia-h, .mia-h2, .mia-h3, .mia-h4 {
+    font-family: $mia-font-family;
+    font-weight: 700;
+    text-align: start;
+    color: $mia-black;
+    margin: 0;
+}
+
+.mia-h1 {
+    font-size: 1.75rem;
+    line-height: 2rem;
+}
+
+.mia-h {
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 2.5rem;
+}
+
+.mia-h2 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+}
+
+.mia-h3 {
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.mia-h4 {
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.5rem;
+}
+
+.mia-p {
+    font-family: $mia-font-family;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.25rem;
+    color: #727272;
+    margin: 0;
+}
+
+.mia-link {
+    color: $mia-sky-blue;
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+    text-decoration-color: $mia-sky-blue;
+
+    &:hover, &:focus {
+        color: $mia-sky-blue-shade;
+        text-decoration-color: $mia-sky-blue-shade;
+    }
+}
+
+/*-------------------MARKDOWN STYLES-------------------*/
+markdown {
+    h1 {
+        @extend .mia-h1;
+        white-space: balance;
+        text-transform: uppercase;
+    }
+
+    h2 { @extend .mia-h2; }
+    h3 { @extend .mia-h3; }
+    h4 { @extend .mia-h4; }
+    p { @extend .mia-p; }
+    // link { @extend .mia-link;}
+
+    strong { font-weight: 500; }
+
+    a { @extend .mia-link; }
+
+    ol, ul { @extend .mia-p; }
+}
+
+
+
+/*-------------------BUTTON STYLES-------------------*/
+.mia-btn-outline,
+.mia-btn-fill,
+.mia-btn-group button {
+    font-family: $mia-font-family;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1rem;
+    letter-spacing: 0.03125rem;
+    text-align: center;
+    padding: 0.75rem 0.88rem;
+    border-radius: 0;
+    transition: all 0.3s ease-in-out;
+
+    cursor: pointer;
+    &:hover, &:focus {
+        box-shadow: 0 0.5em 0.5em -0.4em transparent;
+        // transform: translateY(-0.25em)
+        transform: translateY(0)
+    }
+}
+
+.mia-btn-outline,
+.mia-btn-group button {
+    color: $mia-orange;
+    font-weight: 400;
+    border: 1px solid $mia-orange;
+    background-color: transparent;
+    &:hover, &:focus { background-color: rgba($mia-orange, 0.3); }
+}
+
+.mia-btn-fill,
+.mia-btn-group button.selected {
+    color: $mia-white;
+    font-weight: 400;
+    border: none;
+    background-color:$mia-orange;
+    &:hover, &:focus { background-color: lighten($mia-orange-hover, 5%); }
+}
+
+.mia-btn-fill,.mia-btn-outline {
+    &:disabled {
+        color: $mia-gray;
+        border: 1px solid $mia-gray;
+        background-color: transparent;
+        cursor: not-allowed;
+        &:hover, &:focus { background-color: transparent; }
+    }
+}
+
+$circle-size: 0.75rem; // size of circle in button
+.mia-btn-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    button {
+        position: relative;
+        padding-left: calc($circle-size + 1.5rem);
+        text-transform: uppercase;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 1rem;
+            transform: translateY(-50%);
+            width: $circle-size;
+            height: $circle-size;
+            border: 1px solid $mia-black;
+            border-radius: 50%;
+            background-color: $mia-white; // color of circle in button
+        }
+
+        &:focus {
+            box-shadow: none;
+            transform: translateY(0);
+        }
+
+        &.selected {
+            &:hover {
+                box-shadow: none;
+                transform: translateY(0);
+            }
+            &:focus { background-color: $mia-red; }
+            &::before { border: none; }
+        }
+    }
+}
+
+.mia-btn-nav {
+    @extend .mia-btn-group;
+
+    display: grid;
+    gap: 1rem;
+    width: calc(100vw * 0.8);
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0.1rem;
+    padding: 0.25rem;
+    justify-content: start;
+
+    > * { scroll-snap-align: start; }
+
+    @media screen and ( width = $desktop-width) {
+        overflow-x: himiaen;
+    }
+}
+
+
+/*-------------------SCROLL BAR STYLE-------------------*/
+::-webkit-scrollbar { height: 0.3em; width: 0.5em; }
+::-webkit-scrollbar-track { background-color: $mia-white; border-radius: 100vw; margin-block: 0.5em; }
+::-webkit-scrollbar-thumb { background-color: $mia-gray; border-radius: 100vw; }
+
+
+/*-------------------ICON STYLES-------------------*/
+.mia-logo {
+    width: 4.75rem;
+    object-fit: contain;
+}
+
+/*----------------ERROR MESSAGE STYLE------------------*/
+.error-message {
+    font-weight: 400;
+    font-size: 0.875rem;
+    color: $mia-red;
+    margin-top: 0.25rem;
+    line-height: normal;
+}
+
+
+/*-------------------CONTAINER, SECTION & GRID STYLES-------------------*/
+// * {box-sizing: border-box;}
+
+body { margin: 0; overflow-y: auto; overflow-x: hidden; width: 100vw; }
+
+.flex-centralize {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page-section, .inner-section { margin-inline: auto; }
+
+.page-section { width: 100.0%; }
+
+.inner-section { width: 62.4%; }
+
+.page-padding-top { padding-top: 6.25rem; }
+
+.page-col {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    padding-bottom: 5rem;
+}
+
+.mia-grid {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    grid-template-rows: repeat(1, 1fr);
+    img {
+        width: 100%;
+        object-fit: contain;
+        border: 1px solid $mia-dark-gold;
+        transform: scale(130%);
+  transition: 1.3s;
+    }
+}
+
+// .mia-2col-grid {
+//     display: grid;
+//     gap: 2rem;
+//     grid-template-columns: repeat(2, 1fr);
+
+//     img {
+//         width: 100%;
+//         object-fit: contain;
+//         border: 1px solid $mia-black;
+//     }
+// }
+.mia-3col-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+
+    img {
+        width: 100%;
+        object-fit: contain;
+        border: 1px solid $mia-black;
+    }
+}
+.mia-4col-grid {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(4, 1fr);
+
+    img {
+        width: 100%;
+        object-fit: contain;
+        border: 1px solid $mia-black;
+    }
+}
+
+.icon-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    img { width: 2.25rem; }
+}
+
+
+/*-------------------MEDIA QUERIES-------------------*/
+@media screen and (max-width: $tablet-width) {
+    .page-section { width: 93.75%; }
+
+    .inner-section { width: 61.6%; }
+
+    .mia-btn-nav { width: calc(100vw * 0.9); }
+
+    .mia-4col-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: $mobile-width) {
+
+    .page-section { width: 90%; }
+
+    .inner-section { width: 59.1%; }
+
+    .mia-btn-nav { width: calc(100vw * 0.85); }
+
+    .mia-3col-grid {
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+    }
+    .mia-4col-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .icon-row { margin-inline: auto; }
+}

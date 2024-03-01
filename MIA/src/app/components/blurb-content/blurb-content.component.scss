@@ -1,0 +1,104 @@
+@import "/src/styles.scss";
+
+.content-padding {
+  // display: flex;
+  // position: absolute;
+  width: 39.8%;
+  // height: max-content;
+
+  display: inline-flex;
+  position: absolute;
+  padding: 1.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: rgb(255, 255, 255, 0.7);
+  left: 5%;
+  top: 30%;
+  gap: 1.5rem;
+}
+
+.mia-h1 {
+  font-weight: 600;
+  margin: 0;
+}
+
+.mia-p {
+  margin: 0;
+}
+
+.text-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.inner-section {
+  width: 100%;
+  text-align: start;
+  margin-left: 23px;
+  margin-top: -10px;
+  margin-right: 14px;
+}
+
+.mia-2col-grid {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.btn-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.375rem;
+}
+
+.mia-btn-fill {
+  background-color: $mia-black;
+  color: $mia-white;
+
+  &:hover,
+  &:focus {
+    background-color: rgba($mia-black, 85%);
+  }
+}
+
+.mia-btn-outline {
+  border: 1px solid $mia-black;
+  color: $mia-black;
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+  }
+}
+
+@media screen and (max-width: $tablet-width) {
+  .content-padding {
+    top: 25%;
+    width: 54%;
+  }
+
+  .mia-3row-grid {
+    align-items: start;
+    text-align: start;
+    padding: 0;
+  }
+
+  .mia-2col-grid {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .inner-section {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: $mobile-width) {
+  .content-padding {
+    top: 5%;
+    width: 79%;
+  }
+}

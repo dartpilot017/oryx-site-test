@@ -1,0 +1,161 @@
+@import "/src/styles.scss";
+
+.page-section {
+  padding: 2.5rem 0;
+}
+
+// .mia-h3 {
+//     overflow: hidden;
+//     white-space: nowrap;
+//     text-overflow: ellipsis;
+// }
+
+.mia-p {
+  color: $mia-black;
+}
+
+.inner-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.card.white-text {
+  color: white;
+}
+
+.mia-flex-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.card {
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  cursor: pointer;
+
+  transition: box-shadow 0.5s ease-in-out, transform 0.5s ease-in-out;
+
+  .circled-arrow {
+    display: flex;
+    width: 2.5rem;
+    height: 2.5rem;
+    justify-content: center;
+    align-items: center;
+    border: 0.1rem solid $mia-black;
+    border-radius: 50%;
+  }
+
+  &:hover,
+  &:focus {
+    background: #f26a21;
+    box-shadow: 0px 2px 4px -2px rgba(16, 24, 40, 0.06),
+      0px 4px 8px -2px rgba(16, 24, 40, 0.1);
+    transform: scale(1.007);
+
+    .circled-arrow {
+      transform: rotate(45deg);
+      animation: rotateAnimation 0.2s ease-in-out;
+    }
+
+    @keyframes rotateAnimation {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(45deg);
+      }
+    }
+  }
+}
+
+.router-link {
+  text-decoration: none;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.text-holder {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.card.white-text {
+  background-color: lightgreen;
+  color: white;
+}
+
+.card.white-text .mia-h3,
+.card.white-text .mia-p {
+  color: white;
+}
+
+/* If you want to apply white color to the SVG as well */
+.card.white-text .circled-arrow svg path {
+  stroke: white; /* Change the property accordingly if your SVG uses the fill property */
+}
+
+.card.white-text .circled-arrow {
+  border: 1px solid white; /* Adjust the border size as needed */
+}
+
+.mia-btn-fill {
+  color: $mia-white;
+  line-height: 1rem;
+  background-color: $mia-black;
+  border-radius: 0;
+  width: fit-content;
+  &:hover,
+  &:focus {
+    background-color: rgba(#000, 85%);
+  }
+}
+
+@media screen and (max-width: $tablet-width) {
+  // .page-section {
+  //     width: 100%;
+  // }
+  .mia-flex-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .card {
+    padding: 0.7rem;
+  }
+
+  .circled-arrow {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+@media screen and (max-width: $mobile-width) {
+  .mia-flex-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+}

@@ -1,0 +1,19 @@
+@import '/src/styles.scss';
+
+.page-section, .dd-3col-grid {
+    padding: 2.5rem 0;
+}
+
+.profile-img { 
+    row-gap: 1rem;
+    border: none;
+}
+
+.dd-h1{
+    font-family: $dd-font-family;
+    font-weight: 700;
+    text-align: center;
+    color: $dd-black;
+    font-size: 1.25rem;
+    line-height: 3.35rem;
+}

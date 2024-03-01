@@ -1,0 +1,79 @@
+$oryx-font: 'Work Sans', sans-serif;
+
+$oryx-neutral-80: #616161;
+$oryx-neutral-60: #9E9E9E;
+
+$max-tablet-width: 1024px;
+$min-tablet-width: 768px;
+$max-mobile-width: 76px;
+
+main {
+
+    .silder-container {
+        position: absolute;
+        width: 78.47%;
+        left: 50%;
+        transform: translateX(-50%);
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        //border: 2px black solid;
+    }
+
+    .slider-header {
+        color: $oryx-neutral-60;
+        font-size: 1.2rem;
+        font-weight: 500;
+        font-family: $oryx-font;
+    }
+
+    .slider {
+        display: grid;
+        column-gap: 32px;
+        grid-auto-flow: column;
+        align-items: center;
+        justify-items: center;
+
+        width: 95%;
+        overflow-x: scroll;
+
+        &::-webkit-scrollbar { display: none; }
+    }
+
+    .client-logo { max-height: 70px; }
+
+    .slider-button {
+        position: absolute;
+        top: 75%;
+        transform: translateY(-75%);
+
+        height: 2.5rem;
+        width: 2.5rem;
+        border: none;
+        border-radius: 4px;
+        background-color: rgba($oryx-neutral-80, 0.2);
+
+        cursor: pointer;
+        svg { margin-top: 20%; }
+        &:hover { background-color: rgba($oryx-neutral-80, 0.35); }
+    }
+
+    .left-button { left: 0; }
+    .right-button { right: 0; }
+}
+
+
+/*************** TABLET VIEW ***************/
+@media (min-width: $min-tablet-width) and (max-width: $max-tablet-width) {
+    main { .silder-container { width: 93.9%; } }
+}
+
+/************** MOBILE VIEW ***************/
+@media (max-width: calc($min-tablet-width - 1px)) {
+    main {
+        .silder-container { width: 91.8%; }
+        .slider-button { display: none; }
+    }
+}
+

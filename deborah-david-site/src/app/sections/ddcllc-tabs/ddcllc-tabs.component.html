@@ -1,0 +1,34 @@
+<app-loading-spinner *ngIf="!(ddcllcTabs$ | async)"></app-loading-spinner>
+<div class="page-section" *ngIf="(ddcllcTabs$ | async) as ddcllcTabs">
+    <!-- NAVIGATION -->
+    <div class="dd-btn-nav">
+        <ng-container *ngFor="let btn of buttons">
+            <button [ngClass]="{ 'selected': btn.selected }" (click)="onButtonClick(btn)">{{btn.text}}</button>
+        </ng-container>
+    </div>
+    <!-- CONTENT -->
+    <div class="content" *ngIf="ddcllcTabs['items'][0]['fields'] as fields">
+        <div class="content-col" *ngIf="buttons[0]['selected']">
+            <markdown ngPreserveWhitespaces>{{ fields['speaking'] }}</markdown>
+            <app-ddcllc-speaking-form></app-ddcllc-speaking-form>
+            <app-client-reviews></app-client-reviews>
+        </div>
+
+        <div class="content-col" *ngIf="buttons[1]['selected']">
+            <markdown ngPreserveWhitespaces>{{ fields['executive'] }}</markdown>
+            <app-coaching-form></app-coaching-form>
+            <app-client-reviews></app-client-reviews>
+        </div>
+
+        <div class="content-col" *ngIf="buttons[2]['selected']">
+            <markdown ngPreserveWhitespaces>{{ fields['training'] }}</markdown>
+            <app-ddcllc-training-form></app-ddcllc-training-form>
+            <app-client-reviews></app-client-reviews>
+        </div>
+
+        <div class="content-col" *ngIf="buttons[3]['selected']">
+            <markdown ngPreserveWhitespaces>{{ fields['seip'] }}</markdown>
+            <button class="dd-btn-fill" type="button" (click)="openWebsite()">Take Test</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+<section class="comment-container">
+    <h2 class="comment-header">Comments</h2>
+
+    <div class="comment-list">
+        <article class="comment-item" *ngFor="let comment of comments">
+            <header>
+                <h3 class="author">Anonymous</h3>
+                <time class="date" [attr.datetime]="comment['date']">Posted on {{ comment['date'] | date:'dd MMM yyyy' }}</time>
+            </header>
+
+            <p class="content">{{ comment['content'] }}</p>
+
+            <footer class="btn-row">
+                <!-- replies -->
+                <button class="icon-btn" type="button">
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="vuesax/linear/message">
+                        <g id="vuesax/linear/message_2">
+                        <g id="message">
+                        <path id="Vector" d="M9 19H8.5C4.5 19 2.5 18 2.5 13V8C2.5 4 4.5 2 8.5 2H16.5C20.5 2 22.5 4 22.5 8V13C22.5 17 20.5 19 16.5 19H16C15.69 19 15.39 19.15 15.2 19.4L13.7 21.4C13.04 22.28 11.96 22.28 11.3 21.4L9.8 19.4C9.64 19.18 9.27 19 9 19Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Vector_2" d="M16.4945 11H16.5035" stroke="#292D32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Vector_3" d="M12.4945 11H12.5035" stroke="#292D32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Vector_4" d="M8.49451 11H8.50349" stroke="#292D32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                        </g>
+                        </g>
+                    </svg>
+                    <span>{{ comment['replies'].length }}</span>
+                </button>
+    
+                <!-- likes -->
+                <button class="icon-btn" type="button">
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="vuesax/linear/like">
+                        <g id="vuesax/linear/like_2">
+                        <g id="like">
+                        <path id="Vector" d="M7.98047 18.35L11.0805 20.75C11.4805 21.15 12.3805 21.35 12.9805 21.35H16.7805C17.9805 21.35 19.2805 20.45 19.5805 19.25L21.9805 11.95C22.4805 10.55 21.5805 9.34997 20.0805 9.34997H16.0805C15.4805 9.34997 14.9805 8.84997 15.0805 8.14997L15.5805 4.94997C15.7805 4.04997 15.1805 3.04997 14.2805 2.74997C13.4805 2.44997 12.4805 2.84997 12.0805 3.44997L7.98047 9.54997" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10"/>
+                        <path id="Vector_2" d="M2.87891 18.35V8.55002C2.87891 7.15002 3.47891 6.65002 4.87891 6.65002H5.87891C7.27891 6.65002 7.87891 7.15002 7.87891 8.55002V18.35C7.87891 19.75 7.27891 20.25 5.87891 20.25H4.87891C3.47891 20.25 2.87891 19.75 2.87891 18.35Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                        </g>
+                        </g>
+                    </svg>
+                    <span>{{ comment['likes'] }}</span>
+                </button>
+
+                <!-- dislikes -->
+                <button class="icon-btn" type="button">
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="vuesax/linear/dislike">
+                        <g id="vuesax/linear/dislike_2">
+                        <g id="dislike">
+                        <path id="Vector" d="M17.0217 5.65002L13.9217 3.25002C13.5217 2.85002 12.6217 2.65002 12.0217 2.65002H8.22169C7.02169 2.65002 5.72169 3.55002 5.42169 4.75002L3.02169 12.05C2.52169 13.45 3.42169 14.65 4.92169 14.65H8.92169C9.52169 14.65 10.0217 15.15 9.92169 15.85L9.42169 19.05C9.22169 19.95 9.82169 20.95 10.7217 21.25C11.5217 21.55 12.5217 21.15 12.9217 20.55L17.0217 14.45" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10"/>
+                        <path id="Vector_2" d="M22.1211 5.65V15.45C22.1211 16.85 21.5211 17.35 20.1211 17.35H19.1211C17.7211 17.35 17.1211 16.85 17.1211 15.45V5.65C17.1211 4.25 17.7211 3.75 19.1211 3.75H20.1211C21.5211 3.75 22.1211 4.25 22.1211 5.65Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                        </g>
+                        </g>
+                    </svg>
+                    <span>{{ comment['dislikes'] }}</span>
+                </button>
+            </footer>
+        </article>
+    </div>
+
+    <input class="comment-input" type="text" placeholder="Leave a comment...">
+
+</section>

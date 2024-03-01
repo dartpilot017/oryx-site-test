@@ -1,0 +1,50 @@
+@import '/src/styles.scss';
+
+.banner {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    background-color: $dd-dark-gold;
+    padding-top: 1rem;
+    padding-left: 30%;
+    overflow-x: hidden;
+}
+
+h1 {
+    font-family: $dd-curly-font;
+    font-weight: 400;
+    font-size: 8rem;
+    line-height: 6.4rem;
+    color: $dd-white;
+    text-align: center;
+}
+
+img {
+    z-index: 100;
+    width: 27.5rem;
+    object-fit: contain;
+    margin-left: -0.75rem;
+    margin-top: -1.75rem;
+}
+
+/*-------------------MEDIA QUERIES-------------------*/
+@media screen and (max-width: 1340px) { .banner { padding-left: 20%; } }
+
+@media screen and (max-width: 1180px) { .banner { padding-left: 10%; } }
+
+@media screen and (max-width: $tablet-width) { .banner { padding-left: 8%; } }
+
+@media screen and (max-width: $mobile-width) {
+    .banner {
+        align-items: center;
+        flex-direction: column;
+        padding: 2rem;
+    }
+
+    h1 {
+        font-size: 4rem;
+        line-height: 4.5rem;
+    }
+
+    img { display: none; }
+}

@@ -1,0 +1,439 @@
+<div class="page-centralize inner-section padding-top">
+  <div class="contact-us-width padding-top" *ngIf="buttons[0]['selected']">
+    <h1 class="mia-h1">Here to help you transform your business</h1>
+    <p class="mia-p">
+      If you have any questions, inquiries, or would like to explore how MIA
+      Business Solutions can transform or expand your business, please don't
+      hesitate to get in touch. We can help you get started.
+    </p>
+    <br /><br />
+    <button
+      class="mia-btn-outline"
+      (click)="onButtonClick(buttons[1])"
+      [ngClass]="{ selected: buttons[5].selected }"
+    >
+      {{ buttons[5].text }}
+    </button>
+  </div>
+
+  <div class="contact-us-width padding-top" *ngIf="buttons[1]['selected']">
+    <h1 class="mia-h1">How can we help you</h1>
+    <br /><br />
+    <div class="mia-2col-flex">
+      <button
+        class="mia-btn-outline"
+        (click)="
+          onButtonClick(buttons[3]); getStartedClicked = !getStartedClicked
+        "
+        [ngClass]="{ selected: buttons[3].selected }"
+      >
+        {{ buttons[3].text }}
+      </button>
+      <button
+        class="mia-btn-outline"
+        (click)="
+          onButtonClick(buttons[4]);
+          expandBusinessClicked = !expandBusinessClicked
+        "
+        [ngClass]="{ selected: buttons[2].selected }"
+      >
+        {{ buttons[4].text }}
+      </button>
+    </div>
+  </div>
+
+  <!-- GET STARTED YOUR BUSINESS SECTION FORM -->
+  <div class="contact-us-width padding-top" *ngIf="buttons[3]['selected']">
+    <div class="mia-2col-grid">
+      <div class="col-grid">
+        <h1 class="mia-h1">How can we help you</h1>
+        <div class="mia-2col-flex">
+          <button
+            class="mia-btn-fill"
+            [ngClass]="{ selected: buttons[1].selected }"
+          >
+            {{ buttons[1].text }}
+          </button>
+          <button
+            class="mia-btn-outline"
+            (click)="
+              onButtonClick(buttons[4]);
+              expandBusinessClicked = !expandBusinessClicked
+            "
+            [ngClass]="{ selected: buttons[2].selected }"
+          >
+            {{ buttons[2].text }}
+          </button>
+        </div>
+      </div>
+
+      <div class="col-grid">
+        <h1 class="mia-h1">New Start-Up? Let's Begin Your Journey</h1>
+      </div>
+    </div>
+    <div class="form-content-container">
+      <div class="form-progress">
+        <div class="steps-list">
+          <div
+            class="steps"
+            *ngFor="let step of steps; let i = index"
+            [ngClass]="{ active: i === activeStep }"
+          >
+            <div
+              class="line"
+              [ngClass]="{
+                'green-line': i <= activeStep,
+                'grey-line': i > activeStep
+              }"
+            ></div>
+            <div class="text">
+              <p
+                class="t1"
+                [ngClass]="{
+                  'green-text': i === activeStep,
+                  'grey-text': i !== activeStep
+                }"
+              >
+                {{ step.step }}
+              </p>
+              <p
+                class="t2"
+                [ngClass]="{
+                  'green-text': i === activeStep,
+                  'grey-text': i !== activeStep
+                }"
+              >
+                {{ step.text }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- STEP 1 FORM -->
+      <form
+        [formGroup]="step1Form"
+        *ngIf="showStep1Form"
+        (ngSubmit)="submitForm1()"
+      >
+        <div class="form-field">
+          <div class="input-container">
+            <p>Business Name *</p>
+            <input
+              class="form-input"
+              type="text"
+              formControlName="businessName"
+            />
+            <div *ngIf="
+                  step1Form.get('sProduct')?.invalid &&
+                  step1Form.get('sProduct')?.touched
+                " class="error-message"></div>
+          </div>
+          <div class="input-container">
+            <p>Industry/Niche *</p>
+            <input class="form-input" type="text" formControlName="industry" />
+          </div>
+          <div class="input-container">
+            <p>Business Type *</p>
+            <input
+              class="form-input"
+              type="text"
+              formControlName="businessType"
+            />
+          </div>
+          <div class="input-container">
+            <p>Brief Description of Your Business</p>
+            <textarea
+              class="form-input"
+              type="text"
+              formControlName="description"
+            ></textarea>
+          </div>
+          <div class="next-submit-button">
+            <button class="mia-btn-fill" (click)="moveToStep2()">Next</button>
+          </div>
+        </div>
+      </form>
+
+      <!-- STEP 2 FORM -->
+      <form
+        [formGroup]="step2Form"
+        *ngIf="showStep2Form"
+        (ngSubmit)="submitForm1()"
+      >
+        <div class="form-field">
+          <div class="input-container">
+            <p>Contact Person *</p>
+            <input
+              class="form-input"
+              type="text"
+              formControlName="contactPerson"
+            />
+          </div>
+          <div class="input-container">
+            <p>Email Address *</p>
+            <input
+              class="form-input"
+              type="text"
+              formControlName="emailAddress"
+            />
+          </div>
+          <div class="input-container">
+            <p>Phone Number *</p>
+            <input
+              class="form-input"
+              type="text"
+              formControlName="phoneNumber"
+            />
+          </div>
+          <div class="next-submit-button">
+            <button class="mia-btn-fill" (click)="moveToStep3()">Next</button>
+          </div>
+        </div>
+      </form>
+
+      <!-- STEP 3 FORM -->
+      <form
+        [formGroup]="step3Form"
+        *ngIf="showStep3Form"
+        (ngSubmit)="submitForm1()"
+      >
+        <div class="form-field">
+          <div class="input-container">
+            <p>What Services Are You Interested In?</p>
+            <div class="option-list">
+              <div class="options" *ngFor="let option of checkBox">
+                <input
+                  type="checkbox"
+                  [id]="option.option"
+                  (change)="option.selected = !option.selected"
+                  [checked]="option.selected"
+                />
+                <label [for]="option.option">
+                  <span class="checkbox-text form-label">{{
+                    option.option
+                  }}</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="input-container">
+            <p>Additional Comments or Questions</p>
+            <textarea
+              class="form-input"
+              formControlName="additionalComments"
+            ></textarea>
+          </div>
+          <div class="next-submit-button">
+            <button class="mia-btn-fill" (click)="submitForm1()">Submit</button>
+            <p>
+              By completing and submitting the form, you will receive
+              information, tips, and promotions from MIA Business Solutions.
+            </p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- EXPAND YOUR BUSINESS SECTION FORM -->
+  <div
+    class="contact-us-width padding-top"
+    *ngIf="buttons[4]['selected'] && expandBusinessClicked"
+  >
+    <div class="mia-2col-grid">
+      <div class="col-grid">
+        <h1 class="mia-h1">How can we help you</h1>
+        <div class="mia-2col-flex">
+          <button
+            class="mia-btn-outline"
+            (click)="
+              onButtonClick(buttons[3]); getStartedClicked = !getStartedClicked
+            "
+            [ngClass]="{ selected: buttons[1].selected }"
+          >
+            {{ buttons[1].text }}
+          </button>
+          <button
+            class="mia-btn-fill"
+            [ngClass]="{ selected: buttons[2].selected }"
+          >
+            {{ buttons[2].text }}
+          </button>
+        </div>
+      </div>
+
+      <div class="col-grid">
+        <h1 class="mia-h1">New Start-Up? Let's Begin Your Journey</h1>
+      </div>
+    </div>
+    <div class="form-content-container">
+      <div class="form-progress">
+        <div class="steps-list">
+          <div
+            class="steps"
+            *ngFor="let step of steps; let i = index"
+            [ngClass]="{ active: i === activeStep }"
+          >
+            <div
+              class="line"
+              [ngClass]="{
+                'green-line': i <= activeStep,
+                'grey-line': i > activeStep
+              }"
+            ></div>
+            <div class="text">
+              <p
+                class="t1"
+                [ngClass]="{
+                  'green-text': i === activeStep,
+                  'grey-text': i !== activeStep
+                }"
+              >
+                {{ step.step }}
+              </p>
+              <p
+                class="t2"
+                [ngClass]="{
+                  'green-text': i === activeStep,
+                  'grey-text': i !== activeStep
+                }"
+              >
+                {{ step.text }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- STEP 1 FORM -->
+      <form
+        [formGroup]="step4Form"
+        *ngIf="showStep4Form"
+        (ngSubmit)="submitForm2()"
+      >
+        <div class="form-field">
+          <div class="input-container">
+            <p>Business Name *</p>
+            <input
+              class="form-input"
+              type="text"
+              formControlName="businessName"
+            />
+          </div>
+          <div class="input-container">
+            <p>Industry/Niche *</p>
+            <input class="form-input" type="text" formControlName="industry" />
+          </div>
+          <div class="input-container">
+            <p>Business Type *</p>
+            <input
+              class="form-input"
+              type="text"
+              formControlName="businessType"
+            />
+          </div>
+          <div class="input-container">
+            <p>Brief Description of Your Business</p>
+            <textarea
+              class="form-input"
+              type="text"
+              formControlName="description"
+            ></textarea>
+          </div>
+          <div class="next-submit-button">
+            <button class="mia-btn-fill" (click)="moveToStep5()">Next</button>
+          </div>
+        </div>
+      </form>
+
+      <!-- STEP 2 FORM -->
+      <form
+        [formGroup]="step5Form"
+        *ngIf="showStep5Form"
+        (ngSubmit)="submitForm2()"
+      >
+        <div class="form-field">
+          <div class="input-container">
+            <p>Contact Person *</p>
+            <input
+              class="form-input"
+              type="text"
+              formControlName="contactPerson"
+            />
+          </div>
+          <div class="input-container">
+            <p>Email Address *</p>
+            <input
+              class="form-input"
+              type="text"
+              formControlName="emailAddress"
+            />
+          </div>
+          <div class="input-container">
+            <p>Phone Number *</p>
+            <input
+              class="form-input"
+              type="text"
+              formControlName="phoneNumber"
+            />
+          </div>
+          <div class="next-submit-button">
+            <button class="mia-btn-fill" (click)="moveToStep6()">Next</button>
+          </div>
+        </div>
+      </form>
+
+      <!-- STEP 3 FORM -->
+      <form
+        [formGroup]="step6Form"
+        *ngIf="showStep6Form"
+        (ngSubmit)="submitForm2()"
+      >
+        <div class="form-field">
+          <div class="input-container">
+            <p>What Services Are You Interested In?</p>
+            <div class="option-list">
+              <div class="options" *ngFor="let option of checkBox">
+                <input
+                  type="checkbox"
+                  [id]="option.option"
+                  (change)="option.selected = !option.selected"
+                  [checked]="option.selected"
+                />
+                <label [for]="option.option">
+                  <span class="checkbox-text form-label">{{
+                    option.option
+                  }}</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="input-container">
+            <p>Current Challenges or Goals</p>
+            <textarea
+              class="form-input"
+              formControlName="challengesGoals"
+            ></textarea>
+          </div>
+          <div class="input-container">
+            <p>Timeline for Project/Consultation*</p>
+            <input class="form-input" type="text" formControlName="timeline" />
+          </div>
+          <div class="input-container">
+            <p>Additional Comments or Questions</p>
+            <textarea
+              class="form-input"
+              formControlName="additionalComments"
+            ></textarea>
+          </div>
+          <div class="next-submit-button">
+            <button class="mia-btn-fill" (click)="submitForm2()">Submit</button>
+            <p>
+              By completing and submitting the form, you will receive
+              information, tips, and promotions from MIA Business Solutions.
+            </p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

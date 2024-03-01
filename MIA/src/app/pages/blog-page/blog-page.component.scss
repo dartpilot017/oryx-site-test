@@ -1,0 +1,202 @@
+@import "/src/styles.scss";
+
+.page-padding-top {
+  padding-top: 15rem;
+  margin-bottom: 14rem;
+}
+.gap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6rem;
+}
+
+.mia-h1 {
+  font-weight: 500;
+}
+
+.section-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  align-self: stretch;
+}
+
+.inner-section {
+  width: 87.8%;
+  display: flex;
+  // gap: 1.5rem;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+}
+
+.section-paragraph {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  h1,
+  h2,
+  h3 {
+    margin: 0.1rem 5rem;
+  }
+
+  h1 {
+    color: var(--Secondary-Main, #da2625);
+    text-align: center;
+
+    /* Text md/Semibold */
+    font-family: $mia-font-family;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.5rem; /* 150% */
+  }
+
+  h2 {
+    color: var(--Primary-Pressed, #002159);
+
+    /* Heading/Work Sans/H2 */
+    font-family: $mia-font-family;
+    font-size: 3.5rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%; /* 4.2rem */
+  }
+
+  p {
+    color: var(--Gray-500, #667085);
+    text-align: center;
+
+    width: 85%;
+    margin: 0;
+
+    /* Body/Work Sans/Light/L */
+    font-family: $mia-font-family;
+    font-size: 1.25rem;
+    font-weight: 300;
+    line-height: 140%; /* 1.75rem */
+  }
+}
+
+.email-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding-bottom: 6rem;
+
+  .input-field {
+    display: flex;
+    width: 22.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    align-self: stretch;
+
+    input {
+      display: flex;
+      padding: 0.75rem 0.875rem 0.75rem 1rem;
+      align-items: center;
+      gap: 0.5rem;
+      align-self: stretch;
+
+      border-radius: 0.5rem;
+      border: 1px solid var(--Gray-300, #d0d5dd);
+      background: var(--White, #fff);
+
+      /* Shadow/xs */
+      box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+
+      &::placeholder {
+        color: var(--Gray-500, #667085);
+
+        /* Text md/Normal */
+        font-family: $mia-font-family;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.5rem; /* 150% */
+      }
+    }
+  }
+
+  .privacy-container {
+    display: flex;
+    gap: 0.4rem;
+    justify-content: center;
+    align-items: center;
+    .text {
+      color: var(--Gray-500, #667085);
+
+      /* Text sm/Normal */
+      font-family: $mia-font-family;
+      font-size: 0.875rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1.25rem; /* 142.857% */
+    }
+
+    .privacy {
+      color: var(--Gray-500, #667085);
+      font-family: $mia-font-family;
+      font-size: 0.875rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1.25rem;
+      text-decoration-line: underline;
+    }
+  }
+
+  .button {
+    display: flex;
+    align-items: flex-start;
+    border-radius: 0.5rem;
+    border: none;
+
+    button {
+      display: flex;
+      padding: 0.5rem 1.25rem;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+
+      border-radius: 0.5rem;
+      border: 1px solid var(--Secondary-Main, #da2625);
+      background: var(--Secondary-Main, #da2625);
+
+      /* Shadow/xs */
+      box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+
+      p {
+        color: var(--White, #fff);
+
+        margin: 0;
+
+        /* Text md/Medium */
+        font-family: $mia-font-family;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 1.5rem; /* 150% */
+      }
+    }
+  }
+
+  app-recent-blog {
+    display: flex;
+    margin-bottom: 1.75rem;
+  }
+  app-blog-list {
+    display: flex;
+    margin-top: 1.75rem;
+  }
+}

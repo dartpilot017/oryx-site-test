@@ -1,0 +1,17 @@
+
+<div class="page-section flex-centralize" *ngIf="podcast$ | async as podcast">
+    <ng-container >
+        <div class="dd-3col-grid" *ngIf="podcast.items[0].fields as fields">
+            <div class="profile-img flex-centralize" *ngFor="let media of fields['podcastMedia']">
+                <ng-container >
+                    <img [src]="'https:'+ media.fields['file'].url" alt="podcast media">
+                </ng-container>
+            </div>
+            <ng-container *ngFor="let text of fields['title']">
+                <h1 class="dd-h1">{{text}}</h1>
+            </ng-container>
+        </div>
+    </ng-container>
+    
+    <button class="dd-btn-outline">Listen more</button>
+</div>

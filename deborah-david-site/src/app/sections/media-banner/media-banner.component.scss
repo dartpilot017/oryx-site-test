@@ -1,0 +1,55 @@
+@import '/src/styles.scss';
+
+.banner {
+    background-color: $dd-dark-gold;
+    font-family: $dd-font-family;
+    color: $dd-white;
+    text-align: center;
+    padding: 8rem 16rem;
+}
+
+.quote {
+    font-weight: 700;
+    font-size: 1.75rem;
+    line-height: 2.75rem;
+    margin: 0;
+    span { font-style: italic; }
+}
+
+.details {
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 1.25rem;
+}
+
+.title-row {
+    display: flex;
+    flex-wrap: wrap;
+
+    p {
+        border-right: 3px solid $dd-white;
+        margin: 0.25rem 0;
+        padding: 0 1ch;
+        &:last-child { border-right: none; }
+    }
+}
+
+
+/*-------------------MEDIA QUERIES-------------------*/
+@media screen and (max-width: $tablet-width) {
+    .banner { padding: 8rem; }
+}
+
+@media screen and (max-width: $mobile-width) {
+    .banner { padding: 3rem 3.125%; }
+
+    .quote {
+        font-size: 1.25rem;
+        line-height: 1.5rem;
+    }
+
+    .details {
+        font-size: 1rem;
+        line-height: 1rem;
+    }
+}

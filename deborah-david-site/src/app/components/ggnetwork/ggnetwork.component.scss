@@ -1,0 +1,68 @@
+@import '/src/styles.scss';
+
+.banner {
+    background-color: $dd-floral-white;
+    font-family: $dd-font-family;
+    padding: 5rem 0;
+    overflow-x: hidden;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    margin-bottom: 2.5rem;
+}
+
+.dd-h1, .dd-p {
+    text-align: left;
+    margin: 0;
+}
+
+.dd-h1 {
+    font-size: 4rem;
+    line-height: 5.2rem;
+    width: 14ch;
+}
+
+.dd-p {
+    font-weight: 500;
+    width: 40ch;
+    margin-top: 6.25rem;
+    margin-left: -10rem;
+}
+
+
+/*-------------------MEDIA QUERIES-------------------*/
+@media screen and (max-width: $tablet-width) {
+    .banner { padding: 2rem 0; }
+
+    .dd-p {
+        width: 35ch;
+        margin-left: -15rem;
+    }
+}
+
+@media screen and (max-width: 890px) {
+    .banner { padding: 2rem; }
+
+    .content {
+        align-items: center;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .dd-h1, .dd-p {
+        width: 100%;
+        margin: 0;
+        text-align: center;
+    }
+
+    .dd-h1 {
+        font-size: 2.5rem;
+        line-height: 2.75rem;
+    }
+
+    .dd-p { margin: 0; }
+}

@@ -1,0 +1,90 @@
+<div class="page-padding-top page-centralize">
+  <div class="service-page" *ngIf="services$ | async as services">
+    <div class="c1 inner-section">
+      <div class="service-header">
+        <p class="mia-p mia-service-p">Service</p>
+        <h1
+          class="mia-h1"
+          [style.color]="services.items[0].fields.backgroundColor"
+        >
+          {{ services.items[0].fields.title }}
+        </h1>
+      </div>
+      <p class="mia-p">
+        {{ services.items[0].fields.description }}
+      </p>
+    </div>
+
+    <div class="container">
+      <div class="slider">
+        <div class="slide-container">
+          <div class="slide">
+            <div class="image-container">
+              <img
+                *ngFor="let image of services.items[0].fields.images"
+                [src]="'https:' + image.fields.file.url"
+                alt="Service media"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="c2 inner-section">
+      <div
+        class="c2-sub1"
+        *ngFor="
+          let servicePageContent of services.items[0].fields.servicePageContent
+        "
+      >
+        <div class="c2-sub1-header"
+        >
+          <div class="liner-border" [style.border-left-color]="services.items[0].fields.backgroundColor">
+            <h2 class="mia-h2">
+              {{ servicePageContent.fields.serviceTitle }}
+            </h2>
+          </div>
+          <p class="mia-p" *ngIf="servicePageContent.fields.serviceDescription">
+            {{ servicePageContent.fields.serviceDescription }}
+          </p>
+        </div>
+        <button
+          class="mia-btn-fill"  [style.background-color]="services.items[0].fields.backgroundColor"
+          *ngIf="servicePageContent.fields.text"
+          (click)="navigateToContactUs()"
+        >
+          {{ servicePageContent.fields.text }}
+        </button>
+      </div>
+      <div class="c2-sub2">
+        <div class="liner-border" [style.border-left-color]="services.items[0].fields.backgroundColor">
+          <h2 class="mia-h2">What We Offer</h2>
+        </div>
+        <div class="c2-sub2-grid">
+          <div
+            class="c2-sub2-grid-content"
+            *ngFor="let whatWeOffer of services.items[0].fields.whatWeOffer"
+          >
+            <h3
+              class="mia-h3"
+              *ngIf="whatWeOffer.fields.title"
+              [style.color]="services.items[0].fields.backgroundColor"
+            >
+              {{ whatWeOffer.fields.title }}
+            </h3>
+            <p class="mia-p" *ngIf="whatWeOffer.fields.description">
+              {{ whatWeOffer.fields.description }}
+            </p>
+          </div>
+        </div>
+        <div class="bottom-border-line-content">
+          <p class="mia-p">
+            {{ services.items[0].fields.bottomContent  }}
+          </p>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>

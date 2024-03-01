@@ -1,0 +1,155 @@
+@import "/src/styles.scss";
+
+.radio {
+  display: none;
+}
+
+.container {
+  position: relative;
+  max-width: 1100px;
+  margin: 5% auto;
+}
+
+.slider {
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  padding-top: 40%;
+  // background: $mia-dark-gold;
+  // overflow: hidden;
+  // border: solid 1px $mia-orange;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 0;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(130%);
+  transition: 1.3s;
+}
+
+.caption {
+  position: absolute;
+  width: 100%;
+  left: 5%;
+  top: -100%;
+  color: $mia-red;
+  font-weight: 900;
+  font-size: 50px;
+  text-transform: uppercase;
+  letter-spacing: -5px;
+  line-height: 50px;
+  transition: 0.9s;
+}
+
+.caption span {
+  display: block;
+  text-transform: initial;
+  font-size: 30px;
+  font-weight: 300;
+  color: $mia-floral-white;
+  line-height: 15px;
+}
+
+.dots {
+  width: 100%;
+  position: absolute;
+  bottom: -7%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dots label {
+  width: 15px;
+  height: 15px;
+  background: $mia-dark-gray;
+  margin: 0 10px;
+  border-radius: 50%;
+  opacity: 0.3;
+  cursor: pointer;
+  transition: 0.2 ease-in-out;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+#radio-1:checked ~ #slide-1,
+#radio-2:checked ~ #slide-2,
+#radio-3:checked ~ #slide-3 {
+  opacity: 1;
+}
+
+#radio-1:checked ~ #slide-1 img,
+#radio-2:checked ~ #slide-2 img,
+#radio-3:checked ~ #slide-3 img {
+  transform: scale(100%);
+}
+
+#radio-1:checked ~ #slide-1 .caption,
+#radio-2:checked ~ #slide-2 .caption,
+#radio-3:checked ~ #slide-3 .caption {
+  opacity: 1;
+  top: 7%;
+  font-size: 80px;
+}
+
+#radio-1:checked ~ .dots #label-1,
+#radio-2:checked ~ .dots #label-2,
+#radio-3:checked ~ .dots #label-3 {
+  background: $mia-orange;
+  opacity: 1;
+}
+
+@media only screen and (max-width: $tablet-width) {
+  .container {
+    max-width: 90%;
+    margin: 5% auto;
+  }
+
+  .slide img {
+    width: 100%;
+    transform: scale(90%);
+  }
+
+  .dots {
+    bottom: -8%;
+  }
+
+  .dots label {
+    width: 13px;
+    height: 13px;
+  }
+}
+
+@media only screen and (max-width: $mobile-width) {
+  .container {
+    max-width: 90%;
+    margin: 5% auto;
+  }
+
+  .slide img {
+    width: 100%;
+    transform: scale(90%);
+  }
+
+  .dots {
+    bottom: -12%;
+  }
+
+  .dots label {
+    width: 10px;
+    height: 10px;
+  }
+}

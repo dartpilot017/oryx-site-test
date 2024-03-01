@@ -1,0 +1,252 @@
+@import "/src/styles.scss";
+
+.radio {
+  display: none;
+}
+
+.inner-section {
+  width: 100%;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.slider {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  // gap: 1rem;
+  width: 100%;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.slide {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  transition: transform 0.5s ease;
+}
+
+.image-container {
+  flex: 0 0 auto;
+  width: 100%;
+  height: 26.5rem;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  img {
+    width: 100%;
+    height: 100%;
+    margin-left: -20rem;
+    object-fit: contain;
+  }
+  .shift-left {
+    margin-right: auto; // Adjust the margin value as needed
+    margin-left: 19rem;
+  }
+}
+
+.image-container.active {
+  opacity: 1;
+}
+
+.slide-container {
+  display: flex;
+  flex-shrink: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.dots {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  label {
+    width: 1rem;
+    height: 1rem;
+    background: $mia-dark-gray;
+    margin: 0 0.38vw;
+    border-radius: 50%;
+    opacity: 0.3;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+.dots label.active {
+  background: $mia-orange;
+  opacity: 0.9;
+}
+
+.content-padding {
+  display: flex;
+  width: 39.8%;
+  padding: 1.5rem;
+  margin-top: -19rem;
+  margin-left: 40rem;
+  flex-direction: column;
+  align-items: flex-start;
+  // background-color: rgba(255, 255, 255, 0.7);
+  gap: 1.5rem;
+
+  .mia-h1 {
+    font-weight: 500;
+    margin: 0;
+    color: #fff;
+  }
+
+  .mia-p {
+    margin: 0;
+    font-weight: 400;
+    color: #fff;
+  }
+
+  .text-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .inner-section {
+    width: 100%;
+    text-align: start;
+    margin-left: 23px;
+    margin-top: -10px;
+    margin-right: 14px;
+  }
+
+  .mia-2col-grid {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .btn-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.375rem;
+
+    a {
+      text-decoration: none;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .mia-btn-fill {
+    background-color: #fff;
+    color: #000;
+
+    &:hover,
+    &:focus {
+      background-color: #fff;
+      color: #000;
+    }
+  }
+
+  .mia-btn-outline {
+    border: 1px solid #000;
+    color: #000;
+
+    &:hover,
+    &:focus {
+      background-color: transparent;
+    }
+  }
+}
+.shift-right {
+  margin-right: auto; // Adjust the margin value as needed
+  margin-left: 7rem;
+}
+
+@media only screen and (max-width: $tablet-width) {
+  .container {
+    flex-direction: column;
+  }
+
+  .image-container {
+    max-width: 100%;
+    height: 26rem;
+  }
+
+  .slider {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .slide {
+    width: 100%;
+  }
+
+  .dots {
+    label {
+      width: 0.85rem;
+      height: 0.85rem;
+    }
+  }
+
+  .dots label.active {
+    background: $mia-orange;
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .content-padding {
+    margin-top: -22rem;
+    margin-left: 25rem;
+  }
+  .shift-right {
+    margin-left: 4rem;
+  }
+
+  .image-container {
+    img {
+      margin-left: -14rem;
+    }
+
+    .shift-left {
+      margin-left: 11rem;
+    }
+  }
+}
+
+@media only screen and (max-width: $mobile-width) {
+  .image-container {
+    height: 19rem;
+  }
+
+  .dots {
+    label {
+      width: 0.7rem;
+      height: 0.7rem;
+    }
+  }
+
+  .dots label.active {
+    background: $mia-orange;
+    width: 0.85rem;
+    height: 0.85rem;
+  }
+
+  .content-padding {
+    margin-top: -18rem;
+    margin-left: 21rem;
+  }
+
+  .shift-right {
+    margin-left: 5rem;
+  }
+}

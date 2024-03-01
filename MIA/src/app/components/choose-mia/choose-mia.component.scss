@@ -1,0 +1,109 @@
+@import "/src/styles.scss";
+
+.inner-section {
+  width: 90.5%;
+}
+
+.home-content-container {
+  display: flex;
+  padding: 2rem 0rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  align-self: stretch;
+  background-color: #07181f;
+}
+
+.container {
+  display: flex;
+  width: 90%;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.mia-h1,
+.mia-h,
+.mia-h3,
+.mia-p {
+  color: #fff;
+  font-weight: 400;
+}
+
+.mia-h1 {
+  align-self: baseline;
+}
+
+.content-container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border-bottom: 1px solid #fff;
+}
+
+.content-grid {
+  display: flex;
+  padding: 1.625rem 15.73063rem 1.625rem 0rem;
+  align-items: center;
+  gap: 2.5rem;
+  align-self: stretch;
+  border-top: 1px solid #fff;
+}
+
+.p1 {
+  display: flex;
+  width: 40%;
+  padding-right: 0px;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.p2 {
+  display: flex;
+  width: 60%;
+  flex-direction: column;
+  align-items: flex-start;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 1rem;
+}
+
+.line {
+  width: 35.1875rem;
+  height: 0.4375rem;
+  border-bottom: 1px solid #fff;
+}
+
+.mia-btn-fill {
+  color: #07181f;
+  line-height: 1rem;
+  background-color: $mia-white;
+  border-radius: 0;
+  width: fit-content;
+  &:hover,
+  &:focus {
+    background-color: rgba($mia-white, 85%);
+  }
+}
+
+@media screen and (max-width: $tablet-width) {
+  .p1 {
+    width: 40%;
+  }
+
+  .p2 {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: $mobile-width) {
+  .content-grid {
+    padding: 1.625rem 1.73063rem 1.625rem 0rem;
+  }
+
+  .mia-h3 {
+    line-height: 2rem;
+  }
+}

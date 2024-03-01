@@ -1,0 +1,13 @@
+<app-loading-spinner *ngIf="!(officialPictures$ | async)"></app-loading-spinner>
+<div class="page-section flex-centralize" *ngIf="(officialPictures$ | async) as officialPictures">
+    <ng-container *ngIf="officialPictures['items'][0]['fields'] as fields">
+        <h1 class="dd-h1">{{ fields['header'] }}</h1>
+        <div class="dd-3col-grid" *ngIf="fields['profileImages'] as profileImages">
+            <div class="profile-img flex-centralize" *ngFor="let picture of displayedPictures">
+                <img [src]="'https:' + picture" alt="profile image">
+                <button class="dd-btn-outline" (click)="downloadImage('https:' + picture)">Download</button>
+            </div>
+        </div>
+    </ng-container>
+    <button class="dd-btn-fill" (click)="loadMorePictures()" [disabled]="noMorePictures">View more</button>
+</div>

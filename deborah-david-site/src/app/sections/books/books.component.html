@@ -1,0 +1,19 @@
+<app-loading-spinner *ngIf="!(bookList$ | async)"></app-loading-spinner>
+<div class="page-section books-section" *ngIf="(bookList$ | async) as bookList">
+    <ng-container *ngIf="bookList['items'][0]['fields']['books'] as books">
+        <div class="book-item" *ngFor="let item of books">
+            <ng-container *ngIf="item['fields'] as book">
+                <!-- BOOK DETAILS -->
+                <div class="book-details">
+                    <h1 class="dd-h1"><span>" </span>{{ book['blurb'] }}<span> ".</span></h1>
+                    <p class="dd-p">{{ book['title'] }}</p>
+                    <button class="dd-btn-outline">Buy the Book</button>
+                </div>
+                <!-- BOOK COVER -->
+                <div class="flex-centralize">
+                    <img class="book-cover" [src]="'https:' + book['cover']['fields']['file']['url']" alt="Book Cover">
+                </div>
+            </ng-container>
+        </div>
+    </ng-container>
+</div>

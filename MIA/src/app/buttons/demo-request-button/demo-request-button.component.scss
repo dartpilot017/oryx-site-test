@@ -1,0 +1,65 @@
+@import "/src/styles.scss";
+.close-Button {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99;
+
+    background: linear-gradient(135deg, rgba(58, 56, 56, 0.329) 0%, rgba(96, 76, 76, 0.5) 50%, rgba(249, 231, 231, 0) 100%),
+}
+
+
+.card {
+    width: 66%;
+    height: 90%;
+    overflow: auto;
+    font-family: $mia-font-family;
+
+    position: relative;
+    top: 56%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+
+    &::-webkit-scrollbar {
+        display: none;
+      }
+}
+
+.card-body {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 1.5rem 2.5rem;
+}
+
+
+
+/*************** TABLET VIEW ***************/
+@media screen and (max-width: $tablet-width) {
+    .card { 
+        width: 85%;
+        left: 50%;
+        top: 57%;
+        overflow-x: hidden;
+    }
+
+    .close-Button {
+        overflow: hidden;
+    }
+}
+
+/************** MOBILE VIEW ***************/
+@media screen and (max-width: $mobile-width) {
+    .card {
+        width: 85%;
+        padding-top: 5%;
+    }
+    .card-body { 
+        gap: 0.5rem;
+        overflow-x: hidden;
+    }
+}

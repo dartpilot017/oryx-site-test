@@ -1,0 +1,148 @@
+@import "/src/styles.scss";
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  z-index: 900;
+  position: fixed;
+  width: 91%;
+
+  padding: 0.75rem 4rem;
+  background-color: $mia-white;
+
+  // border-top: 0.5rem solid $mia-mobile-orange;
+}
+
+.logo-nav-link-container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.flex-row {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 9.75rem;
+  height: 3.75rem;
+  object-fit: contain;
+}
+
+.nav-font {
+  font-family: $mia-font-family;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1rem;
+  color: $mia-black;
+}
+
+.nav-link {
+  @extend .nav-font;
+  display: flex;
+  padding: 0.75rem;
+  align-items: center;
+  gap: 0.125rem;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    color: $mia-dark-gold;
+  }
+  &.active-link {
+    color: $mia-red;
+  }
+}
+
+.nav-dropdown {
+  position: relative;
+  &:hover .dropdown,
+  &:hover .dropDown {
+    max-height: max-content;
+    // padding: 0.5rem 1rem;
+  }
+}
+
+.dropdown {
+  // Initially hide the dropdown
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-out;
+
+  // Position it below the parent item
+  position: absolute;
+  top: 100%;
+  left: -24rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  width: max-content;
+  border: none;
+  border-radius: 0 0 0.25rem 0.25rem;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.dropDown {
+  // Initially hide the dropdown
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-out;
+
+  // Position it below the parent item
+  position: absolute;
+  top: 100%;
+  left: -18rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  width: max-content;
+  border: none;
+  border-radius: 0 0 0.25rem 0.25rem;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+  @extend .nav-font;
+  display: block;
+  // padding: 0.313rem 0.625rem;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: $mia-red;
+  }
+
+  &.active-item {
+    color: $mia-white;
+    background-color: $mia-red;
+    border: none;
+    border-radius: 100vw;
+  }
+}
+
+.btn-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+@media screen and (max-width: $tablet-width) {
+  .dropdown {
+    left: -22.5rem;
+  }
+}
+
+@media screen and (max-width: 970px) {
+  .nav-container {
+    display: none;
+  }
+}

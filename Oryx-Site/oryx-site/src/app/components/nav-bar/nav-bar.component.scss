@@ -1,0 +1,200 @@
+$oryx-font: "Work Sans", sans-serif;
+
+$oryx-neutral-100: #0a0a0a;
+$oryx-neutral-80: #616161;
+$oryx-neutral-50: #c2c2c2;
+$oryx-neutral-20: #f5f5f5;
+$oryx-neutral-10: #ffffff;
+
+$oryx-primary-pressed: #002159;
+$oryx-primary-main: #03449e;
+$oryx-primary-hover: #2186eb;
+$oryx-secondary-main: #da2625;
+
+$max-tablet-width: 1024px;
+$min-tablet-width: 768px;
+
+main {
+  display: flex;
+  font-family: $oryx-font;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 97;
+
+  // .blue-bar {
+  //     font-weight: 400;
+  //     font-size: 0.875rem;
+  //     color: $oryx-neutral-10;
+  //     background-color: $oryx-primary-pressed;
+
+  //     width: 100%;
+  //     padding-top: 0.5rem;
+  //     padding-bottom: 0.5rem;
+
+  //     .blue-grid {
+  //         display: grid;
+  //         column-gap: 4%;
+  //         grid-template-rows: 2rem;
+  //         grid-template-columns: 16% 17% 59%;
+  //     }
+
+  //     .contact-grid {
+  //         display: grid;
+  //         column-gap: 0.5rem;
+  //         grid-template-columns: 32px auto;
+  //         p { margin-top: 0.5rem; }
+  //     }
+  // }
+
+  .white-bar {
+    width: 100%;
+    background-color: $oryx-neutral-10;
+
+    .white-grid {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+    }
+
+    .logo img {
+      height: 3.875rem;
+      object-fit: contain;
+    }
+
+    .navbar-nav {
+      display: flex;
+      column-gap: 1.5rem;
+      grid-template-columns: repeat(5, auto);
+
+      .nav-item {
+        position: relative;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        place-items: center;
+      }
+
+      .nav-link {
+        font-weight: 300;
+        font-size: 1rem;
+        color: $oryx-neutral-80;
+        text-decoration: none;
+
+        &:hover {
+          color: $oryx-secondary-main;
+        }
+      }
+
+      .active-link {
+        font-weight: 500;
+        color: $oryx-secondary-main;
+        svg path {
+          fill: $oryx-secondary-main;
+        }
+      }
+    }
+  }
+
+  .flex-centralize {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .service-flex {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  // dropdown menu
+  .dropdown {
+    // Initially hide the dropdown
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+
+    position: absolute;
+    top: 100%; // Position it below the parent item
+    left: 0;
+    width: fit-content;
+    border: none;
+    border-radius: 0 0 0.25rem 0.25rem;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  // show dropdown when hovering on parent item
+  .nav-item:hover .dropdown {
+    max-height: 10rem;
+  }
+
+  .dropdown-item {
+    display: block;
+    padding: 0.313rem 0.625rem;
+    color: $oryx-neutral-80;
+    text-decoration: none;
+    &:hover {
+      background-color: #f1f1f1;
+    }
+  }
+
+  .select-language {
+    display: flex;
+    gap: 8px;
+    padding: 0.5rem 0 0.5rem 0;
+
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    // svg path {
+    //   fill: $oryx-secondary-main;
+    // }
+
+    .image-container {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: center;
+      padding: 0 1rem 0 0;
+
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 24px;
+
+      font-family: $oryx-font;
+
+      img {
+        border-radius: 5rem;
+      }
+    }
+  }
+}
+
+/*************** TABLET VIEW ***************/
+// @media (min-width: $min-tablet-width) and (max-width: $max-tablet-width) {
+//     main{
+//         .blue-bar {
+//             .blue-grid {
+//                 column-gap: 16px;
+//                 grid-template-rows: 2.5rem;
+//                 grid-template-columns: auto auto auto;
+//             }
+//         }
+//     }
+// }
+
+/************** MOBILE VIEW ***************/
+@media (max-width: $min-tablet-width) {
+  main {
+    display: none;
+
+    
+  }
+}

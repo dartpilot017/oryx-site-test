@@ -1,0 +1,17 @@
+<div class="certifications" *ngIf="certificationsAndAchievements$ | async as certificationsAndAchievements">
+    <div class="certifications-content">
+      <h2>
+        CERTIFICATIONS &amp; ACCOMPLISHMENTS
+      </h2>
+    </div>
+    <div class="certifications-logos">
+      <ng-container *ngIf="certificationsAndAchievements.items[0].fields as fields">
+        <!-- <p>{{fields['certificationsAchievements']}}</p> -->
+        <div class="certifications-logo-row">
+          <ng-container *ngFor="let media of fields['certificationsMedia']">
+            <img class="certifications-logo" [src]="'https:'+ media.fields['file'].url" alt="media">
+          </ng-container>
+        </div>
+      </ng-container>
+    </div>
+  </div>

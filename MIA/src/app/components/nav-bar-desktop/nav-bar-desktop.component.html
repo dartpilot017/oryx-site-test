@@ -1,0 +1,73 @@
+<nav class="nav-container">
+  <div class="logo-nav-link-container">
+    <!-- LOGO-->
+    <a routerLink="/home" routerLinkActive="active-link">
+      <img class="logo" src="../../../assets/images/mia-logo.png" alt="logo" />
+    </a>
+
+    <!-- Nav text -->
+    <div class="flex-row">
+      <a class="nav-link" routerLink="/home" routerLinkActive="active-link"
+        >Home</a
+      >
+      <!-- services dropdown -->
+      <div class="nav-dropdown">
+        <p class="nav-link">
+          Services
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="13"
+            height="12"
+            viewBox="0 0 13 12"
+            fill="none"
+          >
+            <path
+              d="M10.7273 4.6875L9.78979 3.75L6.44705 7.09275L3.03979 3.75L2.10229 4.6875L6.41479 9L10.7273 4.6875Z"
+              fill="#B7BFC6"
+            />
+          </svg>
+        </p>
+        <div class="dropDown">
+          <div class="dropdown-item">
+            <app-service-nav-bar></app-service-nav-bar>
+          </div>
+        </div>
+      </div>
+
+      <!-- products dropdown -->
+      <div class="nav-dropdown" routerLinkActive="active-link">
+        <p class="nav-link">
+          Products
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="13"
+            height="12"
+            viewBox="0 0 13 12"
+            fill="none"
+          >
+            <path
+              d="M10.7273 4.6875L9.78979 3.75L6.44705 7.09275L3.03979 3.75L2.10229 4.6875L6.41479 9L10.7273 4.6875Z"
+              fill="#B7BFC6"
+            />
+          </svg>
+        </p>
+        <div class="dropdown">
+          <div class="dropdown-item">
+            <app-product-nav-bar></app-product-nav-bar>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOG TEXT-->
+      <a class="nav-link" routerLink="/blog" routerLinkActive="active-link"
+        >Blog</a
+      >
+    </div>
+  </div>
+
+  <!-- right side -->
+  <div class="btn-container">
+    <button class="mia-btn-fill">Contact us</button>
+    <button class="mia-btn-outline" (click)="openDialog()">Request demo</button>
+  </div>
+</nav>

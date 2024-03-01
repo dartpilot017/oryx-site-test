@@ -1,0 +1,153 @@
+<!-- <app-loading-spinner *ngIf="!(blogPost$ | async)"></app-loading-spinner> -->
+<main>
+  <div class="content-container">
+    <article class="page-header" *ngIf="blogPost$ | async">
+      <!-- HEADER CONTENT -->
+      <div class="header-container">
+        <div class="content-container">
+          <div class="content">
+            <div class="date-topic-content">
+              <time [attr.datetime]="blog['date']" class="date">{{ isEnglish ? 'Published' : 'Publié' }} {{ blog["date"] | date : "dd MMM yyyy" }}</time>
+              <h1 class="topic">
+                {{ blog["title"] }}
+              </h1>
+            </div>
+            <p class="support-text">
+              {{ blog["support"] }}
+            </p>
+            <div class="tag-list">
+              <div class="tag-list">
+                <p class="tag-item" *ngFor="let tag of blog.tags" [ngClass]="getTagStyles(tag)">{{ tag }}
+              </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="image-container">
+          <div class="content">
+            <img
+              class="blog-image"
+              [src]="'https:' + blog['imgUrl']"
+              alt="blog image"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOG ARTICLE -->
+      <markdown ngPreserveWhitespaces class="blog-article">{{
+        blog["article"]
+      }}</markdown>
+
+      <!-- BUTTOM SECTION -->
+      <div class="bottom-section">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="100%"
+          height="1"
+          viewBox="0 0 720 1"
+          fill="none"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M720 1H0V0H720V1Z"
+            fill="#E4E7EC"
+          />
+        </svg>
+        <div class="bottom-content">
+          <div class="author-grouping">
+            <div class="image-container">
+              <img [src]="'https:' + blog['authorImgUrl']" alt="blog image" />
+            </div>
+            <div class="author-detail">
+              <p class="author">
+                {{ blog["author"] }}
+              </p>
+              <p class="detail">
+                {{ blog["authorPosition"] }}, {{ blog["firmName"] }}
+              </p>
+            </div>
+          </div>
+
+          <div class="social-links">
+            <div (click)="copyLink()" class="link">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+              >
+                <g clip-path="url(#clip0_3204_4345)">
+                  <path
+                    d="M4.16797 12.5001H3.33464C2.89261 12.5001 2.46868 12.3245 2.15612 12.0119C1.84356 11.6994 1.66797 11.2754 1.66797 10.8334V3.33341C1.66797 2.89139 1.84356 2.46746 2.15612 2.1549C2.46868 1.84234 2.89261 1.66675 3.33464 1.66675H10.8346C11.2767 1.66675 11.7006 1.84234 12.0131 2.1549C12.3257 2.46746 12.5013 2.89139 12.5013 3.33341V4.16675M9.16797 7.50008H16.668C17.5884 7.50008 18.3346 8.24627 18.3346 9.16675V16.6667C18.3346 17.5872 17.5884 18.3334 16.668 18.3334H9.16797C8.24749 18.3334 7.5013 17.5872 7.5013 16.6667V9.16675C7.5013 8.24627 8.24749 7.50008 9.16797 7.50008Z"
+                    stroke="#344054"
+                    stroke-width="1.67"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_3204_4345">
+                    <rect width="20" height="20" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+
+              <input
+                #copyLinkInput
+                type="text"
+                [value]="'https://' + blog['imgUrl']"
+                style="opacity: 0; position: absolute; pointer-events: none"
+              />
+
+              <p>{{ isEnglish ? 'Copy link' : 'Copier le lien' }}</p>
+            </div>
+
+            <div class="social" *ngIf="icons.length > 0">
+              <a [href]="blog['tweet']">
+                <img [src]="'../../assets/images/' + icons[0].file" alt="" />
+              </a>
+            </div>
+            <div class="social" *ngIf="icons.length > 0">
+              <a [href]="blog['facebook']">
+                <img [src]="'../../assets/images/' + icons[1].file" alt="" />
+              </a>
+            </div>
+            <div class="social" *ngIf="icons.length > 0">
+              <a [href]="blog['linkedIn']">
+                <img [src]="'../../assets/images/' + icons[2].file" alt="" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <div class="blog-section">
+      <div class="c1">
+        <div class="content">
+          <div class="header">
+            <h2>{{ isEnglish ? 'From the blog' : 'Du blog' }}</h2>
+            <p>
+              {{ isEnglish ? 'The latest industry news, interviews, technologies, and resources.' : 'Les dernières nouvelles, interviews, technologies et ressources de l\'industrie.' }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="c2">
+        <app-blogs-list></app-blogs-list>
+        <div class="bottom-section">
+          <div class="divider"></div>
+          <div (click)="navigateToBLog()" class="button">
+            <p> {{  isEnglish ? 'View all posts' : 'Afficher tous les messages' }} </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <app-oryx-footer></app-oryx-footer>
+
+  </div>
+</main>

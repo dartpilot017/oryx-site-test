@@ -1,0 +1,42 @@
+<div class="home-content-container">
+  <div class="container">
+    <h1 class="mia-h1">Why companies choose MIA</h1>
+
+    <div class="content-container">
+      <div class="content-grid" *ngFor="let field of listField">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="69"
+          height="68"
+          viewBox="0 0 69 68"
+          fill="none"
+        >
+          <rect x="1" y="0.5" width="67" height="67" rx="33.5" stroke="white" />
+
+          <mask id="path-2-inside-1_612_410" fill="white">
+            <path
+              d="M39.8 17.26L48.9924 26.4524L29.1934 46.2514L20.0011 37.059L39.8 17.26Z"
+            />
+          </mask>
+
+          <path
+            d="M29.1934 46.2514L28.1328 47.3121L29.1934 48.3727L30.2541 47.3121L29.1934 46.2514ZM47.9318 25.3917L28.1328 45.1907L30.2541 47.3121L50.0531 27.5131L47.9318 25.3917ZM30.2541 45.1907L21.0617 35.9983L18.9404 38.1197L28.1328 47.3121L30.2541 45.1907Z"
+            fill="white"
+            mask="url(#path-2-inside-1_612_410)"
+          />
+        </svg>
+
+        <div class="p1">
+          <span class="mia-h"> {{ field.title }} </span>
+        </div>
+
+        <div class="p2">
+          <h3 class="mia-h3"> {{ field.description }} </h3>
+        </div>
+      </div>
+    </div>
+    <button class="mia-btn-fill" (click)="navigateToContactUs()">
+      Contact Us
+    </button>
+  </div>
+</div>

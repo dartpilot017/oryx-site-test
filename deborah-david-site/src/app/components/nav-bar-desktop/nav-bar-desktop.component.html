@@ -1,0 +1,28 @@
+<nav class="nav-container">
+    <!-- left side -->
+    <div class="flex-row">
+        <a class="nav-link" routerLink="/home" routerLinkActive="active-link">Home</a>
+        <a class="nav-link" routerLink="/about" routerLinkActive="active-link">About</a>
+        <a class="nav-link" routerLink="/expressions" routerLinkActive="active-link">Expressions</a>
+
+        <!-- company dropdown -->
+        <div class="nav-dropdown">
+            <p class="nav-link" [class.active-link]="isCompanyActive()">Company</p>
+            <div class="dropdown">
+                <a class="dropdown-item" routerLink="/ddc" routerLinkActive="active-item">DDC</a>
+                <a class="dropdown-item" routerLink="/ddcllc" routerLinkActive="active-item">DDCLLC</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- center -->
+    <img class="logo" src="../../../assets/icons/dd-logo.png" alt="logo"/>
+
+    <!-- right side -->
+    <div class="flex-row">
+        <a class="nav-link" routerLink="/books" routerLinkActive="active-link">Books</a>
+        <a class="nav-link" routerLink="/media" routerLinkActive="active-link">Media</a>
+        <a class="nav-link" routerLink="/blogs" routerLinkActive="active-link">Blog</a>
+        <a class="nav-link" routerLink="/contact" routerLinkActive="active-link">Contact</a>
+    </div>
+</nav>

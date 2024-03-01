@@ -1,0 +1,18 @@
+<main class="center-horizontally">
+  <div class="footer-container center-horizontally">
+    <h1 class="footer-header">
+      {{
+        isEnglish
+          ? 'Interested in a product? Request a demo today!'
+          : 'ntéressé par un produit? Demandez une démo dès aujourd\'hui !'
+      }}
+    </h1>
+    <button
+      class="footer-button button-hover"
+      aria-label="request demo"
+      (click)="redirectToRequestDemo()"
+    >
+      {{ isEnglish ? "Request Demo" : "Demander une démo" }}
+    </button>
+  </div>
+</main>

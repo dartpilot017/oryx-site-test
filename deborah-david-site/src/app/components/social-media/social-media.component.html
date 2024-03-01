@@ -1,0 +1,18 @@
+<div class="form-2col-grid">
+    <div>
+        <select class="form-input form-select" type="text" id="socialMedia" name="socialMedia" placeholder="Social media" required [(ngModel)]="socialMedia" #socialMediaInput="ngModel">
+            <option value="" selected>Social Media</option>
+            <option value="facebook">Facebook</option>
+            <option value="instagram">Instagram</option>
+            <option value="linkedIn">LinkedIn</option>
+            <option value="social">Social media</option>
+            <option value="tikTok">TikTok</option>
+            <option value="twitter">Twitter</option>
+        </select>
+        <div *ngIf="socialMediaInput.invalid && socialMediaInput.touched" class="error-message">Social media shouldn't be empty</div>
+    </div>
+    <div>
+        <input class="form-input" type="text" id="experience" name="experience" placeholder="Username" required [(ngModel)]="username" #usernameInput="ngModel" />
+        <div *ngIf="usernameInput.invalid && usernameInput.touched" class="error-message">Username shouldn't be empty</div>
+    </div>
+</div>

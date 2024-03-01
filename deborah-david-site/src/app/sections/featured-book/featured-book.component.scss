@@ -1,0 +1,6 @@
+@import '/src/app/sections/books/books.component.scss';
+
+.book-item {
+    > *:first-child { grid-column: 2; }
+    > *:last-child { grid-column: 1; }
+}

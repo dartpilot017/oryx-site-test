@@ -1,0 +1,18 @@
+
+<div class="page-section flex-centralize" *ngIf="youtubeSection$ | async as youtubeSection">
+    <div class="dd-3col-grid" *ngIf="youtubeSection['items'][0]['fields']['youtube'] as youtube">
+        <div class="profile-img flex-centralize" *ngFor="let item of youtube">
+            <ng-container *ngIf="item['fields'] as youtube">
+                <!-- <div [innerHTML]="youtube['youtubeVideo']['fields']"></div> -->
+                <!-- <iframe [src]="(youtube['youtubeVideo'])"  [frameBorder]="0" allowfullscreen></iframe> -->
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe [src]="(youtube['youtubeVideo']) | safe:'resourceUrl'" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+                </div>
+                <markdown class="dd-h1">{{youtube['name']}}</markdown>
+            </ng-container>
+        </div>
+    </div>
+    <button class="dd-btn-outline">Watch more</button>
+</div>

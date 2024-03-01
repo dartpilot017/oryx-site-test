@@ -1,0 +1,331 @@
+/*
+    This file contains general form  styles
+    Use @import '/src/app/forms/forms.scss'; to import this file into other scss files.
+*/
+
+@import '/src/styles.scss';
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+form,
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+form {
+    gap: 2rem;
+    width: 100%;
+
+    button {
+        margin-top: 1.5rem;
+        width: fit-content;
+        padding: 1rem 2.5rem;
+        align-self: center;
+    }
+}
+
+.input-group {
+    gap: 0.5rem;
+}
+
+::ng-deep .mat-form-field,
+.form-label,
+.form-input {
+    font-family: $dd-font-family;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.3rem;
+    margin: 0;
+}
+
+.form-2col-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.block-form {
+    display: grid;
+    grid-template-rows: 1fr;
+    gap: 1rem;
+}
+
+.form-4col-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 2rem;
+}
+
+.form-label {
+    color: $dd-black;
+}
+
+ .form-select {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 3rem 0.75rem 1rem;
+    -moz-padding-start: calc(1rem - 3px);
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #3d3f46 opacity($color: #8f7878 );
+    background-color: $dd-floral-white;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%237E8299' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 16px 12px;
+    border: 1px solid #e4e6ef;
+    border-radius: 0.475rem;
+    // box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    appearance: none;
+}
+
+.error-message {
+    font-weight: 400;
+    font-size: 0.875rem;
+    color: $dd-secondary-main;
+    margin-top: 0.25rem;
+}
+
+::ng-deep .mat-mdc-form-field-has-icon-suffix .mat-mdc-text-field-wrapper {
+    // color: $dd-gray;
+
+    &::placeholder {
+        opacity: 0.7;
+    }
+
+    // padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    background-color: $dd-floral-white;
+}
+
+::ng-deep .mat-mdc-form-field-subscript-wrapper{
+    display: none;
+}
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    border: none;
+    border-radius: 8px;
+    background-color: $dd-floral-white;
+}
+
+::ng-deep .mdc-line-ripple {
+    display: none;
+}
+
+::ng-deep ngx-material-timepicker-content{
+    --body-background-color: #fff;
+    --primary-font-family: 'Roboto',sans-serif;
+    --button-color: #f5d3b6 !important;
+    --dial-active-color: #fff;
+    --dial-inactive-color: rgba(255, 255, 255, .5);
+    --dial-background-color: #f5d3b6 !important;
+    --dial-editable-active-color: #f5d3b6 !important;
+    --dial-editable-background-color: #fff;
+    --clock-face-time-active-color: #fff;
+    --clock-face-time-inactive-color: #6c6c6c;
+    --clock-face-inner-time-inactive-color: #929292;
+    --clock-face-time-disabled-color: #c5c5c5;
+    --clock-face-background-color: #f0f0f0;
+    --clock-hand-color: #f5d3b6 !important;
+}
+
+.form-input {
+    color: $dd-gray;
+
+    &::placeholder {
+        opacity: 0.7;
+    }
+
+    padding: 1rem 1.5rem;
+    width: calc(100% - 3rem);
+    border: none;
+    border-radius: 8px;
+    background-color: $dd-floral-white;
+
+    &:-webkit-autofill {
+        -webkit-text-fill-color: $dd-gray !important;
+        -webkit-box-shadow: 0 0 0px 1000px $dd-floral-white inset !important;
+        box-shadow: 0 0 0px 1000px $dd-floral-white inset !important;
+        border: none !important;
+    }
+
+    &.is-invalid { border: 1px solid $dd-red; }
+}
+
+textarea {
+    width: calc(100% - 3rem);
+    min-height: 10rem;
+    &.is-invalid { border: 1px solid $dd-red; }
+}
+
+.privacy-policy {
+    &.is-invalid {
+        .checkbox-text { color: $dd-red; }
+        .css-checkbox + label::before { border-color: $dd-red; }
+    }
+}
+
+.error-message {
+    @extend .dd-p;
+    color: $dd-red;
+    font-size: 0.875rem;
+    line-height: normal;
+    margin-top: 0.25rem;
+}
+
+.checkbox-text {
+    padding-left: 0.25rem;
+}
+
+.css-checkbox {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+}
+
+#inputPreview {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.css-checkbox+label {
+    position: relative;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    height: 22px;
+    color: rgb(0, 0, 0);
+}
+
+.css-checkbox+label::before {
+    content: " ";
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 3px;
+    width: 20px;
+    height: 20px;
+    background-color: rgb(255, 255, 255);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(102, 102, 102);
+    border-radius: 4px;
+    box-shadow: none;
+}
+
+.css-checkbox:checked+label::after {
+    content: " ";
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjZTg3YjIzIiBkPSJNMTczLjg5OCA0MzkuNDA0bC0xNjYuNC0xNjYuNGMtOS45OTctOS45OTctOS45OTctMjYuMjA2IDAtMzYuMjA0bDM2LjIwMy0zNi4yMDRjOS45OTctOS45OTggMjYuMjA3LTkuOTk4IDM2LjIwNCAwTDE5MiAzMTIuNjkgNDMyLjA5NSA3Mi41OTZjOS45OTctOS45OTcgMjYuMjA3LTkuOTk3IDM2LjIwNCAwbDM2LjIwMyAzNi4yMDRjOS45OTcgOS45OTcgOS45OTcgMjYuMjA2IDAgMzYuMjA0bC0yOTQuNCAyOTQuNDAxYy05Ljk5OCA5Ljk5Ny0yNi4yMDcgOS45OTctMzYuMjA0LS4wMDF6Ii8+PC9zdmc+");
+    background-repeat: no-repeat;
+    background-size: 14px 14px;
+    background-position: center center;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0px;
+    left: 0px;
+    top: 0px;
+    text-align: center;
+    background-color: transparent;
+    font-size: 10px;
+    height: 22px;
+    width: 22px;
+}
+
+.css-radio-checkbox {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+}
+
+.css-radio-checkbox + label {
+    position: relative;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    height: 22px;
+    color: rgb(0, 0, 0);
+}
+
+.css-radio-checkbox + label::before {
+    content: " ";
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 3px;
+    width: 20px;
+    height: 20px;
+    background-color: rgb(255, 255, 255);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(102, 102, 102);
+    border-radius: 50%;
+    box-shadow: none;
+}
+
+.css-radio-checkbox:checked + label::after {
+    content: " ";
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjZTg3YjIzIiBkPSJNMTczLjg5OCA0MzkuNDA0bC0xNjYuNC0xNjYuNGMtOS45OTctOS45OTctOS45OTctMjYuMjA2IDAtMzYuMjA0bDM2LjIwMy0zNi4yMDRjOS45OTctOS45OTggMjYuMjA3LTkuOTk4IDM2LjIwNCAwTDE5MiAzMTIuNjkgNDMyLjA5NSA3Mi41OTZjOS45OTctOS45OTcgMjYuMjA3LTkuOTk3IDM2LjIwNCAwbDM2LjIwMyAzNi4yMDRjOS45OTcgOS45OTcgOS45OTcgMjYuMjA2IDAgMzYuMjA0bC0yOTQuNCAyOTQuNDAxYy05Ljk5OCA5Ljk5Ny0yNi4yMDcgOS45OTctMzYuMjA0LS4wMDF6Ii8+PC9zdmc+");
+    background-repeat: no-repeat;
+    background-size: 14px 14px;
+    background-position: center center;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0px;
+    left: 0px;
+    top: 0px;
+    text-align: center;
+    background-color: transparent;
+    border-radius: 50%;
+    font-size: 10px;
+    width: 22px;
+    height: 22px;
+}
+
+
+
+@media screen and (max-width: $mobile-width) {
+    .form-2col-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .form-4col-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .inner-section {
+        width: 85%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+

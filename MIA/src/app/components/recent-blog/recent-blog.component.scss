@@ -1,0 +1,108 @@
+@import "/src/styles.scss";
+
+.recent-blog-post-card {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  gap: 1.5rem;
+  flex-shrink: 0;
+
+  img {
+    height: 12.5rem;
+    width: 18rem;
+    object-fit: cover;
+    flex-shrink: 0;
+    border-radius: 1.2rem;
+  }
+}
+
+.inner-section {
+  width: 96%;
+}
+
+.blog-contents {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.title {
+  align-self: stretch;
+  color: var(--Gray-900, #101828);
+
+  /* Display xs/Semibold */
+  font-family: $mia-font-family;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 2rem; /* 133.333% */
+}
+
+.frame-2-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 2rem;
+}
+
+.blog-content-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1.5rem;
+  align-self: stretch;
+}
+
+.heading-and-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  align-self: stretch;
+}
+
+.author {
+  align-self: stretch;
+  color: var(--Secondary-Main, #da2625);
+
+  /* Text sm/Semibold */
+  font-family: $mia-font-family;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.25rem;
+  margin: 0.1rem 0;
+}
+
+.heading {
+  color: var(--Gray-900, #101828);
+
+  /* Display xs/Semibold */
+  font-family: $mia-font-family;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 2rem;
+  margin: 0.1rem 0;
+
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+.article {
+  align-self: stretch;
+  color: var(--Gray-500, #667085);
+
+  /* Text md/Normal */
+  font-family: $mia-font-family;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5rem;
+  margin: 0.1rem 0;
+}

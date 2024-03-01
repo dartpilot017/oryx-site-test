@@ -1,0 +1,17 @@
+<app-loading-spinner *ngIf="!(ddcTabs$ | async)"></app-loading-spinner>
+<div class="page-section" *ngIf="(ddcTabs$ | async) as ddcTabs">
+    <!-- NAVIGATION -->
+    <div class="dd-btn-nav">
+        <ng-container *ngFor="let btn of buttons">
+            <button [ngClass]="{ 'selected': btn.selected }" (click)="onButtonClick(btn)">{{btn.text}}</button>
+        </ng-container>
+    </div>
+    <!-- CONTENT -->
+    <div class="content" *ngIf="ddcTabs['items'][0]['fields'] as fields">
+        <markdown ngPreserveWhitespaces *ngIf="buttons[0]['selected']">{{ fields['consulting'] }}</markdown>
+        <markdown ngPreserveWhitespaces *ngIf="buttons[1]['selected']">{{ fields['business'] }}</markdown>
+        <markdown ngPreserveWhitespaces *ngIf="buttons[2]['selected']">{{ fields['audit'] }}</markdown>
+        <markdown ngPreserveWhitespaces *ngIf="buttons[3]['selected']">{{ fields['manpower'] }}</markdown>
+        <markdown ngPreserveWhitespaces *ngIf="buttons[4]['selected']">{{ fields['outsourcing'] }}</markdown>
+    </div>
+</div>

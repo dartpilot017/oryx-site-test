@@ -1,0 +1,66 @@
+@import '/src/styles.scss';
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    z-index: 900;
+    position: fixed;
+    width: calc(100vw - 2rem);
+
+    padding: 0.5rem 1rem;
+    background-color: $mia-white;
+    border-top: 0.5rem solid $mia-mobile-orange;
+}
+
+.nav-link {
+    @extend .mia-h2;
+    text-decoration: none;
+    &.active-link { color: $mia-red; }
+}
+
+.logo {
+    width: 7.75rem;
+    height: 3.75rem;
+    object-fit: contain;
+}
+
+.navbar-toggler {
+    align-self: center;
+    height: 48px;
+    border: none;
+    border-radius: 4px;
+    background-color: $mia-mobile-orange;
+}
+
+.nav-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: $mia-white;
+
+    
+    height: 0;
+    overflow: hidden;
+    .nav-link { opacity: 0; }
+    transition: all 0.3s ease-out;
+
+    &.open {
+        height: max-content;
+        gap: 2rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        .nav-link { opacity: 1; }
+    }
+}
+
+@media screen and (min-width: 970px) {
+    .nav-container { display: none; }
+}

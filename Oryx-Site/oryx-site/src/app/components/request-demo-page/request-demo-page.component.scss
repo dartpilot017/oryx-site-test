@@ -1,0 +1,62 @@
+$oryx-font: 'Work Sans', sans-serif;
+$oryx-secondary-main: #DA2625;
+$label-color: #344054;
+
+$max-tablet-width: 1024px;
+$min-tablet-width: 768px;
+
+#selectedProducts{
+    display: none;
+}
+
+main {
+    font-family: $oryx-font;
+    margin-top: 7rem;
+
+    .request-form {
+        .checkbox-section {
+            p {
+                font-family: $oryx-font;
+                font-weight: 400;
+                font-size: 0.875rem;
+                color: $label-color;
+            }
+
+            .checkbox-option {
+                margin-bottom: 0.5rem;
+                label {
+                    font-family: $oryx-font;
+                    font-weight: 500;
+                    font-size: 1rem;
+                    color: $label-color;
+                }
+            }
+        }
+
+        button { margin-top: 3rem; }
+    }
+
+    app-oryx-clients-slider { margin-top: 4rem; }
+    app-oryx-footer { margin-top: 10rem; }
+}
+
+.flex-centralize {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/*************** TABLET VIEW ***************/
+@media (min-width: $min-tablet-width) and (max-width: $max-tablet-width) {
+
+}
+
+/************** MOBILE VIEW ***************/
+@media (max-width: calc($min-tablet-width - 1px)) {
+    main {
+        margin-top: 6rem;
+
+        .request-form { margin-top: 2rem; }
+    }
+}

@@ -1,0 +1,23 @@
+<app-loading-spinner *ngIf="!(blogPost$ | async)"></app-loading-spinner>
+<article class="page-section page-col" *ngIf="(blogPost$ | async)">
+    <!-- author & date -->
+    <div class="blog-info">
+        <p>{{ blog['author'] }}</p>
+        <div class="red-circle"></div>
+        <time [attr.datetime]="blog['date']">{{ blog['date'] | date:'dd MMM yyyy' }}</time>
+    </div>
+
+    <!-- blog-title -->
+    <h1 class="dd-h1">{{ blog['title'] }}</h1>
+
+    <!-- tags -->
+    <div class="tag-list">
+        <p class="tag-item" *ngFor="let tag of blog['tags']" [ngClass]="getTagStyles(tag)">{{ tag }}</p>
+    </div>
+
+    <!-- blog image -->
+    <img class="blog-image" [src]="'https:' + blog['imgUrl']" alt="blog image">
+
+    <!-- blog content -->
+    <markdown ngPreserveWhitespaces class="blog-article">{{ blog['article'] }}</markdown>
+</article>

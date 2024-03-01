@@ -1,0 +1,323 @@
+/*
+    You can add global styles to this file, and also import other style files.
+    Use @import '/src/styles.scss'; to import this file into other scss files.
+*/
+
+// DM Sans font
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+$dd-font-family: 'DM Sans', sans-serif;
+
+// Ephesis font
+@import url('https://fonts.googleapis.com/css2?family=Ephesis&display=swap');
+$dd-curly-font: 'Ephesis', cursive;
+
+// angular material
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+
+/*-------------------COLOR PALETTE-------------------*/
+$dd-dark-gold:#a1693b;
+$dd-vivid-tangelo:#e87d23;
+$dd-pale-orange:#fedac1;
+$dd-floral-white:#fef7f1;
+$dd-white:#ffffff;
+$dd-gray:#666666;
+$dd-black:#1d1d1d;
+$dd-red:#92282a;
+$dd-secondary-main: #DA2625;
+
+
+/*-------------------SCREEN SIZES-------------------*/
+$desktop-width: 1440px;
+$tablet-width: 1024px;
+$mobile-width: 768px;
+
+
+/*-------------------FONT STYLES-------------------*/
+.dd-h1, .dd-h2, .dd-h3, .dd-h4 {
+    font-family: $dd-font-family;
+    font-weight: 700;
+    text-align: center;
+    color: $dd-black;
+    margin: 0;
+}
+
+.dd-h1 {
+    font-size: 3rem;
+    line-height: 3.35rem;
+}
+
+.dd-h2 {
+    font-size: 2rem;
+    line-height: 3rem;
+}
+
+.dd-h3 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+.dd-h4 {
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.dd-p {
+    font-family: $dd-font-family;
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 2rem;
+    color: $dd-black;
+}
+
+.dd-link {
+    color: $dd-black;
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+    text-decoration-color: $dd-black;
+
+    &:hover, &:focus {
+        color: $dd-gray;
+        text-decoration-color: $dd-gray;
+    }
+}
+
+/*-------------------MARKDOWN STYLES-------------------*/
+markdown {
+    h1 {
+        @extend .dd-h1;
+        white-space: balance;
+        text-transform: uppercase;
+    }
+
+    h2 { @extend .dd-h2; }
+    h3 { @extend .dd-h3; }
+    h4 { @extend .dd-h4; }
+    p { @extend .dd-p; }
+
+    strong { font-weight: 500; }
+
+    a { @extend .dd-link; }
+
+    ol, ul { @extend .dd-p; }
+}
+
+
+
+/*-------------------BUTTON STYLES-------------------*/
+.dd-btn-outline,
+.dd-btn-fill,
+.dd-btn-group button {
+    font-family: $dd-font-family;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.6rem;
+    text-align: center;
+    padding: 1rem 1.5rem;
+    border-radius: 6.25rem;
+    transition: all 0.3s ease-in-out;
+
+    cursor: pointer;
+    &:hover, &:focus {
+        box-shadow: 0 0.5em 0.5em -0.4em $dd-black;
+        transform: translateY(-0.25em)
+    }
+}
+
+.dd-btn-outline,
+.dd-btn-group button {
+    color: $dd-black;
+    border: 1px solid $dd-black;
+    background-color: transparent;
+    &:hover, &:focus { background-color: rgba($dd-pale-orange, 0.3); }
+}
+
+.dd-btn-fill,
+.dd-btn-group button.selected {
+    color: $dd-white;
+    border: none;
+    background-color:$dd-red;
+    &:hover, &:focus { background-color: lighten($dd-red, 5%); }
+}
+
+.dd-btn-fill,.dd-btn-outline {
+    &:disabled {
+        color: $dd-gray;
+        border: 1px solid $dd-gray;
+        background-color: transparent;
+        cursor: not-allowed;
+        &:hover, &:focus { background-color: transparent; }
+    }
+}
+
+$circle-size: 0.75rem; // size of circle in button
+.dd-btn-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    button {
+        position: relative;
+        padding-left: calc($circle-size + 1.5rem);
+        text-transform: uppercase;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 1rem;
+            transform: translateY(-50%);
+            width: $circle-size;
+            height: $circle-size;
+            border: 1px solid $dd-black;
+            border-radius: 50%;
+            background-color: $dd-white; // color of circle in button
+        }
+
+        &:focus {
+            box-shadow: none;
+            transform: translateY(0);
+        }
+
+        &.selected {
+            &:hover {
+                box-shadow: none;
+                transform: translateY(0);
+            }
+            &:focus { background-color: $dd-red; }
+            &::before { border: none; }
+        }
+    }
+}
+
+.dd-btn-nav {
+    @extend .dd-btn-group;
+
+    display: grid;
+    gap: 1rem;
+    width: calc(100vw * 0.8);
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0.1rem;
+    padding: 0.25rem;
+    justify-content: start;
+
+    > * { scroll-snap-align: start; }
+
+    @media screen and ( width = $desktop-width) {
+        overflow-x: hidden;
+    }
+}
+
+
+/*-------------------SCROLL BAR STYLE-------------------*/
+::-webkit-scrollbar { height: 0.3em; width: 0.5em; }
+::-webkit-scrollbar-track { background-color: $dd-white; border-radius: 100vw; margin-block: 0.5em; }
+::-webkit-scrollbar-thumb { background-color: $dd-gray; border-radius: 100vw; }
+
+
+/*-------------------ICON STYLES-------------------*/
+.dd-logo {
+    width: 3.75rem;
+    object-fit: contain;
+}
+
+/*----------------ERROR MESSAGE STYLE------------------*/
+.error-message {
+    font-weight: 400;
+    font-size: 0.875rem;
+    color: $dd-red;
+    margin-top: 0.25rem;
+    line-height: normal;
+}
+
+
+/*-------------------CONTAINER, SECTION & GRID STYLES-------------------*/
+body { margin: 0; overflow-y: auto; overflow-x: hidden; width: 100vw; }
+
+.flex-centralize {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page-section, .inner-section { margin-inline: auto; }
+
+.page-section { width: 77.8%; }
+
+.inner-section { width: 51.1%; }
+
+.page-padding-top { padding-top: 5.25rem; }
+
+.page-col {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    padding-bottom: 5rem;
+}
+
+.dd-3col-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+
+    img {
+        width: 100%;
+        object-fit: contain;
+        border: 1px solid $dd-black;
+    }
+}
+
+.icon-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    img { width: 2.25rem; }
+}
+
+
+/*-------------------MEDIA QUERIES-------------------*/
+@media screen and (max-width: $tablet-width) {
+    .page-section { width: 93.75%; }
+
+    .inner-section { width: 61.6%; }
+
+    .dd-btn-nav { width: calc(100vw * 0.9); }
+}
+
+@media screen and (max-width: $mobile-width) {
+    .dd-h1{
+        font-size: 2.5rem;
+        line-height: 2.75rem;
+    }
+
+    .dd-h2 {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+
+    .dd-h3 {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+    }
+
+    .dd-h4 {
+        font-size: 0.875rem;
+        line-height: 1.125rem;
+    }
+
+    .page-section { width: 90%; }
+
+    .inner-section { width: 59.1%; }
+
+    .dd-btn-nav { width: calc(100vw * 0.85); }
+
+    .dd-3col-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .icon-row { margin-inline: auto; }
+}

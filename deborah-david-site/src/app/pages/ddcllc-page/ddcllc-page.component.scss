@@ -1,0 +1,15 @@
+@import '/src/styles.scss';
+
+.flex-centralize {
+    gap: 5rem;
+    padding-bottom: 5rem;
+}
+
+.dd-h4 {
+    font-weight: 500;
+    color: $dd-red;
+    margin-top: 2rem;
+    margin-bottom: -2.5rem;
+}
+
+.recent-clients { margin-bottom: 3.25rem; }

@@ -1,0 +1,15 @@
+<main>
+    <h1 class="heading">Microsoft 365 for Business</h1>
+
+    <div class="card-grid">
+        <div class="card" *ngFor="let plan of allPlans">
+            <h1 class="card-title">{{ plan.name }}</h1>
+            <div class="icon-grid">
+                <div class="icon" *ngFor="let icon of plan.icons">
+                    <img [src]=" '../../../assets/microsoft-icons/' + icon.path" alt="icon"/>
+                    <p>{{ icon.name }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

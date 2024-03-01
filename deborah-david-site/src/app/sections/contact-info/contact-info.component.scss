@@ -1,0 +1,59 @@
+@import '/src/styles.scss';
+
+.inner-section {
+    background-color: rgba($dd-pale-orange, 0.2);
+    padding: 2.5rem;
+}
+
+.section-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact-col { max-width: 50%; }
+
+.dd-h4, .dd-h3 { text-align: left; }
+
+.dd-h4, .dd-p { font-size: 1.25rem; }
+
+.dd-h3 { margin-bottom: 2rem; }
+
+.dd-h4 {
+    margin-bottom: 1.5rem;
+    br { display: none; }
+}
+
+.dd-p {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    word-wrap: break-word;
+}
+
+a {
+    margin: 0;
+    word-wrap:break-word;
+    word-break: break-word; // fallback for older browsers
+}
+
+
+/*-------------------MEDIA QUERIES-------------------*/
+@media screen and (max-width: $mobile-width) {
+    .section-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .contact-col, .social-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 495px) {
+    .dd-h4 {
+        br { display: block; }
+    }
+}

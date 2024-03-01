@@ -1,0 +1,133 @@
+<main class="flex-centralize" *ngIf="contactUsPage$ | async as contactUsPage">
+    <!------------------PAGE HEADER------------------->
+    <div class="page-header-container">
+        <h1 class="page-title">{{ contactUsPage.items[0].fields.intro }}</h1>
+        <h2 class="page-subtitle">{{ contactUsPage.items[0].fields.title }}</h2>
+        <p class="page-description">{{ contactUsPage.items[0].fields.subtitle }}</p>
+    </div>
+
+
+    <!------------------CONTACT US CONTENT------------------->
+    <div class="content-container image-form-grid" >
+        <img
+            [src]="'https:' + contactUsPage.items[0].fields.image.fields.file.url"
+            class="form-image"
+            alt ="section image"
+        />
+
+        <!-------CONTACT FORM-------->
+        <form class="contact-form" #contactUsForm="ngForm" (ngSubmit)="onContactUsDetails(contactUsForm.value)">
+            <p class="help-info"><span>Note:</span> {{ isEnglish ? 'All fields are required.' : 'Tous les champs sont requis.' }}</p>
+
+            <div class="form-row-grid">
+                <!-------FIRST NAME-------->
+                <div class="form-input" [ngClass]="{'is-invalid': firstNameInput.invalid && firstNameInput.touched}">
+                    <label for="firstName">{{ isEnglish ? 'First name' : 'Prénom' }}</label>
+                    <input
+                        type="text" id="firstName" name="firstName" placeholder="{{ isEnglish ? 'First name' : 'Prénom' }}"
+                        required [(ngModel)]="firstName" #firstNameInput="ngModel"
+                    />
+                    <div *ngIf="firstNameInput.invalid && firstNameInput.touched" class="error-message">{{ isEnglish ? 'This field shouldn\'t be empty' : 'Ce champ ne doit pas être vide' }}</div>
+                </div>
+
+                <!-------LAST NAME-------->
+                <div class="form-input" [ngClass]="{'is-invalid': lastNameInput.invalid && lastNameInput.touched}">
+                    <label for="lastName">{{ isEnglish ? 'Last name' : 'Nom de famille' }}</label>
+                    <input
+                        type="text" id="lastName" name="lastName"
+                        placeholder="{{ isEnglish ? 'Last name' : 'Nom de famille' }}"
+                        required [(ngModel)]="lastName" #lastNameInput="ngModel"
+                    />
+                    <div *ngIf="lastNameInput.invalid && lastNameInput.touched" class="error-message">{{ isEnglish ? 'This field shouldn\'t be empty' : 'Ce champ ne doit pas être vide' }}</div>
+                </div>
+            </div>
+
+
+            <!-------EMAIL-------->
+            <div class="form-input" [ngClass]="{'is-invalid': (emailInput.invalid && emailInput.touched) || (!isEmailValid(email) && email.length !== 0)}">
+                <label for="email">{{ isEnglish ? 'Email' : 'E-mail' }}</label>
+                <input
+                    type="email" id="email" name="email" placeholder="your@company.com"
+                    required [(ngModel)]="email" #emailInput="ngModel"
+                />
+                <div *ngIf="emailInput.invalid && emailInput.touched" class="error-message">{{ isEnglish ? 'This field shouldn\'t be empty' : 'Ce champ ne doit pas être vide' }}</div>
+                <div *ngIf="!isEmailValid(email) && email !== ''" class="error-message">{{ isEnglish ? 'Invalid email' : 'Email invalide' }}</div>
+            </div>
+
+
+            <!-------PHONE NUMBER-------->
+            <div class="form-input" [ngClass]="{'is-invalid': (phoneInput.invalid && phoneInput.touched) || (!isPhoneNumValid(phoneNumber) && phoneNumber.length !== 0)}">
+                <label for="phone">{{ isEnglish ? 'Phone number' : 'numéro de téléphone'}}</label>
+                <input
+                    type="tel" id="phone" name="phone" placeholder="+234 (555) 000-0000"
+                    required [(ngModel)]="phoneNumber" #phoneInput="ngModel"
+                />
+                <div *ngIf="phoneInput.invalid && phoneInput.touched" class="error-message">{{ isEnglish ? 'This field shouldn\'t be empty' : 'Ce champ ne doit pas être vide' }}</div>
+                <div *ngIf="!isPhoneNumValid(phoneNumber) && phoneNumber !== ''" class="error-message">{{ isEnglish ? 'Invalid phone number' : 'Numéro de téléphone invalide'}}</div>
+            </div>
+
+
+            <div class="form-row-grid">
+                <!-------COMPANY-------->
+                <div class="form-input" [ngClass]="{'is-invalid': companyInput.invalid && companyInput.touched}">
+                    <label for="company">{{ isEnglish ? 'Company Name' : 'Nom de l\'entreprise' }}</label>
+                    <input
+                        type="text" id="company" name="company" placeholder="{{ isEnglish ? 'Company Name' : 'Nom de l\'entreprise' }}"
+                        required [(ngModel)]="companyName" #companyInput="ngModel"
+                    />
+                    <div *ngIf="companyInput.invalid && companyInput.touched" class="error-message">{{ isEnglish ? 'This field shouldn\'t be empty' : 'Ce champ ne doit pas être vide' }}</div>
+                </div>
+
+
+                <!-------MODE OF CONTACT-------->
+                <div class="form-input" [ngClass]="{'is-invalid': contactModeInput.invalid && contactModeInput.touched}">
+                    <label for="contactMode">{{ isEnglish ? 'Mode of Contact' : 'Mode de contact'}}</label>
+                    <select id="contactMode" name="contactMode" class="select-box form-select" required [(ngModel)]="contactMode" #contactModeInput="ngModel">
+                        <option value="" disabled selected>{{ isEnglish ? '-Select an option-' : '-Choisir une option-' }}</option>
+                        <option value="phone">{{ isEnglish ? 'Phone number' : 'numéro de téléphone'}}</option>
+                        <option value="email">{{ isEnglish ? 'Email' : 'E-mail'}}</option>
+                    </select>
+                    <div *ngIf="contactModeInput.invalid && contactModeInput.touched" class="error-message">{{ isEnglish ? 'This field shouldn\'t be empty' : 'Ce champ ne doit pas être vide' }}</div>
+                </div>
+            </div>
+
+
+            <!-------SELECT SERVICE-------->
+            <div class="form-input" [ngClass]="{'is-invalid': selectedServiceInput.invalid && selectedServiceInput.touched}">
+                <label for="selectedService">{{ isEnglish ? 'Select Service' : 'Sélectionner un service' }}</label>
+                <select id="selectedService" name="selectedService" class="select-box form-select" required [(ngModel)]="selectedService" #selectedServiceInput="ngModel">
+                    <option value="" disabled selected>{{ isEnglish ? '-Select Service-' : '-Sélectionner un service-'}}</option>
+                    <option value="{{option}}" *ngFor="let option of contactUsPage.items[0].fields.services">{{ option }}</option>
+                </select>
+                <div *ngIf="selectedServiceInput.invalid && selectedServiceInput.touched" class="error-message">{{ isEnglish ? 'This field shouldn\'t be empty' : 'Ce champ ne doit pas être vide' }}</div>
+            </div>
+
+
+            <!-------MESSAGE-------->
+            <div class="form-input" [ngClass]="{'is-invalid': messageInput.invalid && messageInput.touched}">
+                <label for="message">Message</label>
+                <textarea type="text" id="message" name="message" class="text-box"
+                required [(ngModel)]="message" #messageInput="ngModel"></textarea>
+                <div *ngIf="messageInput.invalid && messageInput.touched" class="error-message">{{ isEnglish ? 'This field shouldn\'t be empty' : 'Ce champ ne doit pas être vide' }}</div>
+            </div>
+
+
+            <!-------PRIVACY POLICY-------->
+            <div class="privacy-policy" [ngClass]="{'is-invalid': policyInput.invalid && policyInput.touched}">
+                <input type="checkbox" id="privacyPolicy" name="privacyPolicy" class="css-checkbox" required [(ngModel)]="policyCheckbox" #policyInput="ngModel"/>
+                <label for="privacyPolicy"><span class="checkbox-text">{{ contactUsPage.items[0].fields.policyQuestion }}</span></label>
+            </div>
+
+
+            <!-------SUBMIT BUTTON-------->
+            <button class="red-button" [ngClass]="{ 'button-disabled': isButtonDisabled(), 'button-hover': !isButtonDisabled() }" [disabled]="isButtonDisabled()" type="submit">{{ isEnglish ? 'Send Message' : 'Envoyer le message' }}</button>
+
+        </form>
+    </div>
+
+    <!---------CONTACT FOOTER & ORYX FOOTER---------->
+    <app-contact-footer></app-contact-footer>
+    <app-oryx-footer></app-oryx-footer>
+
+</main>
+

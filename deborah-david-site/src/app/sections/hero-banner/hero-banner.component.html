@@ -1,0 +1,13 @@
+<div class="flex-centralize banner">
+    <div class="banner-text">
+        <h1 class="banner-h1">Deborah<br>David</h1>
+        <p class="banner-p role">Founder & CEO of Deborah David Consulting LLC</p>
+        <div class="title-row">
+            <ng-container *ngFor="let title of titles">
+                <p class="banner-p">{{ title }}</p>
+            </ng-container>
+        </div>
+        <button class="dd-btn-fill" type="button" (click)="redirectToAbout()">Read More</button>
+    </div>
+    <img src="../../../assets/images/dd-hero.png" alt="deborah david image" >
+</div>

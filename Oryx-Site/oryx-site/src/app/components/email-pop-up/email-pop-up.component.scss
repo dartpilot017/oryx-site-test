@@ -1,0 +1,115 @@
+$oryx-font: 'Work Sans', sans-serif;
+
+$oryx-primary-pressed: #002159;
+$oryx-neutral-80: #616161;
+$oryx-neutral-20: #F5F5F5;
+
+$max-tablet-width: 1024px;
+$min-tablet-width: 768px;
+
+
+.blurry-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99;
+
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 100%);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.card {
+    width: 33%;
+    font-family: $oryx-font;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+}
+
+.card-body {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+
+    border-radius: 24px;
+    background-color: white;
+    padding: 1rem 1.5rem 2.5rem;
+    box-shadow: 0px 12px 16px -4px rgba(16, 24, 40, 0.1), 0px 4px 6px -2px rgba(16, 24, 40, 0.05);
+}
+
+.card-header {
+    .greeting {
+        font-weight: 600;
+        font-size: 2.75rem;
+        color: $oryx-primary-pressed;
+        margin-top: 0;
+    }
+
+    .intro, .call-to-action {
+        font-weight: 300;
+        font-size: 1.25rem;
+        color: $oryx-neutral-80;
+    }
+}
+
+.news-letter-form {
+    width: 100%;
+    textarea { max-height: 8rem; }
+}
+
+.close-button {
+    margin-left: auto;
+    background-color: $oryx-neutral-20;
+
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 0px 12px 16px -4px rgba(16, 24, 40, 0.1), 0px 4px 6px -2px rgba(16, 24, 40, 0.05);
+
+    cursor: pointer;
+    transition: background-color 0.3s ease-out;
+    &:hover { background-color: darken($oryx-neutral-20, 10%); }
+}
+
+
+/*************** TABLET VIEW ***************/
+@media (width <= $max-tablet-width) {
+    .card { width: 45%; }
+    .card-body { gap: 0.75rem; }
+    .card-header {
+        .greeting { font-size: 2.5rem; }
+        .intro, .call-to-action { font-size: 1.125rem; }
+    }
+    .news-letter-form { textarea { max-height: 7rem; } }
+}
+
+/************** MOBILE VIEW ***************/
+@media (width <= $min-tablet-width) {
+    .card {
+        width: 80%;
+        transform: translate(-50%, -43%)
+    }
+    .card-body { gap: 0.5rem; }
+    .card-header {
+        .greeting {
+            font-size: 2rem;
+            margin-top: -3.5rem;
+            width: fit-content;
+        }
+        .intro, .call-to-action {
+            font-size: 1rem;
+            margin-top: 0.25rem;
+        }
+    }
+    .news-letter-form {
+        textarea { max-height: 2.5rem; }
+    }
+}

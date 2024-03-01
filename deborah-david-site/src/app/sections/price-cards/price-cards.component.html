@@ -1,0 +1,23 @@
+<dl class="price-list" *ngIf="(priceCards$ | async) as faqList">
+    <div class="price-card" *ngFor="let priceCard of priceList; let i = index;" [ngClass]="{'selected': priceCard['isSelected'], 'expanded': priceCard['isExpanded']}" (click)="selectPriceCard(i)">
+        <div class="plan-header">
+            <button class="select-circle" [ngClass]="{'selected': priceCard['isSelected']}" title="select plan">
+                <div class="dot"></div>
+            </button>
+            <dt class="plan-name">{{ priceCard['name'] }}</dt>
+            <p class="plan-cost">{{ priceCard['cost'] }}</p>
+        </div>
+
+        <div class="plan-details">
+            <dd>
+                <ul>
+                    <li *ngFor="let service of serviceList"
+                    [ngClass]="{'check-mark': priceCard['services'].includes(service), 'x-mark': !priceCard['services'].includes(service)}"
+                    >{{ service }}</li>
+                </ul>
+            </dd>
+        </div>
+
+        <button class="plan-button" type="button" (click)="expandPriceCard(i)">View Details</button>
+    </div>
+</dl>

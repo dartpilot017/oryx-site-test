@@ -1,0 +1,181 @@
+<div class="flex-centralize inner-section">
+  <form (ngSubmit)="submitForm()" [formGroup]="demoForm">
+    <div class="form-field-button">
+      <!-- FIRST NAME & LAST NAME -->
+      <div class="input-group">
+        <div class="form-2col-grid">
+
+          <div>
+            <p class="form-label">First Name*</p>
+            <input class="form-input" type="text" formControlName="firstName" placeholder="e.g John" />
+            <div *ngIf="
+                  demoForm.get('firstName')?.invalid &&
+                  demoForm.get('firstName')?.touched
+                " class="error-message">
+              First Name shouldn't be empty
+            </div>
+          </div>
+
+          <div>
+            <p class="form-label">Last Name*</p>
+            <input class="form-input" type="text" formControlName="lastName" placeholder="e.g Doe" />
+            <div *ngIf="
+                  demoForm.get('lastName')?.invalid &&
+                  demoForm.get('lastName')?.touched
+                " class="error-message">
+              Last Name shouldn't be empty
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- COMPANY NAME & COMPANY WEBSITE -->
+      <div class="input-group">
+        <div class="form-2col-grid">
+
+          <div>
+            <p class="form-label">Company Name*</p>
+            <input class="form-input" type="text" formControlName="cName" placeholder="John Inc." />
+            <div *ngIf="
+                  demoForm.get('cName')?.invalid && demoForm.get('cName')?.touched
+                " class="error-message">
+              Company Name shouldn't be empty
+            </div>
+          </div>
+
+          <div>
+            <p class="form-label">Company Website*</p>
+            <input class="form-input" type="text" formControlName="cWeb" placeholder="www.john-inc.com" />
+            <div *ngIf="
+                  demoForm.get('cWeb')?.invalid && demoForm.get('cWeb')?.touched
+                " class="error-message">
+              Company Website shouldn't be empty
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+
+      <!-- BUSINESS CATEGORY & BUSINESS EMAIL -->
+      <div class="input-group">
+        <div class="form-2col-grid">
+
+          <div>
+            <p class="form-label">Business Email*</p>
+            <input class="form-input" type="email" formControlName="bEmail" placeholder="johndoe@gmail.com" />
+            <div *ngIf="
+                  demoForm.get('bEmail')?.invalid &&
+                  demoForm.get('bEmail')?.touched
+                " class="error-message">
+              Business Email shouldn't be empty
+            </div>
+          </div>
+
+          <div>
+            <p class="form-label">Business Category</p>
+            <select class="form-select-input form-select" formControlName="bCategory">
+              <option value="" selected>select category</option>
+              <option value="facebook">Facebook</option>
+              <option value="instagram">Instagram</option>
+              <option value="linkedIn">LinkedIn</option>
+              <option value="social">Social media</option>
+              <option value="tikTok">TikTok</option>
+              <option value="twitter">Twitter</option>
+            </select>
+            <!-- <div
+                *ngIf="
+                  demoForm.get('bCategory')?.invalid &&
+                  demoForm.get('bCategory')?.touched
+                "
+                class="error-message"
+              >
+                Business category shouldn't be empty
+              </div> -->
+          </div>
+
+        </div>
+      </div>
+
+      <!-- COUNTRY & PHONE NUMBER -->
+      <div class="input-group">
+        <div class="form-2col-grid">
+
+          <div>
+            <p class="form-label">Country</p>
+            <select class="form-select-input form-select" formControlName="country">
+              <option value="" selected>select country</option>
+              <option value="facebook">Oryx HR</option>
+              <option value="instagram">MIA School PickUP</option>
+            </select>
+            <!-- <div
+                *ngIf="
+                  demoForm.get('country')?.invalid &&
+                  demoForm.get('country')?.touched
+                "
+                class="error-message"
+              >
+                Select country shouldn't be empty
+              </div> -->
+          </div>
+
+          <div>
+            <p class="form-label">Phone number</p>
+            <input class="form-input" type="text" formControlName="phone" placeholder="Enter with country code" />
+            <!-- <div
+                *ngIf="
+                  demoForm.get('phone')?.invalid && demoForm.get('phone')?.touched
+                "
+                class="error-message"
+              >
+                Phone number shouldn't be empty
+              </div> -->
+          </div>
+
+        </div>
+      </div>
+
+      <!-- EMPLOYEE SIZE & SELECT PRODUCT -->
+      <div class="input-group">
+        <div class="form-2col-grid">
+
+          <div>
+            <p class="form-label">Employee Size</p>
+            <input class="form-input" type="text" formControlName="eSize" placeholder="50" />
+            <!-- <div
+                *ngIf="
+                  demoForm.get('eSize')?.invalid && demoForm.get('eSize')?.touched
+                "
+                class="error-message"
+              >
+                Employee size shouldn't be empty
+              </div> -->
+          </div>
+
+          <div>
+            <p class="form-label">Select Product*</p>
+            <select class="form-select-input form-select" formControlName="sProduct">
+              <option value="" selected>select product</option>
+              <option value="oryx-hr">Oryx HR</option>
+              <option value="school-pickup">MIA School PickUP</option>
+            </select>
+            <div *ngIf="
+                  demoForm.get('sProduct')?.invalid &&
+                  demoForm.get('sProduct')?.touched
+                " class="error-message">
+              Select product shouldn't be empty
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SUBMIT BUTTON -->
+      <button class="mia-btn-fill" type="submit">Send</button>
+      <p class="mia-p">By completing and submitting the form, you will receive information, tips, and promotions from
+        MIA Business Solutions.</p>
+    </div>
+  </form>
+</div>

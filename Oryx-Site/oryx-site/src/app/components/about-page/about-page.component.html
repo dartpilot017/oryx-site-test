@@ -1,0 +1,82 @@
+<main *ngIf="oryxAboutPage$ | async as oryxAboutPage">
+    <!------------------PAGE HEADER------------------->
+    <div class="page-header-container">
+        <h1 class="page-title">{{ oryxAboutPage.items[0].fields.paragraph.fields.intro }}</h1>
+        <h2 class="page-subtitle">{{ oryxAboutPage.items[0].fields.paragraph.fields.title }}</h2>
+        <p class="page-description">{{ oryxAboutPage.items[0].fields.paragraph.fields.subtitle }}</p>
+    </div>
+
+
+    <div class="about-container content-container">
+
+        <!------------------IMAGES------------------->
+       <div class="image-grid">
+            <img
+            [src]="'https:' + oryxAboutPage.items[0].fields.topLeftImage.fields.file.url"
+            class="hide-in-mobile"
+            alt ="section image"
+            />
+
+            <img
+            [src]="'https:' + oryxAboutPage.items[0].fields.topCentreImage.fields.file.url"
+            alt ="section image"
+            />
+
+            <img
+            [src]="'https:' + oryxAboutPage.items[0].fields.topRightImage.fields.file.url"
+            class="hide-in-mobile"
+            alt ="section image"
+            />
+
+            <img
+            [src]="'https:' + oryxAboutPage.items[0].fields.bottomLeftImage.fields.file.url"
+            class="hide-in-mobile"
+            alt ="section image"
+            />
+
+            <img
+            [src]="'https:' + oryxAboutPage.items[0].fields.bottomCentreImage.fields.file.url"
+            class="hide-in-mobile"
+            alt ="section image"
+            />
+
+            <img
+            [src]="'https:' + oryxAboutPage.items[0].fields.bottomRightImage.fields.file.url"
+            class="hide-in-mobile"
+            alt ="section image"
+            />
+       </div>
+
+        <!------------------ABOUT PARAGRAPH------------------->
+        <div class="about-paragraph"><p>{{ oryxAboutPage.items[0].fields.paragraph.fields.paragraph }}</p></div>
+
+        <div class="oryx-values">
+            <app-oryx-values></app-oryx-values>
+        </div>
+
+        <div class="oryx-partners">
+            <app-oryx-partners></app-oryx-partners>
+        </div>
+
+
+        <!------------------COLUMNS SECTION------------------->
+        <div class="column-container">
+            <h1 class="header">{{ oryxAboutPage.items[0].fields.columnSectionHeader }}</h1>
+
+            <div class="column-grid">
+                <div class="column-text" *ngFor="let column of oryxAboutPage.items[0].fields.columnTextList">
+                    <img [src]="'https:' + column.fields.image.fields.file.url" alt="image">
+                    <h1>{{ column.fields.title }}</h1>
+                    <p>{{ column.fields.paragraph }}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!---------ORYX CLIENT SLIDER & REQUEST DEMO FOOTER---------->
+    <app-oryx-clients-slider></app-oryx-clients-slider>
+    <app-request-demo-footer></app-request-demo-footer>
+    <app-oryx-footer></app-oryx-footer>
+
+</main>

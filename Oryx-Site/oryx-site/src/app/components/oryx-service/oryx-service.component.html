@@ -1,0 +1,69 @@
+<main *ngIf="oryxService$ | async as oryxService">
+    <!------------------PAGE HEADER------------------->
+    <div class="page-header-container">
+        <h1 class="page-title">{{isEnglish ? 'Services' : 'Prestations'}}</h1>
+        <h2 class="page-subtitle">{{ oryxService.items[0].fields.title }}</h2>
+        <p class="page-description">{{ oryxService.items[0].fields.description }}</p>
+    </div>
+
+    <!------------------HEADER IMAGE(S)------------------->
+    <div class="images-container">
+        <img
+        class="header-image content-container"
+        *ngFor="let image of oryxService.items[0].fields.images"
+        [src] = "'https:' + image.fields.file.url"
+        alt = "header image"
+        />
+    </div>
+
+    <!------------------TABLES & LISTS------------------->
+    <div *ngFor="let content of oryxService.items[0].fields.content" class="content-container">
+        <h2 [ngClass]="{ 'content-title': !content.fields.details, 'bullet-title': content.fields.details }" >{{ content.fields.title }}</h2>
+
+        <!--IS FEATURE LIST-->
+        <ol *ngIf="content.fields.features" class="oryx-list">
+            <li *ngFor="let feature of content.fields.features">
+                <div *ngIf="(referencedEntry$[feature.sys.id] | async) as referencedEntry">
+                    <h3>{{ referencedEntry.fields.title }}</h3>
+                    <ul>
+                        <li *ngFor="let detail of referencedEntry.fields.details">{{ detail }}</li>
+                    </ul>
+                </div>
+            </li>
+        </ol>
+
+        <!--IS BULLET LIST-->
+        <ul *ngIf="content.fields.details" class="bullet-list">
+            <li *ngFor="let detail of content.fields.details">{{ detail }}</li>
+        </ul>
+
+        <!--IS TABLE-->
+        <div *ngIf="content.fields.excelSheet">
+            <div #url class="hide">{{ content.fields.excelSheet.fields.file.url }}</div>
+            <div class="table-container">
+                <table class="oryx-table">
+                    <thead>
+                        <tr>
+                            <th *ngFor="let item of getObjectEntries(excelJsonData[0])">{{ item[0] }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let data of excelJsonData">
+                        <ng-container *ngFor="let key of getObjectKeys(excelJsonData[0]); let i = index">
+                            <td>{{ data[key] }}</td>
+                        </ng-container>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <app-microsoft-business-plans *ngIf="currentPath == '/microsoft-365'"></app-microsoft-business-plans>
+    </div>
+
+    <!---------REQUEST DEMO FOOTER & ORYX FOOTER---------->
+    
+    <app-request-demo-footer></app-request-demo-footer>
+    <app-oryx-footer></app-oryx-footer>
+
+</main>

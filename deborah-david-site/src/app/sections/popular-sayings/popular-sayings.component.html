@@ -1,0 +1,12 @@
+<app-loading-spinner *ngIf="!(popularSayings$ | async)"></app-loading-spinner>
+<div class="page-section flex-centralize" *ngIf="(popularSayings$ | async) as popularSayings">
+    <ng-container *ngIf="popularSayings['items'][0]['fields'] as fields">
+        <h1 class="dd-h1">{{ fields['header'] }}</h1>
+        <div class="dd-3col-grid" *ngIf="fields['quoteImages'] as quoteImages">
+            <ng-container *ngFor="let saying of displayedSayings">
+                <img [src]="'https:' + saying" alt="quote image">
+            </ng-container>
+        </div>
+    </ng-container>
+    <button class="dd-btn-outline" (click)="loadMoreSayings()" [disabled]="noMoreSayings">View more</button>
+</div>

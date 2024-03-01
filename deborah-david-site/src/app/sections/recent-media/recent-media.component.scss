@@ -1,0 +1,42 @@
+@import '/src/styles.scss';
+
+.media-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.media-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+    padding: 1rem;
+    border-bottom: 1px solid $dd-black;
+}
+
+.dd-p { margin: 0; }
+
+.media-author, .media-title {
+    font-weight: 500;
+}
+
+.media-author {
+    font-size: 1rem;
+    text-transform: uppercase;
+    span { text-transform: none; }
+}
+
+.media-title {
+    font-size: 1.5rem;
+    text-transform: capitalize;
+}
+
+.media-date { font-size: 0.875rem; }
+
+
+
+/*-------------------MEDIA QUERIES-------------------*/
+@media screen and (max-width: $mobile-width) {
+    .media-grid { grid-template-columns: 1fr; }
+}

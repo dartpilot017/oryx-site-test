@@ -1,0 +1,20 @@
+<div class="clients" *ngIf="clients$ | async as clients">
+  <div class="clients-content">
+    <h2>
+      RECENT CLIENTS
+    </h2>
+  </div>
+  <div class="clients-logos">
+    <ng-container *ngIf="clients.items[0].fields as fields">
+      <!-- <p>{{fields['certificationsAchievements']}}</p> -->
+      <div class="scrollBar-row">
+        <div class="clients-logo-row">
+          <ng-container *ngFor="let media of fields['clientslogo']">
+            <img class="clients-logo" [src]="'https:'+ media.fields['file'].url" alt="media">
+          </ng-container>
+        </div>
+      </div>
+      
+    </ng-container>
+  </div>
+</div>

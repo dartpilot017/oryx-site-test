@@ -1,0 +1,9 @@
+<div class="column-container" *ngIf="offeredServices$ | async as offeredServices">
+    <h1 class="header">{{ offeredServices.items[0].fields.title }}</h1>
+    <div class="column-grid">
+        <div class="column-text" *ngFor="let column of offeredServices.items[0].fields.serviceList">
+            <h1>{{ column.fields.title }}</h1>
+            <p>{{ column.fields.paragraph }}</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+@import "/src/styles.scss";
+
+.inner-section {
+  width: 100%;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.slider {
+  display: flex;
+  width: 100%;
+}
+
+.slide {
+  display: flex;
+  width: 100%;
+}
+
+//MODIFIED
+.image-container {
+  width: 100%;
+  height: 26.5rem;
+  flex-shrink: 0;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scaleX(-1);
+  }
+}
+
+.slide-container {
+  display: flex;
+  flex-shrink: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+@media screen and (max-width: $tablet-width) {
+  .container {
+    flex-direction: column;
+  }
+
+  .image-container {
+    max-width: 100%;
+    height: 26rem;
+  }
+
+  .slider {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .slide {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: $mobile-width) {
+  .image-container {
+    height: 19rem;
+  }
+
+}

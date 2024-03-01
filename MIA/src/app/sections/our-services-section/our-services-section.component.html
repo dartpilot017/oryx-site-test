@@ -1,0 +1,33 @@
+<div class="page-section inner-section" *ngIf="serviceCardSection$ | async as serviceCardSection">
+    <div class="column">
+        <h1 class="mia-h1">
+            Our Services
+        </h1>
+        <div class="mia-flex-row">
+            <div class="card" *ngFor="let item of serviceCardSection['items'][0]['fields']['serviceCard']; let i = index"
+            [style.background-color]="cardColors[i]" [ngClass]="{'white-text': isWhiteText(cardColors[i]), 'larger-font': cardColors[i] === '#FFA07A'}">
+            <a class="router-link" *ngIf="item.fields.hasRoute" [routerLink]="item.fields.route">
+                <div class="card-body">
+                    <div class="text-holder">
+                        <h3 class="mia-h3">
+                            {{ item['fields']['title']}}
+                        </h3>
+                        <p class="mia-p">
+                            {{ item['fields']['description']}}
+                        </p>
+                    </div>
+                    <div class="circled-arrow">
+                        <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="elements">
+                            <path id="Vector 4130" d="M12.5 2.00012L1.5 13.0001" stroke="#07181F" stroke-width="1.5" stroke-linecap="round"/>
+                            <path id="Vector 6909" d="M6.5 1H12.5C12.9714 1 13.2071 1 13.3536 1.14645C13.5 1.29289 13.5 1.5286 13.5 2V8" stroke="#07181F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </a>
+            </div>
+        </div>
+    </div>
+    <button class="mia-btn-fill" (click)="navigateToContactUs()">Contact Us</button>
+</div>

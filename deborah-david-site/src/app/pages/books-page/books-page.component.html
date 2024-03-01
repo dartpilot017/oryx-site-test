@@ -1,0 +1,8 @@
+<div class="flex-centralize page-padding-top">
+    <div class="dd-btn-group">
+        <ng-container *ngFor="let btn of buttons">
+            <button [ngClass]="{ 'selected': btn.selected }" (click)="onButtonClick(btn)">{{btn.text}}</button>
+        </ng-container>
+    </div>
+    <app-books></app-books>
+</div>
